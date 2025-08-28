@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>plano_melhorias_v02.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///Users/williamduarte/Documents/Muralis/GlobalCoffe-Grupo_aldo/R%3A%5C2.Travail%5C1.Enseignement%5CCours%5C_1.Outils%5C2.Developpement%5C1.SCSS%5Cmain.css" type="text/css"><link rel="stylesheet" href="file:///Users/williamduarte/Documents/Muralis/GlobalCoffe-Grupo_aldo/D%3A%5Crdaros%5CCours%5C_1.Outils%5C2.Developpement%5C1.SCSS%5Cmain.css" type="text/css">
+</head>
+
+<body>
+    <p>@@ -1,1 +1,254 @@<br>
+-\n# 📋 Plano de Melhorias v0.2 - GlobalCoffee\n\n## 🎯 Análise das Páginas Atuais\n\n### Páginas Identificadas:\n1. <strong>dashboard_kpis.html</strong> - Dashboard de previsão climática (2145 linhas)\n2. <strong>features.html</strong> - Análise de componentes do preço do café (986 linhas)\n3. <strong>pricing.html</strong> - Bolsa de valores e trading (1318 linhas)\n\n## 🔍 Problemas Identificados (baseado em <code>analise_ui_ux_final.md</code>)\n\n### 1. <strong>Acessibilidade (Score Atual: 65/100)</strong>\n- ❌ Falta de ARIA labels em elementos interativos\n- ❌ Contraste insuficiente (#999 sobre #f4f6f8 = 2.84:1)\n- ❌ Navegação por teclado não otimizada\n- ❌ Ausência de skip links\n- ❌ Imagens sem alt text adequado\n- ❌ Formulários sem labels associados\n- ❌ Touch targets &lt; 44px em mobile\n\n### 2. <strong>Responsividade (Score Atual: 72/100)</strong>\n- ❌ Quebra de layout em 320px\n- ❌ Tabelas com scroll horizontal em mobile\n- ❌ Gráficos não responsivos\n- ❌ Sidebar fixa em telas pequenas\n- ❌ Fontes não escalonáveis (px fixo)\n\n### 3. <strong>Usabilidade (Score Atual: 68/100)</strong>\n- ❌ Falta de feedback visual em ações\n- ❌ Estados de loading inconsistentes\n- ❌ Microinterações ausentes\n- ❌ Hierarquia visual confusa\n- ❌ Falta de estados hover/focus\n- ❌ Sem indicadores de progresso\n\n## 📐 Estratégia de Melhorias v0.2\n\n### Por Persona:\n\n#### <strong>José Silva (Pequeno Produtor)</strong>\n- ✅ Cards grandes com touch targets de 48px\n- ✅ Modo alto contraste\n- ✅ WhatsApp integrado\n- ✅ Gráficos simplificados\n- ✅ Fonte mínima 16px\n\n#### <strong>Roberto Santos (Médio Produtor)</strong>\n- ✅ KPIs detalhados com tooltips\n- ✅ Dashboards customizáveis\n- ✅ Otimização para tablet\n- ✅ Exportação de dados\n\n#### <strong>Ana Carolina (Jovem Inovadora)</strong>\n- ✅ Dark mode\n- ✅ Animações fluidas\n- ✅ PWA capabilities\n- ✅ Integração social\n\n## 🛠️ Implementações Técnicas v0.2\n\n### 1. <strong>Sistema de Design Tokens</strong>\n<code>css\n:root {\n  /* Cores com contraste WCAG AAA */\n  --primary-green: #4CAF50;\n  --text-primary: #1a1a1a; /* Contraste 16:1 */\n  --text-secondary: #525252; /* Contraste 7:1 */\n  \n  /* Touch targets */\n  --touch-target: 48px;\n  \n  /* Responsividade */\n  --breakpoint-mobile: 320px;\n  --breakpoint-tablet: 768px;\n  --breakpoint-desktop: 1024px;\n}\n</code>\n\n### 2. <strong>Melhorias de Acessibilidade</strong>\n<code>html\n&lt;!-- Skip links --&gt;\n&lt;a href=\&quot;#main\&quot; class=\&quot;skip-link\&quot;&gt;Pular para conteúdo&lt;/a&gt;\n\n&lt;!-- ARIA labels --&gt;\n&lt;button aria-label=\&quot;Menu principal\&quot; aria-expanded=\&quot;false\&quot;&gt;\n  &lt;span class=\&quot;sr-only\&quot;&gt;Abrir menu&lt;/span&gt;\n&lt;/button&gt;\n\n&lt;!-- Focus trap --&gt;\n&lt;div role=\&quot;dialog\&quot; aria-modal=\&quot;true\&quot; tabindex=\&quot;-1\&quot;&gt;\n</code>\n\n### 3. <strong>Responsividade Aprimorada</strong>\n<code>css\n/* Container fluid com limites */\n.container {\n  width: 100%;\n  max-width: 1400px;\n  padding: clamp(1rem, 4vw, 2rem);\n}\n\n/* Grid responsivo */\n.grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: clamp(1rem, 3vw, 2rem);\n}\n\n/* Tabelas responsivas */\n@media (max-width: 768px) {\n  table {\n    display: block;\n  }\n  \n  tr {\n    display: flex;\n    flex-direction: column;\n    border: 1px solid var(--border-color);\n    margin-bottom: 1rem;\n  }\n}\n</code>\n\n### 4. <strong>Microinterações</strong>\n<code>css\n/* Hover com feedback háptico */\n.card {\n  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);\n}\n\n.card:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);\n}\n\n/* Loading states */\n.loading {\n  animation: pulse 2s infinite;\n}\n\n@keyframes pulse {\n  0%, 100% { opacity: 1; }\n  50% { opacity: 0.5; }\n}\n</code>\n\n### 5. <strong>Performance</strong><input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0">Design tokens\n- [x] Skip links\n- [x] ARIA labels\n- [ ] Grid responsivo\n- [ ] Microinterações\n- [ ] Dark mode\n\n### Fase 2: Features v0.2\n- [ ] Cards acessíveis\n- [ ] Gráficos responsivos\n- [ ] Touch targets 48px\n- [ ] Loading states\n\n### Fase 3: Pricing v0.2\n- [ ] Tabelas responsivas\n- [ ] Real-time updates\n- [ ] WhatsApp integration\n- [ ] PWA manifest\n\n## 📝 Checklist de Validação\n\n### Acessibilidade\n- [ ] WAVE: 0 erros\n- [ ] axe DevTools: 0 violações\n- [ ] Lighthouse: &gt; 95\n- [ ] Navegação por teclado completa\n- [ ] Screen reader testado\n\n### Responsividade\n- [ ] 320px: ✓\n- [ ] 768px: ✓\n- [ ] 1024px: ✓\n- [ ] 1440px: ✓\n- [ ] 4K: ✓\n\n### Performance\n- [ ] FCP &lt; 2s\n- [ ] TTI &lt; 3.5s\n- [ ] CLS &lt; 0.1\n- [ ] Bundle &lt; 300KB\n\n## 🎨 Referências de Design\n\nBaseado em:\n- Climate FieldView (simplicidade)\n- FarmLogs (KPIs claros)\n- Granular Insights (visualizações)\n- Material Design 3 (acessibilidade)\n- iOS Human Interface (touch)\n\n## 📱 Progressive Web App\n\n### Manifest.json\n</label><code>json\n{\n  \&quot;name\&quot;: \&quot;GlobalCoffee\&quot;,\n  \&quot;short_name\&quot;: \&quot;GCoffee\&quot;,\n  \&quot;theme_color\&quot;: \&quot;#4CAF50\&quot;,\n  \&quot;background_color\&quot;: \&quot;#ffffff\&quot;,\n  \&quot;display\&quot;: \&quot;standalone\&quot;,\n  \&quot;orientation\&quot;: \&quot;any\&quot;,\n  \&quot;icons\&quot;: [\n    {\n      \&quot;src\&quot;: \&quot;icon-192.png\&quot;,\n      \&quot;sizes\&quot;: \&quot;192x192\&quot;,\n      \&quot;type\&quot;: \&quot;image/png\&quot;\n    },\n    {\n      \&quot;src\&quot;: \&quot;icon-512.png\&quot;,\n      \&quot;sizes\&quot;: \&quot;512x512\&quot;,\n      \&quot;type\&quot;: \&quot;image/png\&quot;\n    }\n  ]\n}\n</code>\n\n## 🔄 Próximos Passos\n\n1. Implementar dashboard_kpis_v0.2.html completo\n2. Criar features_v0.2.html\n3. Criar pricing_v0.2.html\n4. Adicionar Service Worker\n5. Testar com usuários reais\n6. Documentar componentes\n<br>
++# 📋 Plano de Melhorias v0.2 - GlobalCoffee</p>
+<ul>
+<li>+## 🎯 Análise das Páginas Atuais</li>
+<li>+### Páginas Identificadas:<br>
++1. <strong>dashboard_kpis.html</strong> - Dashboard de previsão climática (2145 linhas)<br>
++2. <strong>features.html</strong> - Análise de componentes do preço do café (986 linhas)<br>
++3. <strong>pricing.html</strong> - Bolsa de valores e trading (1318 linhas)</li>
+<li>+## 🔍 Problemas Identificados (baseado em <code>analise_ui_ux_final.md</code>)</li>
+<li>+### 1. <strong>Acessibilidade (Score Atual: 65/100)</strong><br>
++- ❌ Falta de ARIA labels em elementos interativos<br>
++- ❌ Contraste insuficiente (#999 sobre #f4f6f8 = 2.84:1)<br>
++- ❌ Navegação por teclado não otimizada<br>
++- ❌ Ausência de skip links<br>
++- ❌ Imagens sem alt text adequado<br>
++- ❌ Formulários sem labels associados<br>
++- ❌ Touch targets &lt; 44px em mobile</li>
+<li>+### 2. <strong>Responsividade (Score Atual: 72/100)</strong><br>
++- ❌ Quebra de layout em 320px<br>
++- ❌ Tabelas com scroll horizontal em mobile<br>
++- ❌ Gráficos não responsivos<br>
++- ❌ Sidebar fixa em telas pequenas<br>
++- ❌ Fontes não escalonáveis (px fixo)</li>
+<li>+### 3. <strong>Usabilidade (Score Atual: 68/100)</strong><br>
++- ❌ Falta de feedback visual em ações<br>
++- ❌ Estados de loading inconsistentes<br>
++- ❌ Microinterações ausentes<br>
++- ❌ Hierarquia visual confusa<br>
++- ❌ Falta de estados hover/focus<br>
++- ❌ Sem indicadores de progresso</li>
+<li>+## 📐 Estratégia de Melhorias v0.2</li>
+<li>+### Por Persona:</li>
+<li>+#### <strong>José Silva (Pequeno Produtor)</strong><br>
++- ✅ Cards grandes com touch targets de 48px<br>
++- ✅ Modo alto contraste<br>
++- ✅ WhatsApp integrado<br>
++- ✅ Gráficos simplificados<br>
++- ✅ Fonte mínima 16px</li>
+<li>+#### <strong>Roberto Santos (Médio Produtor)</strong><br>
++- ✅ KPIs detalhados com tooltips<br>
++- ✅ Dashboards customizáveis<br>
++- ✅ Otimização para tablet<br>
++- ✅ Exportação de dados</li>
+<li>+#### <strong>Ana Carolina (Jovem Inovadora)</strong><br>
++- ✅ Dark mode<br>
++- ✅ Animações fluidas<br>
++- ✅ PWA capabilities<br>
++- ✅ Integração social</li>
+<li>+## 🛠️ Implementações Técnicas v0.2</li>
+<li>+### 1. <strong>Sistema de Design Tokens</strong><br>
++```css<br>
++:root {</li>
+<li>/_ Cores com contraste WCAG AAA _/</li>
+<li>--primary-green: #4CAF50;</li>
+<li>--text-primary: #1a1a1a; /_ Contraste 16:1 _/</li>
+<li>--text-secondary: #525252; /_ Contraste 7:1 _/</li>
+<li></li>
+<li>/_ Touch targets _/</li>
+<li>--touch-target: 48px;</li>
+<li></li>
+<li>/_ Responsividade _/</li>
+<li>--breakpoint-mobile: 320px;</li>
+<li>--breakpoint-tablet: 768px;</li>
+<li>--breakpoint-desktop: 1024px;<br>
++}<br>
++```</li>
+<li>+### 2. <strong>Melhorias de Acessibilidade</strong><br>
++```html +<!-- Skip links --> +<a href="#main" class="skip-link">Pular para conteúdo</a></li>
+<li>+<!-- ARIA labels --> +<button aria-label="Menu principal" aria-expanded="false"></li>
+<li><span class="sr-only">Abrir menu</span> +</button></li>
+<li>+<!-- Focus trap --> +<div role="dialog" aria-modal="true" tabindex="-1"><br>
++```</li>
+<li>+### 3. <strong>Responsividade Aprimorada</strong><br>
++```css<br>
++/_ Container fluid com limites _/<br>
++.container {</li>
+<li>width: 100%;</li>
+<li>max-width: 1400px;</li>
+<li>padding: clamp(1rem, 4vw, 2rem);<br>
++}</li>
+<li>+/_ Grid responsivo _/<br>
++.grid {</li>
+<li>display: grid;</li>
+<li>grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));</li>
+<li>gap: clamp(1rem, 3vw, 2rem);<br>
++}</li>
+<li>+/_ Tabelas responsivas _/<br>
++@media (max-width: 768px) {</li>
+<li>table {</li>
+<li>display: block;</li>
+<li>}</li>
+<li></li>
+<li>tr {</li>
+<li>display: flex;</li>
+<li>flex-direction: column;</li>
+<li>border: 1px solid var(--border-color);</li>
+<li>margin-bottom: 1rem;</li>
+<li>}<br>
++}<br>
++```</li>
+<li>+### 4. <strong>Microinterações</strong><br>
++```css<br>
++/_ Hover com feedback háptico _/<br>
++.card {</li>
+<li>transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);<br>
++}</li>
+<li>+.card:hover {</li>
+<li>transform: translateY(-4px);</li>
+<li>box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);<br>
++}</li>
+<li>+/_ Loading states _/<br>
++.loading {</li>
+<li>animation: pulse 2s infinite;<br>
++}</li>
+<li>+@keyframes pulse {</li>
+<li>0%, 100% { opacity: 1; }</li>
+<li>50% { opacity: 0.5; }<br>
++}<br>
++```</li>
+<li>+### 5. <strong>Performance</strong><br>
++- Lazy loading de imagens<br>
++- Code splitting<br>
++- Service Worker para PWA<br>
++- Cache de assets<br>
++- Preconnect para APIs</li>
+<li>+## 📊 Métricas de Sucesso</li>
+<li>+### Antes (v0.1)<br>
++- Acessibilidade: 65/100<br>
++- Responsividade: 72/100<br>
++- Usabilidade: 68/100<br>
++- Performance: 75/100</li>
+<li>+### Meta (v0.2)<br>
++- Acessibilidade: 95/100 ✅<br>
++- Responsividade: 95/100 ✅<br>
++- Usabilidade: 90/100 ✅<br>
++- Performance: 90/100 ✅</li>
+<li>+## 🚀 Implementação</li>
+<li>+### Fase 1: Dashboard KPIs v0.2<br>
+<input type="checkbox" id="checkbox6" checked="true"><label for="checkbox6">Design tokens</label><br>
+<input type="checkbox" id="checkbox5" checked="true"><label for="checkbox5">Skip links</label><br>
+<input type="checkbox" id="checkbox4" checked="true"><label for="checkbox4">ARIA labels</label><br>
+<input type="checkbox" id="checkbox3"><label for="checkbox3">Grid responsivo</label><br>
+<input type="checkbox" id="checkbox2"><label for="checkbox2">Microinterações</label><br>
+<input type="checkbox" id="checkbox1"><label for="checkbox1">Dark mode</label></li>
+<li>+### Fase 2: Features v0.2<br>
+<input type="checkbox" id="checkbox10"><label for="checkbox10">Cards acessíveis</label><br>
+<input type="checkbox" id="checkbox9"><label for="checkbox9">Gráficos responsivos</label><br>
+<input type="checkbox" id="checkbox8"><label for="checkbox8">Touch targets 48px</label><br>
+<input type="checkbox" id="checkbox7"><label for="checkbox7">Loading states</label></li>
+<li>+### Fase 3: Pricing v0.2<br>
+<input type="checkbox" id="checkbox14"><label for="checkbox14">Tabelas responsivas</label><br>
+<input type="checkbox" id="checkbox13"><label for="checkbox13">Real-time updates</label><br>
+<input type="checkbox" id="checkbox12"><label for="checkbox12">WhatsApp integration</label><br>
+<input type="checkbox" id="checkbox11"><label for="checkbox11">PWA manifest</label></li>
+<li>+## 📝 Checklist de Validação</li>
+<li>+### Acessibilidade<br>
+<input type="checkbox" id="checkbox19"><label for="checkbox19">WAVE: 0 erros</label><br>
+<input type="checkbox" id="checkbox18"><label for="checkbox18">axe DevTools: 0 violações</label><br>
+<input type="checkbox" id="checkbox17"><label for="checkbox17">Lighthouse: &gt; 95</label><br>
+<input type="checkbox" id="checkbox16"><label for="checkbox16">Navegação por teclado completa</label><br>
+<input type="checkbox" id="checkbox15"><label for="checkbox15">Screen reader testado</label></li>
+<li>+### Responsividade<br>
+<input type="checkbox" id="checkbox24"><label for="checkbox24">320px: ✓</label><br>
+<input type="checkbox" id="checkbox23"><label for="checkbox23">768px: ✓</label><br>
+<input type="checkbox" id="checkbox22"><label for="checkbox22">1024px: ✓</label><br>
+<input type="checkbox" id="checkbox21"><label for="checkbox21">1440px: ✓</label><br>
+<input type="checkbox" id="checkbox20"><label for="checkbox20">4K: ✓</label></li>
+<li>+### Performance<br>
+<input type="checkbox" id="checkbox28"><label for="checkbox28">FCP &lt; 2s</label><br>
+<input type="checkbox" id="checkbox27"><label for="checkbox27">TTI &lt; 3.5s</label><br>
+<input type="checkbox" id="checkbox26"><label for="checkbox26">CLS &lt; 0.1</label><br>
+<input type="checkbox" id="checkbox25"><label for="checkbox25">Bundle &lt; 300KB</label></li>
+<li>+## 🎨 Referências de Design</li>
+<li>+Baseado em:<br>
++- Climate FieldView (simplicidade)<br>
++- FarmLogs (KPIs claros)<br>
++- Granular Insights (visualizações)<br>
++- Material Design 3 (acessibilidade)<br>
++- iOS Human Interface (touch)</li>
+<li>+## 📱 Progressive Web App</li>
+<li>+### Manifest.json<br>
++```json<br>
++{</li>
+<li>&quot;name&quot;: &quot;GlobalCoffee&quot;,</li>
+<li>&quot;short_name&quot;: &quot;GCoffee&quot;,</li>
+<li>&quot;theme_color&quot;: &quot;#4CAF50&quot;,</li>
+<li>&quot;background_color&quot;: &quot;#ffffff&quot;,</li>
+<li>&quot;display&quot;: &quot;standalone&quot;,</li>
+<li>&quot;orientation&quot;: &quot;any&quot;,</li>
+<li>&quot;icons&quot;: [</li>
+<li>{</li>
+<li>
+<pre><code> &quot;src&quot;: &quot;icon-192.png&quot;,
+</code></pre>
+</li>
+<li>
+<pre><code> &quot;sizes&quot;: &quot;192x192&quot;,
+</code></pre>
+</li>
+<li>
+<pre><code> &quot;type&quot;: &quot;image/png&quot;
+</code></pre>
+</li>
+<li>},</li>
+<li>{</li>
+<li>
+<pre><code> &quot;src&quot;: &quot;icon-512.png&quot;,
+</code></pre>
+</li>
+<li>
+<pre><code> &quot;sizes&quot;: &quot;512x512&quot;,
+</code></pre>
+</li>
+<li>
+<pre><code> &quot;type&quot;: &quot;image/png&quot;
+</code></pre>
+</li>
+<li>}</li>
+<li>]<br>
++}<br>
++```</li>
+<li>+## 🔄 Próximos Passos</li>
+<li>+1. Implementar dashboard_kpis_v0.2.html completo<br>
++2. Criar features_v0.2.html<br>
++3. Criar pricing_v0.2.html<br>
++4. Adicionar Service Worker<br>
++5. Testar com usuários reais<br>
++6. Documentar componentes<br>
+\ No newline at end of file</li>
+</ul>
+
+</body>
+
+</html>

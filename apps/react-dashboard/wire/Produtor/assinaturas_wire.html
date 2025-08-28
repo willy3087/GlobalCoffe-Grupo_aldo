@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assinaturas - Wireframe</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Courier New", monospace;
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Header */
+      header {
+        background-color: #fff;
+        border-bottom: 2px solid #333;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: normal;
+      }
+
+      nav {
+        display: flex;
+        gap: 30px;
+      }
+
+      nav span {
+        display: inline-block;
+        width: 60px;
+        height: 3px;
+        background-color: #333;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .icon-placeholder {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #333;
+        border-radius: 50%;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        text-align: center;
+        padding: 60px 20px;
+        background-color: #fff;
+        border-bottom: 2px solid #ddd;
+      }
+
+      .hero-title {
+        font-size: 36px;
+        font-weight: normal;
+        margin-bottom: 20px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto 30px;
+      }
+
+      /* Billing Toggle */
+      .billing-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 20px;
+        padding: 5px;
+        border: 2px solid #333;
+        background-color: #f9f9f9;
+      }
+
+      .toggle-option {
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        position: relative;
+      }
+
+      .toggle-option.active {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .discount-badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: #333;
+        color: #fff;
+        padding: 2px 8px;
+        font-size: 10px;
+        transform: rotate(-10deg);
+      }
+
+      /* Pricing Container */
+      .pricing-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+      }
+
+      /* Pricing Cards */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+
+      .pricing-card {
+        background-color: #fff;
+        border: 2px solid #333;
+        padding: 40px 30px;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .pricing-card.featured {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .popular-badge {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 5px 20px;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      /* Card Content */
+      .plan-name {
+        font-size: 24px;
+        font-weight: normal;
+        margin-bottom: 10px;
+      }
+
+      .plan-description {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 25px;
+        min-height: 40px;
+      }
+
+      .price-section {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .price {
+        font-size: 48px;
+        font-weight: normal;
+        margin-bottom: 5px;
+      }
+
+      .price-line {
+        width: 80px;
+        height: 4px;
+        background-color: #333;
+        margin: 0 auto 10px;
+      }
+
+      .price-period {
+        font-size: 14px;
+        color: #666;
+      }
+
+      /* Features List */
+      .features-list {
+        list-style: none;
+        text-align: left;
+        margin-bottom: 30px;
+        flex-grow: 1;
+      }
+
+      .feature-item {
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 14px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .feature-icon {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #333;
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+
+      .feature-item.disabled {
+        opacity: 0.4;
+      }
+
+      .feature-item.disabled .feature-icon {
+        background-color: #f0f0f0;
+      }
+
+      /* CTA Button */
+      .cta-button {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #333;
+        background-color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: auto;
+      }
+
+      .pricing-card.featured .cta-button {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .cta-button:hover {
+        background-color: #f0f0f0;
+      }
+
+      .pricing-card.featured .cta-button:hover {
+        background-color: #555;
+      }
+
+      /* Features Comparison */
+      .comparison-section {
+        background-color: #fff;
+        border: 2px solid #333;
+        padding: 40px;
+        margin-bottom: 60px;
+      }
+
+      .comparison-title {
+        font-size: 28px;
+        font-weight: normal;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .comparison-table th {
+        font-weight: normal;
+        background-color: #f9f9f9;
+      }
+
+      .comparison-table td {
+        text-align: center;
+      }
+
+      .comparison-table td:first-child {
+        text-align: left;
+        font-size: 14px;
+      }
+
+      .check-icon {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #333;
+        border-radius: 50%;
+        display: inline-block;
+        background-color: #333;
+      }
+
+      .x-icon {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .x-icon::before,
+      .x-icon::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background-color: #999;
+        top: 9px;
+        left: 0;
+      }
+
+      .x-icon::before {
+        transform: rotate(45deg);
+      }
+
+      .x-icon::after {
+        transform: rotate(-45deg);
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        max-width: 800px;
+        margin: 0 auto 60px;
+      }
+
+      .faq-title {
+        font-size: 28px;
+        font-weight: normal;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .faq-item {
+        background-color: #fff;
+        border: 1px solid #333;
+        margin-bottom: 15px;
+      }
+
+      .faq-question {
+        padding: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .faq-toggle {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #333;
+        position: relative;
+      }
+
+      .faq-toggle::before,
+      .faq-toggle::after {
+        content: "";
+        position: absolute;
+        background-color: #333;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .faq-toggle::before {
+        width: 12px;
+        height: 2px;
+      }
+
+      .faq-toggle::after {
+        width: 2px;
+        height: 12px;
+      }
+
+      .faq-answer {
+        display: none;
+        padding: 0 20px 20px;
+        font-size: 14px;
+        color: #666;
+      }
+
+      /* Trust Section */
+      .trust-section {
+        background-color: #333;
+        color: #fff;
+        padding: 40px;
+        text-align: center;
+      }
+
+      .trust-title {
+        font-size: 24px;
+        font-weight: normal;
+        margin-bottom: 30px;
+      }
+
+      .trust-items {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        flex-wrap: wrap;
+      }
+
+      .trust-item {
+        text-align: center;
+      }
+
+      .trust-number {
+        font-size: 36px;
+        margin-bottom: 5px;
+      }
+
+      .trust-label {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      /* CTA Footer */
+      .cta-footer {
+        text-align: center;
+        padding: 60px 20px;
+        background-color: #f9f9f9;
+      }
+
+      .cta-title {
+        font-size: 28px;
+        font-weight: normal;
+        margin-bottom: 20px;
+      }
+
+      .cta-text {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .btn-contact {
+        padding: 15px 40px;
+        border: 2px solid #333;
+        background-color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .btn-contact:hover {
+        background-color: #f0f0f0;
+      }
+
+      /* Responsive */
+      @media (max-width: 968px) {
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .pricing-card.featured {
+          transform: none;
+        }
+
+        .comparison-table {
+          font-size: 14px;
+        }
+
+        .trust-items {
+          gap: 30px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          display: none;
+        }
+
+        .hero-title {
+          font-size: 28px;
+        }
+
+        .comparison-section {
+          padding: 20px;
+          overflow-x: auto;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div
+        class="logo"
+        style="cursor: pointer"
+        onclick="window.location.href='./home_wire.html'"
+      >
+        ☕ GlobalCoffee
+      </div>
+      <nav>
+        <a
+          href="./home_wire.html"
+          style="
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+          "
+        >
+          <span style="width: 60px; height: 3px; background-color: #333"></span>
+          <span style="font-size: 12px">Home</span>
+        </a>
+        <a
+          href="./clima.html"
+          style="
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+          "
+        >
+          <span style="width: 60px; height: 3px; background-color: #333"></span>
+          <span style="font-size: 12px">Clima</span>
+        </a>
+        <a
+          href="./pricing_wire.html"
+          style="
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+          "
+        >
+          <span style="width: 60px; height: 3px; background-color: #333"></span>
+          <span style="font-size: 12px">Pricing</span>
+        </a>
+        <a
+          href="./features_wire_v2.html"
+          style="
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+          "
+        >
+          <span style="width: 60px; height: 3px; background-color: #333"></span>
+          <span style="font-size: 12px">Features</span>
+        </a>
+        <a
+          href="./input_dados_wire.html"
+          style="
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+          "
+        >
+          <span style="width: 60px; height: 3px; background-color: #333"></span>
+          <span style="font-size: 12px">Dados</span>
+        </a>
+      </nav>
+      <div class="header-actions">
+        <div
+          class="icon-placeholder"
+          style="cursor: pointer"
+          onclick="window.location.href='./assinaturas_wire.html'"
+          title="Planos"
+        ></div>
+        <div
+          class="icon-placeholder"
+          style="cursor: pointer"
+          onclick="window.location.href='./login_wire.html'"
+          title="Sair"
+        ></div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1 class="hero-title">Escolha o plano ideal para sua produção</h1>
+      <p class="hero-subtitle">
+        Acesse ferramentas exclusivas, análises de mercado e conecte-se com
+        compradores em todo o Brasil
+      </p>
+
+      <div class="billing-toggle">
+        <div class="toggle-option active">Mensal</div>
+        <div class="toggle-option">
+          Anual
+          <span class="discount-badge">-20%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-container">
+      <div class="pricing-grid">
+        <!-- Free Plan -->
+        <div class="pricing-card">
+          <h2 class="plan-name">Gratuito</h2>
+          <p class="plan-description">
+            Para produtores iniciando no mercado digital
+          </p>
+
+          <div class="price-section">
+            <div class="price">R$ 0</div>
+            <div class="price-line"></div>
+            <p class="price-period">por mês</p>
+          </div>
+
+          <ul class="features-list">
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Cotações diárias do mercado</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Alertas climáticos básicos</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Acesso a notícias do setor</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Calculadora de preços simples</span>
+            </li>
+            <li class="feature-item disabled">
+              <span class="feature-icon"></span>
+              <span>Análises de mercado avançadas</span>
+            </li>
+            <li class="feature-item disabled">
+              <span class="feature-icon"></span>
+              <span>Conexão com compradores</span>
+            </li>
+            <li class="feature-item disabled">
+              <span class="feature-icon"></span>
+              <span>Relatórios personalizados</span>
+            </li>
+            <li class="feature-item disabled">
+              <span class="feature-icon"></span>
+              <span>Suporte prioritário</span>
+            </li>
+          </ul>
+
+          <button class="cta-button">Começar Grátis</button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="pricing-card featured">
+          <div class="popular-badge">Mais Popular</div>
+          <h2 class="plan-name">Pro</h2>
+          <p class="plan-description">
+            Para produtores que querem maximizar seus lucros
+          </p>
+
+          <div class="price-section">
+            <div class="price">R$ —</div>
+            <div class="price-line"></div>
+            <p class="price-period">por mês</p>
+          </div>
+
+          <ul class="features-list">
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Tudo do plano Gratuito</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Análises de mercado em tempo real</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Previsões climáticas detalhadas</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Comparador de preços regional</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Conexão com até 50 compradores</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Relatórios mensais de tendências</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Suporte via chat e email</span>
+            </li>
+            <li class="feature-item disabled">
+              <span class="feature-icon"></span>
+              <span>Consultoria personalizada</span>
+            </li>
+          </ul>
+
+          <button class="cta-button">Assinar Pro</button>
+        </div>
+
+        <!-- Max Plan -->
+        <div class="pricing-card">
+          <h2 class="plan-name">Max</h2>
+          <p class="plan-description">Para grandes produtores e cooperativas</p>
+
+          <div class="price-section">
+            <div class="price">R$ —</div>
+            <div class="price-line"></div>
+            <p class="price-period">por mês</p>
+          </div>
+
+          <ul class="features-list">
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Tudo do plano Pro</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>API para integração de sistemas</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Análises preditivas com IA</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Conexões ilimitadas com compradores</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Relatórios customizados</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Consultoria mensal incluída</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Suporte 24/7 com gerente dedicado</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Treinamento para equipe</span>
+            </li>
+          </ul>
+
+          <button class="cta-button">Falar com Vendas</button>
+        </div>
+      </div>
+
+      <!-- Features Comparison -->
+      <div class="comparison-section">
+        <h2 class="comparison-title">Compare os recursos de cada plano</h2>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Recursos</th>
+              <th>Gratuito</th>
+              <th>Pro</th>
+              <th>Max</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cotações de mercado</td>
+              <td>Diárias</td>
+              <td>Tempo real</td>
+              <td>Tempo real + API</td>
+            </tr>
+            <tr>
+              <td>Alertas climáticos</td>
+              <td>Básicos</td>
+              <td>Detalhados</td>
+              <td>Preditivos com IA</td>
+            </tr>
+            <tr>
+              <td>Análises de mercado</td>
+              <td><span class="x-icon"></span></td>
+              <td><span class="check-icon"></span></td>
+              <td><span class="check-icon"></span></td>
+            </tr>
+            <tr>
+              <td>Conexão com compradores</td>
+              <td><span class="x-icon"></span></td>
+              <td>Até 50</td>
+              <td>Ilimitado</td>
+            </tr>
+            <tr>
+              <td>Relatórios</td>
+              <td><span class="x-icon"></span></td>
+              <td>Mensais</td>
+              <td>Customizados</td>
+            </tr>
+            <tr>
+              <td>Suporte</td>
+              <td>FAQ</td>
+              <td>Chat e Email</td>
+              <td>24/7 Dedicado</td>
+            </tr>
+            <tr>
+              <td>Usuários por conta</td>
+              <td>1</td>
+              <td>5</td>
+              <td>Ilimitado</td>
+            </tr>
+            <tr>
+              <td>Histórico de dados</td>
+              <td>30 dias</td>
+              <td>1 ano</td>
+              <td>Ilimitado</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="faq-section">
+        <h2 class="faq-title">Perguntas Frequentes</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Posso mudar de plano a qualquer momento?</span>
+            <span class="faq-toggle"></span>
+          </div>
+          <div class="faq-answer">
+            Sim, você pode fazer upgrade ou downgrade do seu plano a qualquer
+            momento. As mudanças entram em vigor no próximo ciclo de cobrança.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Existe período de teste para os planos pagos?</span>
+            <span class="faq-toggle"></span>
+          </div>
+          <div class="faq-answer">
+            Oferecemos 14 dias de teste grátis para os planos Pro e Max, sem
+            necessidade de cartão de crédito.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Como funciona a conexão com compradores?</span>
+            <span class="faq-toggle"></span>
+          </div>
+          <div class="faq-answer">
+            Nossa plataforma conecta você diretamente com compradores
+            verificados. Você pode enviar ofertas, negociar preços e fechar
+            negócios com segurança.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Quais formas de pagamento são aceitas?</span>
+            <span class="faq-toggle"></span>
+          </div>
+          <div class="faq-answer">
+            Aceitamos cartão de crédito, boleto bancário e transferência. Para o
+            plano Max, também oferecemos faturamento mensal.
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Section -->
+      <div class="trust-section">
+        <h2 class="trust-title">Produtores confiam no GlobalCoffee</h2>
+        <div class="trust-items">
+          <div class="trust-item">
+            <div class="trust-number">15.000+</div>
+            <div class="trust-label">Produtores ativos</div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-number">R$ 2.5B</div>
+            <div class="trust-label">Em negócios fechados</div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-number">98%</div>
+            <div class="trust-label">Satisfação</div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-number">24/7</div>
+            <div class="trust-label">Suporte disponível</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Footer -->
+      <div class="cta-footer">
+        <h2 class="cta-title">Ainda tem dúvidas sobre qual plano escolher?</h2>
+        <p class="cta-text">
+          Nossa equipe está pronta para ajudar você a encontrar a melhor solução
+          para sua produção
+        </p>
+        <div class="cta-buttons">
+          <button class="btn-contact">Falar com Especialista</button>
+          <button class="btn-contact">Agendar Demonstração</button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

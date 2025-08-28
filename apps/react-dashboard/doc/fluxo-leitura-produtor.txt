@@ -1,0 +1,130 @@
+ANÁLISE DO FLUXO IDEAL DE LEITURA DA PÁGINA FEATURES.TSX PARA O PRODUTOR DE CAFÉ
+================================================================================
+
+CONTEXTO DO USUÁRIO: PRODUTOR DE CAFÉ
+--------------------------------------
+O produtor de café precisa tomar decisões diárias sobre:
+- Quando vender sua produção
+- Por qual canal comercializar
+- Como se proteger contra variações de preço
+- Como maximizar seus lucros
+
+FLUXO DE LEITURA IDEAL (ORDEM DE PRIORIDADE)
+=============================================
+
+1. VISÃO GERAL DO MERCADO (KPIs Principais)
+   └─> PRIMEIRA PARADA OBRIGATÓRIA
+       - Preço Médio Hoje: Referência imediata do mercado
+       - Tipo mais Valorizado: Orienta sobre qual qualidade está em alta
+       - Melhor Canal: Indica rapidamente a melhor opção de venda
+       - Clima Safra: Contexto que afeta toda a produção
+   
+   RAZÃO: O produtor precisa primeiro entender o "momento do mercado" antes de qualquer decisão.
+
+2. SIMULAÇÃO DE CENÁRIOS (Próximos 30 dias)
+   └─> SEGUNDA PARADA CRUCIAL
+       - Cenário Otimista (+15%)
+       - Cenário Realista (+5%)
+       - Cenário Pessimista (-10%)
+       - Alerta de Recomendação de Hedge
+   
+   RAZÃO: Com a visão do presente (KPIs), o produtor agora precisa entender as tendências futuras para decidir se deve vender agora ou esperar.
+
+3. CALCULADORA DE PREÇOS (Modal - Ação Rápida)
+   └─> FERRAMENTA DE DECISÃO IMEDIATA
+       - Input: Quantidade, Qualidade, Canal, % Hedge
+       - Output: Preço final, comissões, valor total
+   
+   RAZÃO: Se os cenários indicam bom momento, o produtor simula imediatamente quanto receberá por sua produção específica.
+
+4. CANAIS DE COMERCIALIZAÇÃO
+   └─> COMPARAÇÃO DETALHADA
+       - Via Cooperativa: Segurança, assistência técnica
+       - Via Corretor: Flexibilidade, agilidade
+       - Análise comparativa de comissões
+   
+   RAZÃO: Após saber o valor potencial, o produtor analisa COMO vender, comparando vantagens de cada canal.
+
+5. COMPARATIVO DE MERCADOS
+   └─> ANÁLISE DE OPORTUNIDADES
+       - Mercado Interno vs. Externo
+       - Preços por bolsa/mercado
+       - Componentes do preço
+       - Alerta de oportunidades
+   
+   RAZÃO: Produtor avalia se deve focar no mercado interno ou buscar exportação.
+
+6. INSTRUMENTOS DE PROTEÇÃO
+   └─> GESTÃO DE RISCO
+       - Contratos BMF e NY
+       - Estratégias disponíveis
+       - % de hedge recomendado
+   
+   RAZÃO: Após decidir vender, o produtor precisa proteger parte da produção futura contra volatilidade.
+
+7. ALERTAS E DICAS (Sidebar)
+   └─> MONITORAMENTO CONTÍNUO
+       - Alertas de preço atingido
+       - Avisos de volatilidade
+       - Dicas estratégicas
+   
+   RAZÃO: Informações complementares para ajustes finos na estratégia.
+
+8. FONTES DE DADOS
+   └─> VALIDAÇÃO E CONFIANÇA
+       - APIs em tempo real
+       - Dados oficiais
+       - Métricas de confiabilidade
+   
+   RAZÃO: Menos prioritário no fluxo diário, mas importante para validar a confiabilidade das informações quando necessário.
+
+PADRÃO DE USO ESPERADO
+======================
+
+CENÁRIO 1: DECISÃO RÁPIDA DE VENDA (80% dos casos)
+1. KPIs → 2. Cenários → 3. Calculadora → 4. Decisão
+
+CENÁRIO 2: PLANEJAMENTO ESTRATÉGICO (15% dos casos)
+1. KPIs → 2. Cenários → 4. Canais → 5. Mercados → 6. Proteção → 3. Calculadora
+
+CENÁRIO 3: MONITORAMENTO DIÁRIO (5% dos casos)
+1. KPIs → 7. Alertas → 2. Cenários
+
+INSIGHTS CHAVE
+==============
+
+1. HIERARQUIA TEMPORAL: O fluxo segue a lógica PRESENTE → FUTURO → AÇÃO
+   - Presente: KPIs atuais
+   - Futuro: Cenários projetados
+   - Ação: Calculadora e decisão
+
+2. FUNIL DE DECISÃO: Informações gerais → Específicas → Ação
+   - Macro (mercado geral) → Micro (minha produção) → Execução
+
+3. REDUNDÂNCIA PROPOSITAL: Informações críticas aparecem em múltiplos pontos
+   - Preços aparecem em KPIs, Cenários e Comparativos
+   - Hedge aparece em Cenários, Calculadora e Instrumentos
+   
+4. SIDEBAR COMO SUPORTE: Não é fluxo principal, mas oferece:
+   - Atalhos para ações frequentes
+   - Lembretes e alertas
+   - Validação de decisões
+
+RECOMENDAÇÕES DE OTIMIZAÇÃO
+============================
+
+1. PERSONALIZAÇÃO POR PERFIL:
+   - Produtor iniciante: Destacar mais as dicas e explicações
+   - Produtor experiente: Acesso direto à calculadora e alertas
+
+2. DASHBOARD ADAPTATIVO:
+   - Reorganizar cards baseado no uso frequente
+   - Destacar informações relevantes para o momento da safra
+
+3. FLUXO GUIADO:
+   - Adicionar indicadores visuais (setas, números) sugerindo ordem de leitura
+   - Tour interativo para novos usuários
+
+4. INTEGRAÇÃO DE DECISÃO:
+   - Botão "Simular Venda" direto nos cards de cenários
+   - Link direto de alertas para calculadora

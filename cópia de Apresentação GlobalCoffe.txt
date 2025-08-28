@@ -1,0 +1,413 @@
+Cliente: Braterra
+Aplicação: Global Coffe
+Discovery
+UX/UI Design
+1
+
+Global Coffe
+Discovery
+2
+
+Descobrir
+A fase de descoberta foi concentrada em pesquisar, organizar e sintetizar informações pertinentes ao mundo do café com o intuito de termos o conhecimento necessário para entender as dores do mercado global de café, de seus produtores até seus compradores e consumidores.
+Global Coffe
+Discovery
+Sprint 1 - Documentação de alinhamento e plano de pesquisa
+Documento de entrega
+Sprint 2 - Identificação de mercado e personas
+Pesquisa de mercado
+Relatório de análise de entrevistas e pesquisas Global Coffe
+Sistema de alertas
+3
+
+Discovery
+Nº
+Meta estratégica (o que o projeto precisa alcançar)
+Fonte
+1
+Criar uma plataforma de IA que conecte todos os elos da cadeia do café verde, oferecendo previsão climática, análise de mercado, precificação, rastreabilidade e recomendações inteligentes
+1
+2
+Entender profundamente necessidades de produtores, compradores e consumidores globais para orientar o desenho da solução
+23
+3
+Integrar dados de produção e consumo globais em pipelines confiáveis para sustentar modelos preditivos
+4
+4
+Modelar preços e oferta usando variáveis climáticas e de mercado, garantindo acurácia mínima de 85% nos modelos (meta técnica inferida a partir de KPI de acurácia citada no planejamento)
+5 – inferência
+5
+Demonstrar valor de negócio rapidamente, entregando um MVP priorizado ao final da Sprint 4 da fase Discovery
+6
+Canvas de Metas Estratégicas & Hipóteses – Projeto Global Coffee (Fase Discovery)
+Metas e hipóteses foram extraídas do material de Kick-off e dos documentos de revisão já mapeados; onde extrapolamos algum detalhe quantitativo, sinalizamos como inferência.
+Metas Estratégicas
+consolidadas
+4
+
+Discovery
+Nº
+Hipótese
+Indicador de validação (DoD)
+Fonte
+H1
+Produtores que recebam previsão climática integrada ajustarão práticas agrícolas e reportarão ≥ 5% de ganho de rendimento em até 1 safra (valor a medir posteriormente – inferência)
+Pesquisa longitudinal & depoimentos
+7 – inferência
+H2
+Compradores globais pagarão prêmio ≥ 3% quando a plataforma oferecer rastreabilidade de origem em lote
+Sondagem de disposição a pagar nas entrevistas
+8
+H3
+Se entregarmos dashboard de preço em tempo real, usuários retornarão à plataforma ≥ 2 vezes/semana
+Métrica de engajamento analítica
+9
+H4
+Cooperativas aceitarão modelo de assinatura coletiva se o custo anual for ≤ US$ 5 por produtor (valor inferido do modelo freemium)
+Taxa de conversão no piloto de coop
+10 – inferência
+H5
+Acurácia de previsão ≥ 85% aumentará confiança do usuário e resultará em NPS ≥ 50
+Teste A/B de modelos + survey
+11
+H6
+Marketplace interno captará ≥ 1% do volume negociado entre produtores e torrefadores no primeiro ano
+Volume transacionado x mercado total
+12 – inferência
+H7
+Interface multilíngue reduzirá tickets de suporte internacionais em 30%
+Métrica de tickets por idioma
+1314
+Hipóteses de negócio a validar
+Inferências: os percentuais de impacto (ganho de rendimento, prêmio de preço, custo máximo de assinatura, captura de volume) não aparecem explicitamente nos documentos; foram adicionados como metas mensuráveis para orientar a validação das hipóteses.
+
+5
+
+Discovery
+Pesquisa de mercado
+Análise de Tecnologias Emergentes
+A adoção de tecnologias no setor cafeeiro ainda é fragmentada, criando oportunidades para soluções integradas. Tecnologias como IoT/Sensores (28% de adoção) e pagamentos digitais (45%) lideram, enquanto blockchain/rastreabilidade (15%) e IA para análise de qualidade (12%) permanecem subutilizadas.
+O ROI potencial varia significativamente: trading platforms podem gerar até 45% de ROI, seguidas por IoT/sensores (40%) e predição climática (35%). O investimento inicial necessário varia de USD 15k para pagamentos digitais até USD 100k para plataformas de trading completas.
+
+6
+
+Discovery
+Pesquisa de mercado
+Panorama Competitivo Atual
+O mercado apresenta players especializados em nichos específicos, mas nenhuma solução integrada completa:
+·   	Farmer Connect: Líder em rastreabilidade global, mas sem pricing real-time
+·   	CropConex/Yave: Focados em trading digital regional, sem suporte a cooperativas
+·   	Beyco/TradeDepot: Marketplaces B2B regionais, sem IA ou predição avançada
+·   	AgUnity: Mobile payments para mercados emergentes, sem trading sofisticado
+
+
+Gap de Mercado Identificado
+Existe uma lacuna significativa para uma plataforma que combine:
+·   	Trading real-time com dados de múltiplas bolsas
+·   	Compliance automático (EUDR, certificações)
+·   	Fintech integrado para cooperativas
+·   	IA para predição e otimização
+·   	Rastreabilidade blockchain completa
+7
+
+
+Definir
+A fase de definição teve o objetivo de encontrar o verdadeiro problema e quem ele pertencia, como produtores, cooperativas e traders que necessitavam de um local em que estivesse concentrado as informações mais pertinentes sobre o mercado global de café.
+
+Global Coffe
+Discovery
+Sprint 3 - Relatório quantitativo, jornada do usuário
+Estrutura de personas
+Quantitativo produtores
+8
+
+Discovery
+Personas
+Estruturas de Personas de Cooperativas Cafeeiras
+Uma proposta de segmentação para adoção da plataforma Global Coffee
+Antes de detalhar cada persona, o panorama geral indica que as cooperativas brasileiras adotam níveis de digitalização muito distintos: enquanto algumas já operam mercados B2B on-line e aplicativos móveis, outras ainda dependem de processos manuais. Essa heterogeneidade exige uma abordagem segmentada que considere escala, governança e maturidade tecnológica
+Persona A – Produtor
+
+Persona B – Cooperativa
+Persona C – Traders
+9
+
+Discovery
+Persona Produtor
+Objetivos Principais
+·   	Melhorar o preço de venda do café
+·   	Reduzir riscos relacionados às mudanças climáticas
+·   	Simplificar processos produtivos
+·   	Preservar a tradição familiar na cafeicultura
+Jornada de Usuário
+A jornada de José é caracterizada por tempos longos de conversão e necessidade de suporte intensivo. Ele descobre a plataforma através da cooperativa local (2-4 semanas), passa por um longo período de consideração validando com a família (2-3 semanas), necessita de suporte técnico intensivo no onboarding (3-5 dias) e tem um primeiro uso gradual com muito auxílio (1-2 semanas). Quando se torna advocato (6+ meses), sua influência é muito forte no âmbito local e cooperativo.
+
+10
+
+Desenvolver 
+A fase de desenvolvimento foi focada em achar soluções para as dores encontradas na fase de definição. Neste ponto nós aprendemos como o produtor, a cooperativa e os traders se comportam, os três tem uma economia bem definida por papéis. 
+A solução foi entender como poderíamos juntar esses três mundos de uma forma homogênea criando um ganho substancial para os três atores.
+Global Coffe
+Discovery
+Sprint 4 - Ideação
+Ideação em workshop
+Diagrama de ações
+Diagrama_alertas_clima
+Requisitos para Análises
+Relatório de entregas
+Sprint 5 - Ideação com Wireframes
+Apresentação
+11
+
+Criamos representações visuais simplificadas (preto e branco) de todas as telas do GlobalCoffee, focando exclusivamente na estrutura, hierarquia de informações - sem cores, imagens ou elementos visuais finais.
+Objetivo:
+- Validar rapidamente a arquitetura da informação com stakeholders antes de investir em design visual
+- Alinhar expectativas entre equipe técnica, negócios e usuários sobre funcionalidades
+- Identificar problemas de usabilidade e fluxo antes da implementação
+- Economizar recursos evitando retrabalho em fases mais caras do desenvolvimento
+Research & Discovery
+- Análise documental: Transcrições sobre comercialização e política do café
+- Identificação de personas: Produtores rurais com diferentes níveis de digitalização
+- Mapeamento de jornadas: Desde a produção até a venda do café
+- Benchmarking: Análise de plataformas similares do agronegócio
+Princípios de Design
+- Simplicidade visual: Preto e branco para foco na estrutura
+- Hierarquia clara: Informações organizadas por prioridade
+- Acessibilidade: Fontes legíveis, contraste adequado, navegação intuitiva
+Wireframes
+Discovery
+12
+
+Foco na Estrutura
+- Elimina distrações visuais: Sem cores ou elementos decorativos
+- Validação rápida: Stakeholders focam na funcionalidade, não na estética
+- Iteração ágil: Mudanças estruturais são mais fáceis de implementar
+- Economia de recursos: Menos retrabalho em fases posteriores
+Design Centrado no Produtor
+- Informações prioritárias em destaque: Preços, classificação, canais
+- Fluxos simplificados: Mínimo de cliques para ações principais
+- Dados contextualizados: Informações relevantes para tomada de decisão
+- Linguagem do domínio: Termos familiares ao produtor rural
+Wireframes -Vantagens da Abordagem
+Discovery
+13
+
+Complexidade dos Dados
+- Volume de informações: Difícil priorizar entre múltiplas variáveis de preço
+- Dados heterogêneos: APIs, web scraping, entrada manual - diferentes confiabilidades
+- Atualização em tempo real: Balancear performance com atualidade dos dados
+- Solução: Criação de hierarquia visual clara e indicadores de fonte/atualização
+Diversidade de Usuários
+- Níveis de digitalização variados: De produtores tech-savvy a iniciantes digitais
+- Contextos de uso diversos: Desktop no escritório vs mobile no campo
+- Necessidades conflitantes: Traders querem complexidade, produtores querem simplicidade
+- Solução: Interface progressiva com diferentes níveis de detalhamento
+Limitações Técnicas
+- APIs indisponíveis: Muitos dados críticos não têm APIs públicas
+- Dados não estruturados: Classificação de qualidade em PDFs/documentos
+- Latência de dados: Alguns dados oficiais têm delay significativo
+- Solução: Indicadores visuais de disponibilidade e métodos alternativos de captura
+Questões de Domínio
+- Terminologia específica: COB, peneiras, bebida - termos técnicos do café
+- Regionalização: Diferentes regiões usam diferentes métricas
+- Sazonalidade: Interface precisa adaptar-se ao ciclo da safra
+- Solução: Glossário contextual e personalização por região
+Wireframes - Desafios Enfrentados
+Discovery
+14
+
+Dashboard KPIs (Clima)
+- Cards grandes e visuais: Facilitam leitura rápida no campo
+- Ícones meteorológicos: Compreensão imediata sem necessidade de leitura
+- Cores semânticas: Verde/amarelo/vermelho para alertas (na versão final)
+Discovery
+15
+
+- Gráfico candlestick: Padrão do mercado financeiro, familiar para traders
+- Tabela de ordens: Mostra profundidade do mercado
+- Atualização em tempo real: Indicador visual de dados "vivos"
+Pricing (Negociação)
+Discovery
+16
+
+- Múltiplas perspectivas: Canais, qualidade, mercados, componentes de preço
+- Comparativos lado a lado: Facilita decisões (cooperativa vs corretor)
+- Ações rápidas: Sidebar com ferramentas mais usadas
+Features
+Discovery
+17
+
+Navegar → Acessar
+Wireframes
+Discovery
+18
+
+Ideação
+Discovery
+Sprint 4 - Ideação
+Ideação em workshop
+Diagrama de ações
+Diagrama_alertas_clima
+Requisitos para Análises
+Relatório de entregas
+Sprint 5 - Ideação com Wireframes
+Apresentação
+## Funcionalidades mais importantes para José Silva
+
+1. **Suporte intensivo no onboarding**
+   Fundamental para ajudar José Silva a se familiarizar com a plataforma, considerando seu perfil tecnológico básico e baixa familiaridade digital. Um onboarding assistido e simplificado garante que ele consiga usar o sistema sem frustrações.
+2. **Uso gradual da plataforma**
+   Permite que José avance no uso das funcionalidades conforme ganha confiança, evitando sobrecarga e facilitando a adaptação ao sistema.
+3. **Comunicação via cooperativa**
+   Facilita o suporte e a troca de informações, aproveitando a estrutura da cooperativa para manter José informado e assistido, compensando sua baixa familiaridade digital.
+4. **Funcionalidades básicas e essenciais para o pequeno produtor**
+   Conforme detalhado nos documentos do projeto, as funcionalidades básicas e essenciais para José Silva incluem:
+
+   - Controle financeiro simplificado para facilitar a gestão das finanças. [ver a possibilidade de agregar esse módulo para garantir informações]
+   - Acompanhamento de safra para monitorar a produção e planejar vendas. [verificar a possibilidade de acompanhamentoe monitoramento, tendo informações nós podemos fornecer, pesquisa para capturar informações]
+   - Suporte direto e acessível para dúvidas e problemas operacionais. [Suporte ao produtor, humano] [Faq, Envio chamado, email] [ChatBot]
+   - Onboarding assistido para garantir o uso correto da plataforma. [Saas, Trabalhar com a perspectiva para fazer o usuário procurar como resolver seus problemas]
+   - Comunicação integrada via cooperativa para facilitar o acesso a informações e suporte.
+   - Exportação de relatórios simples para acompanhamento e prestação de contas.
+   - Alertas climáticos simplificados para auxiliar no planejamento agrícola.
+   - Uso de tecnologias acessíveis, como QR-Code para rastreabilidade básica.
+
+Essas funcionalidades são as que trarão mais valor para José Silva em um sistema como o Global Coffee, garantindo sua inclusão digital e facilitando sua jornada como produtor familiar tradicional.
+
+19
+
+Entregar
+Para entregar um MVP (Minimum Viable Product) que atendesse as necessidades dos três atores foi necessário focar nas dores pertinentes ao produtor, pois tudo começa com ele. Entendendo que os produtores são os que mais precisam de dados diferentes para tomar decisões rápidas e precisas desenvolvemos um protótipo onde o produtor terá acesso a informações privilegiadas que não existem em canais comuns, tirando sua dependência de achismos e fonte nao verificadas.
+Global Coffe
+Discovery
+Sprint 6 - Protótipo de média fidelidade 
+
+Sprint 7 - Protótipo de alta fidelidade
+
+Sprint 8 - Identificação dos algoritmos prováveis e refinamentos 
+20
+
+Discovery
+HOME
+21
+
+Discovery
+A seção "Notícias e Atualizações" do componente Home apresenta um painel dinâmico que agrega as principais notícias do mercado cafeeiro, organizadas em categorias como Mercado, Clima, Tecnologia, Exportação, Sustentabilidade, Política e Pesquisa. A seção destaca uma notícia principal com imagem, título, resumo, autor, data, visualizações e comentários, além de notícias secundárias e uma lista detalhada de artigos recentes. O sistema permite filtragem por categoria para facilitar o acesso a conteúdos específicos. Essa funcionalidade visa manter o produtor informado sobre eventos e tendências relevantes, apoiando decisões estratégicas com informações atualizadas e segmentadas.
+22
+
+Discovery
+A seção "Indicadores de Mercado" do componente Home exibe um painel resumido com os principais indicadores financeiros e de mercado relevantes para o café, incluindo preços atuais de diferentes commodities como ICE Futures, BM&F, Robusta e café Colombiano, acompanhados de suas variações percentuais recentes. Cada indicador é apresentado com destaque visual para facilitar a rápida compreensão das tendências de mercado. Essa funcionalidade oferece ao produtor uma visão consolidada e atualizada dos principais parâmetros econômicos, suportando análises rápidas e decisões estratégicas fundamentadas em dados financeiros confiáveis.
+23
+
+Discovery
+A seção "Acesso Rápido" do componente Home oferece um conjunto de links e botões que facilitam o acesso imediato a funcionalidades essenciais para o produtor, como cotação em tempo real, previsão do tempo, análise de solo e calendário de plantio. Cada item é apresentado com ícones intuitivos e design responsivo, promovendo uma navegação ágil e eficiente dentro da plataforma. Essa funcionalidade visa otimizar a experiência do usuário, reduzindo o tempo para acessar informações críticas e suportando decisões operacionais rápidas e informadas no contexto da produção cafeeira.
+24
+
+Discovery
+A seção "Próximos Eventos" do componente Home apresenta uma lista organizada de eventos relevantes para o setor cafeeiro, incluindo datas, títulos e locais, como a Semana Internacional do Café, Workshop de Sustentabilidade e Feira de Tecnologia Agrícola. Os eventos são exibidos em formato de lista com badges de data e informações de localização, facilitando a visualização rápida e o planejamento do produtor. A seção também oferece um botão para acesso à lista completa de eventos. Essa funcionalidade tem como objetivo manter o produtor informado sobre oportunidades de capacitação, networking e inovação, promovendo o engajamento com o mercado e o desenvolvimento contínuo.
+25
+
+Discovery
+MERCADO
+26
+
+Discovery
+A seção do componente Mercado reúne indicadores essenciais do mercado cafeeiro, apresentando dados em tempo real sobre o último preço, variação absoluta e percentual, máxima e mínima do dia, além do volume total de sacas negociadas. Esses indicadores são exibidos em cards com destaque visual para facilitar a rápida interpretação das tendências e oscilações do mercado. A funcionalidade suporta a análise dinâmica do comportamento do preço do café, fornecendo ao produtor informações precisas para decisões comerciais fundamentadas. O objetivo desta seção é oferecer uma visão consolidada e atualizada dos principais parâmetros de mercado, promovendo transparência e agilidade na tomada de decisão.
+27
+
+Discovery
+O Painel Interativo de Trading do componente Mercado oferece uma interface dinâmica para execução de ordens de compra e venda de café arábica, com botões dedicados para cada ação e feedback visual imediato sobre o status das transações. O painel permite a seleção de períodos para análise histórica dos preços, exibindo gráficos de linha e barras que ilustram a evolução do preço e volume negociado. Além disso, apresenta um histórico das últimas ordens executadas, detalhando tipo, volume, preço e horário, facilitando o acompanhamento das operações em tempo real. Essa funcionalidade visa proporcionar ao produtor uma ferramenta integrada e responsiva para gestão ativa de suas operações comerciais, suportando decisões rápidas e informadas no mercado de café.
+28
+
+Discovery
+A seção "Preços do Mercado de Café" do componente Mercado apresenta uma tabela detalhada com informações atualizadas em tempo real sobre diferentes tipos e contratos de café, incluindo Café Arábica, Robusta e futuros, com dados de origem, qualidade, preço atual, variação percentual e volume negociado. A tabela utiliza indicadores visuais para destacar variações positivas e negativas, facilitando a análise rápida das flutuações de mercado. Essa funcionalidade oferece ao produtor uma visão abrangente e granular dos preços praticados, suportando decisões comerciais fundamentadas em dados precisos e atualizados.
+29
+
+Discovery
+A seção "Notícias do Mercado" do componente Mercado apresenta um painel dinâmico que exibe notícias relevantes e atualizadas sobre o mercado cafeeiro, com títulos, descrições, imagens, níveis de prioridade e impacto, além de informações sobre tempo de publicação e relevância. O painel inclui funcionalidades para atualização manual das notícias e indicadores visuais que facilitam a identificação rápida do conteúdo mais importante. Essa funcionalidade visa manter o produtor informado sobre eventos e tendências que possam influenciar o mercado, apoiando decisões estratégicas com base em informações atuais e segmentadas.
+30
+
+Discovery
+CLIMA
+31
+
+Discovery
+A seção "KPIs Climáticos" do componente WeatherMonitoring apresenta indicadores essenciais das condições meteorológicas nas regiões produtoras de café, incluindo temperatura, umidade, vento, precipitação, cobertura de nuvens e pressão atmosférica. Cada KPI é exibido com ícones representativos, valores atuais e variações recentes, destacando tendências de aumento, diminuição ou estabilidade. A interface permite a seleção de diferentes camadas climáticas para visualização no mapa interativo, facilitando o monitoramento em tempo real. Essa funcionalidade oferece ao produtor uma visão consolidada e atualizada dos principais parâmetros climáticos, suportando decisões estratégicas relacionadas à produção e manejo agrícola.
+32
+
+Discovery
+A seção "Previsão de 5 Dias" do componente WeatherMonitoring apresenta um conjunto de cartões que exibem a previsão climática diária para a semana, incluindo dia da semana, ícone representativo da condição meteorológica, temperatura prevista e descrição do tempo (ensolarado, parcialmente nublado, nublado, chuva, tempestade). Os cartões são dispostos horizontalmente com rolagem, permitindo fácil visualização e comparação das condições futuras. Essa funcionalidade oferece ao produtor uma visão clara e acessível das tendências climáticas de curto prazo, auxiliando no planejamento agrícola e na tomada de decisões operacionais.
+33
+
+Discovery
+As seções de Temperatura Média, Precipitação Acumulada, Umidade do Solo e Índice de Estresse Hídrico do componente WeatherMonitoring apresentam uma análise integrada das condições climáticas críticas para as regiões produtoras de café. Cada indicador é visualizado por meio de gráficos de linha ou barras que exibem tendências temporais, permitindo a avaliação detalhada da variação térmica, volumes pluviométricos, níveis de umidade do solo e níveis de estresse hídrico ao longo do tempo. Essa combinação de KPIs climáticos oferece uma visão abrangente e dinâmica do ambiente agrícola, suportando decisões estratégicas para manejo e mitigação de riscos relacionados ao clima, otimizando a produtividade e a sustentabilidade da produção cafeeira.
+34
+
+Discovery
+A seção "Alertas Climáticos" do componente WeatherMonitoring apresenta notificações categorizadas por prioridade (Alta, Média, Baixa) que informam sobre eventos meteorológicos relevantes para as regiões produtoras de café, como alertas de geada, chuvas intensas, condições climáticas favoráveis e índices UV elevados. Cada alerta é exibido com título, descrição, nível de prioridade destacado por cores e tempo de emissão, facilitando a rápida identificação e resposta do produtor. Essa funcionalidade tem como objetivo fornecer um sistema de monitoramento proativo que apoie a tomada de decisões estratégicas para mitigação de riscos climáticos e otimização da produção agrícola.
+35
+
+Discovery
+PRODUTOR
+36
+
+Discovery
+O componente ProducerData estrutura um fluxo de atualização de informações do produtor dividido em etapas sequenciais que abrangem Produção, Qualidade, Comercialização e Revisão. Na etapa de Produção, são coletados dados quantitativos como volume produzido, área plantada, produtividade média, idade dos cafezais e tipos de café cultivados, incluindo variedades e proporções. A etapa de Qualidade foca na classificação do café segundo padrões SCA, peneiras predominantes, defeitos e processo de beneficiamento, com possibilidade de upload de laudos. Na etapa de Comercialização, são definidos os canais de venda, taxas, prazos e estratégias comerciais, além da experiência com exportação. Por fim, a etapa de Revisão permite a confirmação e edição dos dados inseridos, garantindo a integridade das informações. O objetivo do componente é proporcionar uma interface estruturada e intuitiva para que o produtor mantenha seus dados atualizados, assegurando análises personalizadas e recomendações precisas.
+37
+
+Discovery
+A seção "Dados de Produção" do componente ProducerData coleta informações quantitativas e qualitativas essenciais sobre a safra atual, incluindo volume produzido em sacas, área plantada total, produtividade média por hectare, idade média dos cafezais e tipo de café cultivado (Arábica, Robusta ou ambos). Também permite detalhar as variedades cultivadas e suas proporções, fornecendo uma base sólida para análises personalizadas. Essa etapa é fundamental para garantir a precisão dos cálculos e recomendações subsequentes, oferecendo ao produtor uma interface clara e estruturada para atualização contínua dos dados produtivos.
+38
+
+Discovery
+A seção "Status do Cadastro" do componente ProducerData apresenta um painel de acompanhamento visual do progresso do preenchimento dos dados do produtor, dividido em etapas como Dados Básicos, Produção, Localização, Qualidade, Custos, Comercialização e Proteção. Cada etapa é indicada com ícones que sinalizam se está completa ou pendente, além de badges que destacam o status "Completo" para as etapas finalizadas. Essa funcionalidade oferece ao usuário uma visão clara e estruturada do andamento do cadastro, facilitando a navegação e garantindo a integridade e atualização contínua das informações essenciais para análises e recomendações personalizadas.
+39
+
+Discovery
+A seção "Precisa de Ajuda?" do componente ProducerData oferece um conjunto de recursos de suporte ao usuário, apresentando opções de orientação sobre classificação do café, tipos de bebida, peneiras e contato direto com o suporte técnico. Cada item é exibido com ícones ilustrativos e texto explicativo, facilitando o acesso rápido a informações relevantes para esclarecer dúvidas comuns durante o preenchimento dos dados. Essa funcionalidade visa melhorar a experiência do produtor, proporcionando suporte contextualizado e acessível para garantir a correta inserção e atualização das informações, contribuindo para a qualidade dos dados e a eficácia das análises subsequentes.
+40
+
+Discovery
+A seção "Por que atualizar?" do componente ProducerData destaca os benefícios de manter os dados do produtor atualizados, incluindo análises personalizadas, alertas de mercado, comparativos regionais e acesso a relatórios exclusivos. Apresentada em formato de lista com ícones indicativos, essa funcionalidade reforça a importância da atualização contínua para garantir a precisão das recomendações e o suporte estratégico ao produtor. O objetivo é incentivar o engajamento do usuário com a plataforma, promovendo a qualidade dos dados e a eficácia das decisões comerciais e produtivas.
+41
+
+Discovery
+O componente "Visão Geral do Mercado - KPIs Principais" do KPIsProdutor apresenta indicadores essenciais para produtores de café, incluindo o preço médio atual com variação diária, o tipo de café mais valorizado com seu prêmio de qualidade, o canal de venda mais vantajoso considerando comissões e benefícios, e o índice climático da safra com probabilidade associada. Esses KPIs são alimentados por integrações com APIs como Commodities-API, Alpha Vantage, CEPEA, CONAB e OpenWeatherMap, e utilizam algoritmos validados cientificamente para cálculos de preço, qualidade, canais e clima. O objetivo é fornecer uma visão consolidada e técnica que apoie decisões rápidas e fundamentadas, otimizando estratégias comerciais e produtivas do produtor.
+42
+
+Discovery
+O componente "Simulação de Cenários - Próximos 30 dias" do KPIsProdutor apresenta uma funcionalidade que projeta cenários futuros de preços do café em três perspectivas: otimista, realista e pessimista, cada uma com variações percentuais específicas aplicadas a um preço base, acompanhadas de probabilidades associadas para refletir a incerteza do mercado. A simulação utiliza dados de preços estimados, variações percentuais e probabilidades para gerar uma visualização interativa que permite ao produtor avaliar riscos e oportunidades, incluindo uma recomendação de hedge para proteger entre 30% e 50% da produção diante da volatilidade esperada. O objetivo desta seção é fornecer uma ferramenta analítica que apoie a tomada de decisão estratégica, permitindo ao produtor antecipar diferentes cenários de mercado e planejar suas vendas de forma otimizada.
+43
+
+Discovery
+O componente "Canais de Comercialização" do KPIsProdutor detalha os principais meios de venda disponíveis para o produtor, destacando a Cooperativa e o Corretor como canais estratégicos. Cada canal é avaliado por indicadores quantitativos que incluem segurança na venda, assistência técnica, competitividade de preços, flexibilidade, agilidade e capacidade de negociação direta, além das respectivas comissões aplicadas (0,5% fixo para Cooperativa e 0,5-1% variável para Corretor). Essa análise permite ao produtor comparar objetivamente os canais, facilitando a escolha do meio mais adequado para maximizar ganhos e minimizar riscos. O objetivo desta seção é fornecer uma visão clara e quantitativa dos canais de comercialização para suportar decisões comerciais informadas e estratégicas.
+44
+
+Discovery
+A seção "Comparativo de Mercados" do KPIsProdutor oferece uma análise detalhada dos mercados interno e externo, destacando volumes negociados, preços médios e tendências de mercado para cada segmento. Através de abas, apresenta preços atualizados por bolsas relevantes (BM&F Bovespa, ICE Futures NY, CEPEA/ESALQ e mercado spot local) com suas respectivas variações percentuais, além de decompor os componentes do preço final em categorias como produção, logística, benefício, mercado e taxas, com percentuais específicos para cada. Essa visão integrada permite ao produtor compreender as dinâmicas de mercado e os fatores que impactam o preço do café, suportando decisões estratégicas fundamentadas em dados comparativos e atualizados.
+45
+
+Discovery
+A seção "Instrumentos de Proteção" do KPIsProdutor apresenta os principais mecanismos disponíveis para mitigar riscos financeiros na comercialização do café, incluindo contratos futuros nas bolsas BMF (Brasil) e NY (EUA), com detalhes sobre vencimentos, lotes mínimos e margens exigidas. Além disso, detalha estratégias de proteção com indicadores de eficácia para contratos futuros (75%) e opções de venda (60%), destacando benefícios como trava de preços, redução de volatilidade e flexibilidade na execução. A seção finaliza com recomendações personalizadas de alocação percentual da produção entre contratos futuros, opções de venda e mercado spot, orientando o produtor a equilibrar segurança e potencial de ganhos. O objetivo é fornecer uma base analítica para decisões de hedge e proteção financeira alinhadas ao perfil e contexto de mercado do produtor.
+46
+
+Discovery
+A seção "Ações Rápidas" do KPIsProdutor disponibiliza um conjunto de funcionalidades essenciais para agilizar a tomada de decisão do produtor, incluindo acesso imediato à Calculadora de Preços para simulações personalizadas, geração de Relatórios Detalhados para análise aprofundada e configuração de Alertas para monitoramento em tempo real das condições de mercado. Esses recursos são apresentados por meio de botões intuitivos com ícones representativos, facilitando a navegação e o uso eficiente da plataforma. O objetivo desta seção é otimizar a experiência do usuário, proporcionando ferramentas práticas e acessíveis que suportem decisões rápidas e informadas no contexto da comercialização do café.
+47
+
+Discovery
+A seção "Dicas do Dia" do KPIsProdutor oferece recomendações estratégicas práticas para o produtor, destacando a importância da diversificação dos canais de venda para mitigação de riscos, o monitoramento contínuo das condições climáticas para decisões de hedge e a utilização de contratos futuros para proteger cerca de 30% da safra. Essas dicas são apresentadas em formato de lista simples, facilitando a assimilação rápida e a aplicação direta no processo decisório. O objetivo desta seção é fornecer orientações concisas e relevantes que auxiliem o produtor a otimizar sua estratégia comercial e de proteção financeira no contexto dinâmico do mercado de café.
+48
+
+Discovery
+A seção "Alertas em Tempo Real" do KPIsProdutor fornece notificações instantâneas sobre eventos críticos do mercado, apresentando alertas categorizados por status de sucesso, aviso e informação. Exemplos incluem notificações de metas atingidas, alta volatilidade e divulgação de novos relatórios, cada um com mensagens claras e ícones indicativos para rápida identificação. Essa funcionalidade permite ao produtor monitorar em tempo real as condições do mercado, facilitando respostas ágeis e informadas. O objetivo desta seção é garantir que o produtor esteja sempre atualizado sobre eventos relevantes, apoiando decisões oportunas e estratégicas na comercialização do café.
+49
+
+Discovery
+A seção "Status do Mercado" do KPIsProdutor apresenta o estado atual das principais bolsas e mercados relevantes para o café, incluindo BM&F Bovespa, ICE Futures e mercado spot local, com indicadores visuais que sinalizam se estão abertos, fechando ou em outro status. Além disso, exibe a última atualização do status para garantir a atualidade das informações. Essa funcionalidade oferece ao produtor uma visão rápida e precisa das condições operacionais dos mercados, permitindo o planejamento adequado das operações comerciais. O objetivo desta seção é manter o produtor informado em tempo real sobre a disponibilidade e funcionamento dos mercados, facilitando decisões comerciais oportunas e fundamentadas.
+50
+
+Discovery
+51
+
+52

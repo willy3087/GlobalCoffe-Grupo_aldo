@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard KPIs - Previsão Climática</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+      }
+      h1 {
+        text-align: center;
+        margin: 20px 0;
+        padding: 0 20px;
+        font-size: 24px;
+      }
+      /* Header styles */
+      header.app-header {
+        height: 60px;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        flex-shrink: 0;
+      }
+      .app-header .header-logo img {
+        height: 48px;
+        width: auto;
+      }
+      .app-header .header-menu ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        gap: 24px;
+      }
+      .app-header .header-menu ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 8px 0;
+        transition: color 0.3s ease;
+      }
+      .app-header .header-menu ul li a:hover {
+        color: #3498db;
+      }
+      .app-header .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .app-header .notification-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #333;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease;
+      }
+      .app-header .notification-button:hover {
+        color: #3498db;
+      }
+      .app-header .user-avatar img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #3498db;
+      }
+      .main-container {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        height: 100%;
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .content-area {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .dashboard-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+        flex: 1;
+      }
+      .chart-container {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 320px;
+        max-height: 400px;
+      }
+      .chart-container h2 {
+        font-size: 16px;
+        margin: 0 0 15px 0;
+        text-align: center;
+        color: #2c3e50;
+        font-weight: 600;
+      }
+      .weather-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        width: 100%;
+        display: flex;
+        gap: 20px;
+      }
+      .weather-main {
+        flex: 1;
+      }
+      .weather-forecast-sidebar {
+        width: 120px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 6px;
+      }
+      .weather-kpis {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+      .weather-kpi {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 120px;
+        justify-content: center;
+      }
+      .weather-kpi-icon {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+      .weather-kpi-content {
+        text-align: center;
+        width: 100%;
+      }
+      .weather-kpi-value {
+        font-size: 28px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin: 0 0 5px 0;
+        line-height: 1;
+      }
+      .weather-kpi-label {
+        font-size: 14px;
+        color: #7f8c8d;
+        margin: 0 0 5px 0;
+        font-weight: 600;
+      }
+      .weather-kpi-detail {
+        font-size: 11px;
+        color: #95a5a6;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
+      .weather-map {
+        width: 100%;
+        height: 300px;
+        border-radius: 8px;
+        margin-top: 15px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .map-controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+      }
+      .map-btn {
+        padding: 6px 12px;
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 4px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .map-btn:hover {
+        background: #3498db;
+        color: white;
+        border-color: #3498db;
+      }
+      .map-btn.active {
+        background: #3498db;
+        color: white;
+        border-color: #3498db;
+      }
+      .weather-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .weather-header h2 {
+        margin: 0;
+        color: #2c3e50;
+      }
+      .region-selector {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        background: white;
+        cursor: pointer;
+      }
+      .weather-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+      }
+      .weather-card {
+        text-align: center;
+        padding: 15px;
+        background: #f9f9f9;
+        border-radius: 6px;
+        transition: transform 0.2s;
+      }
+      .weather-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .weather-icon {
+        font-size: 48px;
+        margin-bottom: 10px;
+      }
+      .weather-temp {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 5px;
+      }
+      .weather-desc {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 10px;
+      }
+      .weather-details {
+        font-size: 12px;
+        color: #999;
+        line-height: 1.5;
+      }
+      .weather-details span {
+        display: block;
+      }
+      .weather-forecast {
+        display: none;
+      }
+      .forecast-day {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px;
+        background: white;
+        border-radius: 4px;
+        font-size: 11px;
+        transition: background 0.2s;
+      }
+      .forecast-day:hover {
+        background: #e3f2fd;
+      }
+      .forecast-day-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .forecast-day-name {
+        font-weight: 600;
+        color: #5a6c7d;
+        width: 30px;
+      }
+      .forecast-icon {
+        font-size: 18px;
+      }
+      .forecast-temp {
+        font-size: 11px;
+        color: #2c3e50;
+        font-weight: 500;
+      }
+      .forecast-sidebar-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: #7f8c8d;
+        margin-bottom: 8px;
+        text-align: center;
+      }
+      canvas {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 280px;
+      }
+      .sidebar {
+        flex: 0 0 320px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: calc(100% - 20px);
+        overflow-y: auto;
+      }
+      .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      .sidebar-header h2 {
+        margin: 0;
+        color: #2c3e50;
+      }
+      .refresh-btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .refresh-btn:hover {
+        background: #2980b9;
+        transform: translateY(-1px);
+      }
+      .refresh-btn:active {
+        transform: translateY(0);
+      }
+      .refresh-btn.loading {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .refresh-btn.loading svg {
+        animation: spin 1s linear infinite;
+      }
+      .news-item {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e0e0e0;
+        transition: all 0.3s ease;
+      }
+      .news-item:hover {
+        background-color: #f9f9f9;
+        margin-left: -10px;
+        margin-right: -10px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .news-item:last-child {
+        border-bottom: none;
+      }
+      .news-thumb {
+        width: 100px;
+        height: 75px;
+        object-fit: cover;
+        border-radius: 6px;
+        flex-shrink: 0;
+      }
+      .news-content {
+        flex: 1;
+        min-width: 0;
+      }
+      .news-item:has(.news-thumb[style*="display: none"]) {
+        padding-left: 0;
+      }
+      .news-item:has(.news-thumb[style*="display: none"]) .news-content {
+        margin-left: 0;
+      }
+      .news-title {
+        font-weight: 600;
+        font-size: 14px;
+        margin: 0 0 8px 0;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .news-title a {
+        color: #2c3e50;
+        text-decoration: none;
+      }
+      .news-title a:hover {
+        color: #3498db;
+        text-decoration: underline;
+      }
+      .news-description {
+        font-size: 12px;
+        color: #666;
+        margin: 0 0 8px 0;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .news-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 11px;
+        color: #999;
+      }
+      .news-relevance {
+        background: #f0f0f0;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-weight: 500;
+      }
+      .news-relevance.high {
+        background: #d4edda;
+        color: #155724;
+      }
+      .news-relevance.medium {
+        background: #fff3cd;
+        color: #856404;
+      }
+      .news-relevance.low {
+        background: #f8d7da;
+        color: #721c24;
+      }
+      .news-date {
+        color: #999;
+      }
+      .loading {
+        text-align: center;
+        padding: 20px;
+        color: #999;
+      }
+      @media (max-width: 1200px) {
+        .main-container {
+          flex-direction: column;
+        }
+        .sidebar {
+          flex: 1;
+          max-width: 100%;
+          height: auto;
+          margin-top: 20px;
+        }
+        .dashboard-container {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        .weather-container {
+          flex-direction: column;
+        }
+        .weather-forecast-sidebar {
+          width: 100%;
+          flex-direction: row;
+          overflow-x: auto;
+          padding: 5px;
+        }
+        .forecast-day {
+          min-width: 80px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="header-logo">
+        <span style="font-size: 24px; font-weight: bold; color: #3498db"
+          >☕ GlobalCoffee</span
+        >
+      </div>
+      <nav class="header-menu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="dashboard_kpis.html">Clima</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="notification-button" aria-label="Notificações">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 22c1.1 0 2-.9 2-2h-4a2 2 0 0 0 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 0 0-3 0v.68C7.63 5.36 6 7.92 6 11v5l-1.99 2H20l-2-2z"
+            />
+          </svg>
+        </button>
+        <div class="user-avatar">
+          <span style="font-size: 24px">👤</span>
+        </div>
+      </div>
+    </header>
+    <h1>Dashboard KPIs - Previsão Climática para Commodities Agrícolas</h1>
+    <div class="main-container">
+      <div class="content-area">
+        <div class="weather-container">
+          <div class="weather-main">
+            <div class="weather-header">
+              <h2>KPIs Climáticos - Regiões Produtoras de Café</h2>
+              <select
+                id="regionSelector"
+                class="region-selector"
+                onchange="updateWeather()"
+              >
+                <option value="sul-minas">Sul de Minas</option>
+                <option value="cerrado">Cerrado Mineiro</option>
+                <option value="mogiana">Mogiana Paulista</option>
+                <option value="espirito-santo">Espírito Santo</option>
+                <option value="bahia">Bahia</option>
+                <option value="parana">Norte do Paraná</option>
+              </select>
+            </div>
+            <div class="map-controls">
+              <button
+                class="map-btn active"
+                onclick="changeMapLayer('temp_new', event)"
+              >
+                Temperatura
+              </button>
+              <button
+                class="map-btn"
+                onclick="changeMapLayer('precipitation_new', event)"
+              >
+                Precipitação
+              </button>
+              <button
+                class="map-btn"
+                onclick="changeMapLayer('clouds_new', event)"
+              >
+                Nuvens
+              </button>
+              <button
+                class="map-btn"
+                onclick="changeMapLayer('wind_new', event)"
+              >
+                Vento
+              </button>
+              <button
+                class="map-btn"
+                onclick="changeMapLayer('pressure_new', event)"
+              >
+                Pressão
+              </button>
+            </div>
+            <div id="weatherMap" class="weather-map"></div>
+            <div class="weather-kpis" id="weatherKPIs">
+              <!-- KPIs climáticos serão inseridos aqui -->
+            </div>
+            <div
+              class="weather-content"
+              id="weatherContent"
+              style="display: none"
+            >
+              <!-- Conteúdo do clima será inserido aqui -->
+            </div>
+            <div class="weather-forecast" id="weatherForecast">
+              <!-- Previsão será inserida aqui -->
+            </div>
+          </div>
+          <div class="weather-forecast-sidebar" id="weatherForecastSidebar">
+            <!-- Previsão lateral será inserida aqui -->
+          </div>
+        </div>
+
+        <div class="dashboard-container">
+          <div class="chart-container">
+            <h2>Precisão dos Alertas (%)</h2>
+            <canvas id="accuracyChart"></canvas>
+          </div>
+
+          <div class="chart-container">
+            <h2>Latência de Entrega dos Alertas (ms)</h2>
+            <canvas id="latencyChart"></canvas>
+          </div>
+
+          <div class="chart-container">
+            <h2>Volume de Eventos Processados (milhões)</h2>
+            <canvas id="eventsChart"></canvas>
+          </div>
+
+          <div class="chart-container">
+            <h2>Throughput de Alertas (alertas/minuto)</h2>
+            <canvas id="throughputChart"></canvas>
+          </div>
+
+          <div class="chart-container">
+            <h2>Volatilidade de Preços (%)</h2>
+            <canvas id="volatilityChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Notícias Relevantes</h2>
+          <button
+            id="refreshBtn"
+            class="refresh-btn"
+            onclick="refreshAll()"
+            title="Recarregar dados"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M23 4v6h-6"></path>
+              <path d="M1 20v-6h6"></path>
+              <path
+                d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
+              ></path>
+            </svg>
+            Atualizar Tudo
+          </button>
+        </div>
+        <div id="newsFeed" class="loading">Carregando notícias...</div>
+      </aside>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <script>
+      // API Key do OpenWeatherMap
+      const API_KEY = "5fc572924bcb0e8f0e4a297a8cc03122";
+      
+      // Função para gerar dados aleatórios dentro de um intervalo
+      function randomData(points, min, max) {
+        const data = [];
+        for (let i = 0; i < points; i++) {
+          data.push(Math.random() * (max - min) + min);
+        }
+        return data;
+      }
+
+      // Variáveis globais para armazenar os gráficos
+      let accuracyChart,
+        latencyChart,
+        eventsChart,
+        throughputChart,
+        volatilityChart;
+
+      // Configurações comuns para os gráficos
+      const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: true,
+        aspectRatio: 1.5,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              font: {
+                size: 11,
+              },
+            },
+          },
+          x: {
+            ticks: {
+              font: {
+                size: 11,
+              },
+            },
+          },
+        },
+      };
+
+      // Função para criar/atualizar gráficos
+      function createCharts() {
+        // Precisão dos Alertas - gráfico de linha
+        const accuracyCtx = document
+          .getElementById("accuracyChart")
+          .getContext("2d");
+        if (accuracyChart) accuracyChart.destroy();
+        accuracyChart = new Chart(accuracyCtx, {
+          type: "line",
+          data: {
+            labels: Array.from({ length: 12 }, (_, i) => `Mês ${i + 1}`),
+            datasets: [
+              {
+                label: "Precisão (%)",
+                data: randomData(12, 75, 99),
+                borderColor: "rgba(75, 192, 192, 1)",
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                fill: true,
+                tension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 7,
+              },
+            ],
+          },
+          options: commonOptions,
+        });
+
+        // Latência de Entrega - gráfico de barras
+        const latencyCtx = document
+          .getElementById("latencyChart")
+          .getContext("2d");
+        if (latencyChart) latencyChart.destroy();
+        latencyChart = new Chart(latencyCtx, {
+          type: "bar",
+          data: {
+            labels: Array.from({ length: 12 }, (_, i) => `Semana ${i + 1}`),
+            datasets: [
+              {
+                label: "Latência (ms)",
+                data: randomData(12, 150, 600),
+                backgroundColor: "rgba(255, 159, 64, 0.7)",
+              },
+            ],
+          },
+          options: commonOptions,
+        });
+
+        // Volume de Eventos Processados - gráfico de área
+        const eventsCtx = document
+          .getElementById("eventsChart")
+          .getContext("2d");
+        if (eventsChart) eventsChart.destroy();
+        eventsChart = new Chart(eventsCtx, {
+          type: "line",
+          data: {
+            labels: Array.from({ length: 7 }, (_, i) => `Dia ${i + 1}`),
+            datasets: [
+              {
+                label: "Eventos (milhões)",
+                data: randomData(7, 0.5, 1.5),
+                borderColor: "rgba(54, 162, 235, 1)",
+                backgroundColor: "rgba(54, 162, 235, 0.3)",
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+              },
+            ],
+          },
+          options: commonOptions,
+        });
+
+        // Throughput de Alertas - gráfico de barras horizontais
+        const throughputCtx = document
+          .getElementById("throughputChart")
+          .getContext("2d");
+        if (throughputChart) throughputChart.destroy();
+        throughputChart = new Chart(throughputCtx, {
+          type: "bar",
+          data: {
+            labels: ["Produtores", "Cooperativas", "Traders"],
+            datasets: [
+              {
+                label: "Alertas/minuto",
+                data: randomData(3, 6000, 15000),
+                backgroundColor: [
+                  "rgba(153, 102, 255, 0.7)",
+                  "rgba(255, 206, 86, 0.7)",
+                  "rgba(255, 99, 132, 0.7)",
+                ],
+              },
+            ],
+          },
+          options: {
+            indexAxis: "y",
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 1.5,
+            plugins: {
+              legend: {
+                display: false,
+              },
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  font: {
+                    size: 11,
+                  },
+                },
+              },
+              x: {
+                ticks: {
+                  font: {
+                    size: 11,
+                  },
+                },
+              },
+            },
+          },
+        });
+
+        // Volatilidade de Preços - gráfico de pizza
+        const volatilityCtx = document
+          .getElementById("volatilityChart")
+          .getContext("2d");
+        if (volatilityChart) volatilityChart.destroy();
+        volatilityChart = new Chart(volatilityCtx, {
+          type: "doughnut",
+          data: {
+            labels: ["< 3%", "3-5%", "> 5%"],
+            datasets: [
+              {
+                label: "Volatilidade (%)",
+                data: randomData(3, 10, 60),
+                backgroundColor: [
+                  "rgba(54, 162, 235, 0.7)",
+                  "rgba(255, 206, 86, 0.7)",
+                  "rgba(255, 99, 132, 0.7)",
+                ],
+                hoverOffset: 30,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 1.5,
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: {
+                  font: {
+                    size: 11,
+                  },
+                },
+              },
+            },
+          },
+        });
+      }
+
+      // Função para calcular relevância baseada em palavras-chave
+      function calculateRelevance(title, description) {
+        const keywords = [
+          "café",
+          "coffee",
+          "commodities",
+          "agricultura",
+          "agricultural",
+          "clima",
+          "weather",
+          "safra",
+          "harvest",
+          "produção",
+          "production",
+          "preço",
+          "price",
+          "mercado",
+          "market",
+          "brasil",
+          "brazil",
+          "arabica",
+          "robusta",
+          "exportação",
+          "export",
+          "colheita",
+          "drought",
+          "seca",
+          "chuva",
+          "rain",
+          "temperatura",
+          "temperature",
+        ];
+
+        const text = (title + " " + description).toLowerCase();
+        let score = 0;
+
+        keywords.forEach((keyword) => {
+          if (text.includes(keyword)) score += 10;
+        });
+
+        return Math.min(100, Math.max(20, score));
+      }
+
+      // Função para formatar data
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 0) return "Hoje";
+        if (diffDays === 1) return "Ontem";
+        if (diffDays < 7) return `${diffDays} dias atrás`;
+
+        return date.toLocaleDateString("pt-BR", {
+          day: "2-digit",
+          month: "short",
+        });
+      }
+
+      // Mock de notícias relevantes sobre café e commodities
+      const mockNews = [
+        {
+          title: "Previsão de geada no Sul pode afetar safra de café",
+          description:
+            "Meteorologistas alertam para possibilidade de geada nas principais regiões produtoras de café nos próximos dias.",
+          thumbnail:
+            "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=200&h=150&fit=crop",
+          pubDate: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+          link: "#",
+        },
+        {
+          title:
+            "Commodities agrícolas registram alta com preocupações climáticas",
+          description:
+            "Mercado de futuros reage a relatórios sobre condições adversas em regiões produtoras-chave.",
+          thumbnail:
+            "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=200&h=150&fit=crop",
+          pubDate: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
+          link: "#",
+        },
+        {
+          title: "Brasil mantém liderança na exportação de café verde",
+          description:
+            "País exportou 3,5 milhões de sacas em março, alta de 15% em relação ao mesmo período do ano anterior.",
+          thumbnail:
+            "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=200&h=150&fit=crop",
+          pubDate: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+          link: "#",
+        },
+        {
+          title:
+            "Tecnologia de monitoramento climático revoluciona agricultura",
+          description:
+            "Novos sistemas de IA permitem previsões mais precisas para produtores de café e outras commodities.",
+          thumbnail:
+            "https://images.unsplash.com/photo-1574263867128-a3d06eb67c3c?w=200&h=150&fit=crop",
+          pubDate: new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString(),
+          link: "#",
+        },
+        {
+          title: "Variações climáticas impactam qualidade do café arábica",
+          description:
+            "Estudo mostra como mudanças de temperatura afetam o perfil de sabor e aroma dos grãos.",
+          thumbnail:
+            "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=200&h=150&fit=crop",
+          pubDate: new Date(Date.now() - 72 * 60 * 60 * 1000).toISOString(),
+          link: "#",
+        },
+      ];
+
+      // Função para exibir notícias
+      function displayNews(items) {
+        const newsFeed = document.getElementById("newsFeed");
+        newsFeed.innerHTML = "";
+        newsFeed.classList.remove("loading");
+
+        items.forEach((item, index) => {
+          const relevance = calculateRelevance(item.title, item.description);
+          const newsItem = document.createElement("div");
+          newsItem.className = "news-item";
+
+          const relevanceClass =
+            relevance >= 70 ? "high" : relevance >= 40 ? "medium" : "low";
+
+          newsItem.innerHTML = `
+            <img class="news-thumb" src="${item.thumbnail}" alt="${
+            item.title
+          }" onerror="this.style.display='none'">
+            <div class="news-content">
+              <h3 class="news-title">
+                <a href="${item.link}" target="_blank" rel="noopener">${
+            item.title
+          }</a>
+              </h3>
+              <p class="news-description">${item.description}</p>
+              <div class="news-meta">
+                <span class="news-date">${formatDate(item.pubDate)}</span>
+                <span class="news-relevance ${relevanceClass}">Relevância: ${relevance}%</span>
+              </div>
+            </div>
+          `;
+
+          newsFeed.appendChild(newsItem);
+        });
+      }
+
+      // Função para carregar feed RSS real (quando disponível)
+      async function loadRSSFeed(url) {
+        try {
+          const response = await fetch(
+            `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
+              url
+            )}`
+          );
+
+          if (!response.ok) throw new Error("Erro ao carregar feed");
+
+          const data = await response.json();
+
+          if (data.status === "ok" && data.items.length > 0) {
+            displayNews(data.items.slice(0, 5));
+          } else {
+            // Se falhar, usar notícias mock
+            displayNews(mockNews);
+          }
+        } catch (error) {
+          console.error("Erro ao carregar feed RSS:", error);
+          // Usar notícias mock em caso de erro
+          displayNews(mockNews);
+        }
+      }
+
+      // URLs de feeds RSS relevantes para café e commodities
+      const coffeeFeeds = [
+        "https://feeds.bbci.co.uk/news/business/rss.xml",
+        "https://rss.cnn.com/rss/money_latest.rss",
+        "https://feeds.bloomberg.com/markets/news.rss",
+      ];
+
+      // Coordenadas das principais regiões produtoras de café
+      const regionCoordinates = {
+        "sul-minas": {
+          name: "Sul de Minas",
+          lat: -21.5523,
+          lon: -45.4408,
+          city: "Varginha",
+        },
+        cerrado: {
+          name: "Cerrado Mineiro",
+          lat: -18.5965,
+          lon: -46.5189,
+          city: "Patrocínio",
+        },
+        mogiana: {
+          name: "Mogiana Paulista",
+          lat: -21.3711,
+          lon: -46.9996,
+          city: "São Sebastião da Grama",
+        },
+        "espirito-santo": {
+          name: "Espírito Santo",
+          lat: -20.0417,
+          lon: -40.8578,
+          city: "São Gabriel da Palha",
+        },
+        bahia: {
+          name: "Bahia",
+          lat: -14.2098,
+          lon: -41.1625,
+          city: "Vitória da Conquista",
+        },
+        parana: {
+          name: "Norte do Paraná",
+          lat: -23.3165,
+          lon: -51.1665,
+          city: "Londrina",
+        },
+      };
+
+      // Usar Open-Meteo API (gratuita, sem necessidade de API key)
+      const USE_OPEN_METEO = true; // API gratuita sem chave
+
+      // Função para mapear ícones da API para emojis
+      function getWeatherEmoji(iconCode) {
+        const iconMap = {
+          "01d": "☀️",
+          "01n": "🌙",
+          "02d": "⛅",
+          "02n": "☁️",
+          "03d": "☁️",
+          "03n": "☁️",
+          "04d": "☁️",
+          "04n": "☁️",
+          "09d": "🌧️",
+          "09n": "🌧️",
+          "10d": "🌦️",
+          "10n": "🌧️",
+          "11d": "⛈️",
+          "11n": "⛈️",
+          "13d": "❄️",
+          "13n": "❄️",
+          "50d": "🌫️",
+          "50n": "🌫️",
+        };
+        return iconMap[iconCode] || "☁️";
+      }
+
+      // Função para converter código de tempo do Open-Meteo para ícone
+      function getWeatherIcon(weatherCode) {
+        // WMO Weather interpretation codes
+        if (weatherCode === 0) return "01d"; // Clear sky
+        if (weatherCode <= 3) return "02d"; // Partly cloudy
+        if (weatherCode <= 48) return "50d"; // Fog
+        if (weatherCode <= 55) return "09d"; // Drizzle
+        if (weatherCode <= 65) return "10d"; // Rain
+        if (weatherCode <= 67) return "13d"; // Freezing rain
+        if (weatherCode <= 77) return "13d"; // Snow
+        if (weatherCode <= 82) return "09d"; // Rain showers
+        if (weatherCode <= 86) return "13d"; // Snow showers
+        if (weatherCode >= 95) return "11d"; // Thunderstorm
+        return "03d";
+      }
+
+      // Função para obter descrição do tempo em português
+      function getWeatherDescription(weatherCode) {
+        const descriptions = {
+          0: "Céu limpo",
+          1: "Principalmente limpo",
+          2: "Parcialmente nublado",
+          3: "Nublado",
+          45: "Nevoeiro",
+          48: "Nevoeiro com geada",
+          51: "Garoa leve",
+          53: "Garoa moderada",
+          55: "Garoa densa",
+          61: "Chuva leve",
+          63: "Chuva moderada",
+          65: "Chuva forte",
+          71: "Neve leve",
+          73: "Neve moderada",
+          75: "Neve forte",
+          77: "Grãos de neve",
+          80: "Pancadas de chuva leves",
+          81: "Pancadas de chuva moderadas",
+          82: "Pancadas de chuva fortes",
+          85: "Pancadas de neve leves",
+          86: "Pancadas de neve fortes",
+          95: "Tempestade",
+          96: "Tempestade com granizo leve",
+          99: "Tempestade com granizo forte",
+        };
+        return descriptions[weatherCode] || "Condições variadas";
+      }
+
+      // Função para processar dados de previsão
+      function processForecastData(forecastData) {
+        const dailyData = {};
+
+        forecastData.list.forEach((item) => {
+          const date = new Date(item.dt * 1000).toDateString();
+
+          if (!dailyData[date]) {
+            dailyData[date] = {
+              dt: item.dt,
+              temps: [],
+              weather: item.weather,
+              pop: item.pop || 0,
+              humidity: [],
+              wind: [],
+            };
+          }
+
+          dailyData[date].temps.push(item.main.temp);
+          dailyData[date].humidity.push(item.main.humidity);
+          dailyData[date].wind.push(item.wind.speed);
+          if (item.pop > dailyData[date].pop) {
+            dailyData[date].pop = item.pop;
+          }
+        });
+
+        return Object.values(dailyData)
+          .map((day) => ({
+            dt: day.dt,
+            temp: {
+              min: Math.min(...day.temps),
+              max: Math.max(...day.temps),
+            },
+            weather: day.weather,
+            pop: day.pop,
+            humidity: Math.round(
+              day.humidity.reduce((a, b) => a + b) / day.humidity.length
+            ),
+            wind_speed:
+              Math.round(
+                (day.wind.reduce((a, b) => a + b) / day.wind.length) * 10
+              ) / 10,
+          }))
+          .slice(0, 7);
+      }
+
+      // Função para obter direção do vento
+      function getWindDirection(degrees) {
+        const directions = ["N", "NE", "L", "SE", "S", "SO", "O", "NO"];
+        const index = Math.round(degrees / 45) % 8;
+        return directions[index];
+      }
+
+      // Função para qualidade do ar
+      function getAirQualityInfo(aqi) {
+        const levels = [
+          { max: 1, label: "Boa", color: "#00e400" },
+          { max: 2, label: "Regular", color: "#ffff00" },
+          { max: 3, label: "Moderada", color: "#ff7e00" },
+          { max: 4, label: "Ruim", color: "#ff0000" },
+          { max: 5, label: "Péssima", color: "#8f3f97" },
+        ];
+        return levels.find((l) => aqi <= l.max) || levels[4];
+      }
+
+      // Função para gerar dados meteorológicos simulados
+      function generateMockWeatherData() {
+        const baseTemp = 15 + Math.random() * 20;
+        const weather = [
+          { description: "Céu limpo", icon: "01d" },
+          { description: "Poucas nuvens", icon: "02d" },
+          { description: "Nublado", icon: "03d" },
+          { description: "Chuva leve", icon: "10d" },
+          { description: "Parcialmente nublado", icon: "02d" },
+        ];
+        const selectedWeather =
+          weather[Math.floor(Math.random() * weather.length)];
+
+        const now = new Date();
+        const sunrise = new Date(now);
+        sunrise.setHours(6, Math.floor(Math.random() * 30), 0);
+        const sunset = new Date(now);
+        sunset.setHours(18, Math.floor(Math.random() * 30), 0);
+
+        return {
+          current: {
+            temp: baseTemp,
+            feels_like: baseTemp + (Math.random() * 4 - 2),
+            humidity: 40 + Math.random() * 40,
+            pressure: 1010 + Math.random() * 20,
+            wind_speed: 2 + Math.random() * 8,
+            wind_deg: Math.random() * 360,
+            clouds: Math.random() * 100,
+            visibility: 5000 + Math.random() * 15000,
+            weather: [selectedWeather],
+            sunrise: sunrise.getTime() / 1000,
+            sunset: sunset.getTime() / 1000,
+            air_quality: {
+              main: { aqi: Math.ceil(Math.random() * 3) },
+              components: { pm2_5: 10 + Math.random() * 30 },
+            },
+          },
+          daily: Array.from({ length: 7 }, (_, i) => {
+            const date = new Date();
+            date.setDate(date.getDate() + i);
+            const minTemp = baseTemp - 5 + Math.random() * 5;
+            const maxTemp = baseTemp + 5 + Math.random() * 10;
+
+            return {
+              dt: date.getTime() / 1000,
+              temp: { min: minTemp, max: maxTemp },
+              weather: [weather[Math.floor(Math.random() * weather.length)]],
+              pop: Math.random(),
+              humidity: 40 + Math.random() * 40,
+              wind_speed: 2 + Math.random() * 8,
+            };
+          }),
+        };
+      }
+
+      // Função para buscar dados climáticos da API
+      async function fetchWeatherData(lat, lon) {
+        try {
+          if (USE_OPEN_METEO) {
+            // Usar Open-Meteo API (gratuita)
+            const response = await fetch(
+              `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max&timezone=America/Sao_Paulo`
+            );
+
+            if (!response.ok)
+              throw new Error("Erro ao buscar dados climáticos");
+
+            const data = await response.json();
+
+            // Converter dados do Open-Meteo para o formato esperado
+            return {
+              current: {
+                temp: data.current.temperature_2m,
+                feels_like: data.current.apparent_temperature,
+                humidity: data.current.relative_humidity_2m,
+                pressure: Math.round(data.current.pressure_msl),
+                wind_speed: data.current.wind_speed_10m / 3.6, // converter km/h para m/s
+                wind_deg: data.current.wind_direction_10m,
+                clouds: data.current.cloud_cover,
+                visibility: 10000, // Open-Meteo não fornece visibilidade
+                weather: [
+                  {
+                    description: getWeatherDescription(
+                      data.current.weather_code
+                    ),
+                    icon: getWeatherIcon(data.current.weather_code),
+                  },
+                ],
+                sunrise: new Date().setHours(6, 0, 0) / 1000,
+                sunset: new Date().setHours(18, 0, 0) / 1000,
+                air_quality: null, // Open-Meteo não fornece qualidade do ar na API gratuita
+              },
+              daily: data.daily.time.map((time, index) => ({
+                dt: new Date(time).getTime() / 1000,
+                temp: {
+                  min: data.daily.temperature_2m_min[index],
+                  max: data.daily.temperature_2m_max[index],
+                },
+                weather: [
+                  {
+                    icon: getWeatherIcon(data.daily.weather_code[index]),
+                    description: getWeatherDescription(
+                      data.daily.weather_code[index]
+                    ),
+                  },
+                ],
+                pop:
+                  (data.daily.precipitation_probability_max[index] || 0) / 100,
+                humidity: 60, // estimativa
+                wind_speed: data.daily.wind_speed_10m_max[index] / 3.6,
+              })),
+            };
+          }
+
+          // Usar múltiplas APIs do OpenWeatherMap para dados completos
+          const [weatherResponse, airResponse] = await Promise.all([
+            fetch(
+              `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&appid=${API_KEY}`
+            ),
+            fetch(
+              `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+            ).catch(() => null),
+          ]);
+
+          if (!weatherResponse.ok) {
+            throw new Error("Erro ao buscar dados climáticos");
+          }
+
+          const weatherData = await weatherResponse.json();
+          const airData = airResponse ? await airResponse.json() : null;
+
+          // Buscar previsão de 5 dias
+          const forecastResponse = await fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&appid=${API_KEY}`
+          );
+
+          const forecastData = await forecastResponse.json();
+
+          // Processar dados para formato esperado
+          const processedData = {
+            current: {
+              temp: weatherData.main.temp,
+              feels_like: weatherData.main.feels_like,
+              humidity: weatherData.main.humidity,
+              pressure: weatherData.main.pressure,
+              wind_speed: weatherData.wind.speed,
+              wind_deg: weatherData.wind.deg,
+              clouds: weatherData.clouds.all,
+              visibility: weatherData.visibility,
+              weather: weatherData.weather,
+              sunrise: weatherData.sys.sunrise,
+              sunset: weatherData.sys.sunset,
+              air_quality: airData ? airData.list[0] : null,
+            },
+            daily: processForecastData(forecastData),
+          };
+
+          return processedData;
+        } catch (error) {
+          console.error("Erro ao buscar dados climáticos:", error);
+          return null;
+        }
+      }
+
+      // Função para recarregar todos os dados (gráficos, notícias e clima)
+      function refreshAll() {
+        const btn = document.getElementById("refreshBtn");
+        const feed = document.getElementById("newsFeed");
+
+        // Adicionar estado de carregamento
+        btn.classList.add("loading");
+        btn.disabled = true;
+        feed.innerHTML = '<div class="loading">Carregando notícias...</div>';
+
+        // Recarregar gráficos com novos valores aleatórios
+        createCharts();
+
+        // Atualizar clima
+        updateWeather();
+
+        // Carregar notícias
+        loadRSSFeed(coffeeFeeds[0]).finally(() => {
+          // Remover estado de carregamento após 1 segundo
+          setTimeout(() => {
+            btn.classList.remove("loading");
+            btn.disabled = false;
+          }, 1000);
+        });
+      }
+
+      // Variáveis globais para o mapa
+      let map;
+      let currentMapLayer;
+      let currentLayer = "temp_new";
+
+      // Função para inicializar o mapa
+      function initMap(lat, lon) {
+        // Se o mapa já existe, destruir antes de criar novo
+        if (map) {
+          map.remove();
+        }
+
+        // Criar novo mapa
+        map = L.map("weatherMap").setView([lat, lon], 8);
+
+        // Adicionar camada base do OpenStreetMap
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "© OpenStreetMap contributors",
+        }).addTo(map);
+
+        // Adicionar marcador da região
+        L.marker([lat, lon])
+          .addTo(map)
+          .bindPopup(
+            `<b>${
+              regionCoordinates[document.getElementById("regionSelector").value]
+                .name
+            }</b><br>${
+              regionCoordinates[document.getElementById("regionSelector").value]
+                .city
+            }`
+          );
+
+        // Adicionar camada de clima
+        addWeatherLayer(currentLayer);
+      }
+
+      // Variável para armazenar timestamps do RainViewer
+      let rainviewerData = null;
+
+      // Função para buscar dados do RainViewer
+      async function fetchRainViewerData() {
+        try {
+          const response = await fetch(
+            "https://api.rainviewer.com/public/weather-maps.json"
+          );
+          const data = await response.json();
+          rainviewerData = data;
+          return data;
+        } catch (error) {
+          console.error("Erro ao buscar dados RainViewer:", error);
+          return null;
+        }
+      }
+
+      // Função para adicionar camada de clima
+      async function addWeatherLayer(layer, buttonElement) {
+        if (currentMapLayer) {
+          map.removeLayer(currentMapLayer);
+        }
+        
+        // Restaurar mapa base se não for nuvens
+        if (layer !== "clouds_new") {
+          // Remover camada de satélite se existir
+          map.eachLayer(function(mapLayer) {
+            if (mapLayer._url && mapLayer._url.includes('arcgisonline.com')) {
+              map.removeLayer(mapLayer);
+            }
+          });
+          
+          // Re-adicionar camada base padrão se não existir
+          let hasOSM = false;
+          map.eachLayer(function(mapLayer) {
+            if (mapLayer._url && mapLayer._url.includes('openstreetmap.org')) {
+              hasOSM = true;
+            }
+          });
+          
+          if (!hasOSM) {
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              attribution: "© OpenStreetMap contributors",
+            }).addTo(map);
+          }
+        }
+
+        // Usar APIs gratuitas para diferentes camadas
+        if (layer === "precipitation_new") {
+          // Usar RainViewer para precipitação (gratuito)
+          if (!rainviewerData) {
+            rainviewerData = await fetchRainViewerData();
+          }
+
+          if (
+            rainviewerData &&
+            rainviewerData.radar &&
+            rainviewerData.radar.past.length > 0
+          ) {
+            const latestTimestamp =
+              rainviewerData.radar.past[rainviewerData.radar.past.length - 1]
+                .path;
+            currentMapLayer = L.tileLayer(
+              `https://tilecache.rainviewer.com${latestTimestamp}/256/{z}/{x}/{y}/2/1_1.png`,
+              {
+                maxZoom: 19,
+                opacity: 0.6,
+                attribution: "© RainViewer",
+              }
+            );
+            currentMapLayer.addTo(map);
+          }
+        } else if (layer === "clouds_new") {
+          // Remover apenas a camada do OpenStreetMap
+          map.eachLayer(function(mapLayer) {
+            if (mapLayer._url && mapLayer._url.includes('openstreetmap.org')) {
+              map.removeLayer(mapLayer);
+            }
+          });
+          
+          // Adicionar camada de satélite como base com zIndex baixo
+          const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+            maxZoom: 19,
+            zIndex: 1
+          });
+          satelliteLayer.addTo(map);
+          satelliteLayer.bringToBack(); // Garantir que fica no fundo
+          
+          // Obter cobertura de nuvens dos KPIs
+          const cloudCoverage = parseFloat(
+            Array.from(document.querySelectorAll(".weather-kpi-detail"))
+              .find(el => el.textContent.includes("Nuvens"))
+              ?.textContent.match(/(\d+)%/)?.[1] || 50
+          );
+          
+          const bounds = map.getBounds();
+          
+          // Criar pontos de nuvens baseados na cobertura
+          const cloudPoints = [];
+          const cloudDensity = Math.floor(cloudCoverage / 10) + 5; // 5-15 clusters
+          
+          for (let i = 0; i < cloudDensity; i++) {
+            // Centro de cada cluster de nuvens
+            const centerLat = bounds.getSouth() + Math.random() * (bounds.getNorth() - bounds.getSouth());
+            const centerLng = bounds.getWest() + Math.random() * (bounds.getEast() - bounds.getWest());
+            
+            // Criar cluster de pontos ao redor do centro
+            for (let j = 0; j < 30; j++) {
+              const angle = (Math.PI * 2 * j) / 30;
+              const radius = 0.05 + Math.random() * 0.15;
+              const lat = centerLat + Math.cos(angle) * radius * (1 + Math.random() * 0.5);
+              const lng = centerLng + Math.sin(angle) * radius * (1 + Math.random() * 0.5);
+              
+              // Intensidade baseada na distância do centro
+              const distance = Math.sqrt(Math.pow(lat - centerLat, 2) + Math.pow(lng - centerLng, 2));
+              const intensity = Math.max(0, 1 - distance * 5);
+              
+              cloudPoints.push([lat, lng, intensity]);
+            }
+          }
+          
+          // Criar camada de nuvens sobre o satélite
+          currentMapLayer = L.heatLayer(cloudPoints, {
+            radius: 80,
+            blur: 40,
+            maxZoom: 17,
+            max: 0.7,
+            gradient: {
+              0.0: "rgba(255, 255, 255, 0)",      // Transparente
+              0.2: "rgba(255, 255, 255, 0.4)",    // Branco translúcido
+              0.4: "rgba(240, 240, 240, 0.6)",    // Branco mais opaco
+              0.6: "rgba(220, 220, 220, 0.8)",    // Cinza claro
+              0.8: "rgba(200, 200, 200, 0.9)",    // Cinza médio
+              1.0: "rgba(255, 255, 255, 0.95)"    // Branco quase opaco (nuvem densa)
+            }
+          });
+          currentMapLayer.addTo(map);
+          
+          // Forçar a camada de nuvens para frente
+          setTimeout(() => {
+            if (currentMapLayer && currentMapLayer._renderer) {
+              currentMapLayer._renderer._container.style.zIndex = 1000;
+            }
+          }, 100);
+
+          // Adicionar indicador de nuvens dos KPIs
+          const cloudElements = Array.from(
+            document.querySelectorAll(".weather-kpi-detail")
+          ).find((el) => el.textContent.includes("Nuvens"));
+          if (cloudElements) {
+            const center = map.getCenter();
+            setTimeout(() => {
+              L.popup()
+                .setLatLng(center)
+                .setContent(
+                  `<b>Cobertura de Nuvens</b><br>${cloudElements.textContent}<br><small>Imagem de satélite + dados em tempo real</small>`
+                )
+                .openOn(map);
+            }, 500);
+          }
+        } else if (layer === "temp_new") {
+          // Tentar usar camada de temperatura do OpenWeatherMap primeiro
+          if (typeof API_KEY !== 'undefined' && API_KEY) {
+            currentMapLayer = L.tileLayer(
+              `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${API_KEY}`,
+              {
+                maxZoom: 19,
+                opacity: 0.7,
+                attribution: "© OpenWeatherMap"
+              }
+            );
+            currentMapLayer.addTo(map);
+          } else {
+            // Fallback: criar gradiente de temperatura usando heatmap
+            const selectedRegion = document.getElementById("regionSelector").value;
+            const regionData = regionCoordinates[selectedRegion];
+            const bounds = map.getBounds();
+            const tempElement = document.querySelector(".weather-kpi-value");
+            const currentTemp = tempElement
+              ? parseFloat(tempElement.textContent)
+              : 25;
+
+            // Definir pontos quentes específicos para cada região com variações EXTREMAS para visualização
+            const hotSpots = {
+              "sul-minas": [
+                { lat: -21.5523, lng: -45.4408, temp: currentTemp }, // Varginha
+                { lat: -21.7000, lng: -45.9000, temp: currentTemp - 10 }, // Alfenas (MUITO frio)
+                { lat: -21.2500, lng: -45.0000, temp: currentTemp + 8 }, // Três Pontas (MUITO quente)
+                { lat: -21.4600, lng: -44.2500, temp: currentTemp - 5 }, // Lavras
+              ],
+              "cerrado": [
+                { lat: -18.5965, lng: -46.5189, temp: currentTemp + 5 }, // Patrocínio
+                { lat: -18.4800, lng: -47.4000, temp: currentTemp + 12 }, // Araxá (EXTREMO quente)
+                { lat: -19.0100, lng: -46.1700, temp: currentTemp + 7 }, // Patos de Minas
+                { lat: -18.9200, lng: -48.2800, temp: currentTemp + 15 }, // Uberlândia (MÁXIMO calor)
+              ],
+              "mogiana": [
+                { lat: -21.3711, lng: -46.9996, temp: currentTemp }, // São Sebastião da Grama
+                { lat: -21.5400, lng: -47.4000, temp: currentTemp - 8 }, // São João da Boa Vista (FRIO)
+                { lat: -21.7200, lng: -47.3400, temp: currentTemp + 10 }, // Espírito Santo do Pinhal (QUENTE)
+                { lat: -22.0700, lng: -46.7900, temp: currentTemp - 3 }, // Amparo
+              ],
+              "espirito-santo": [
+                { lat: -20.0417, lng: -40.8578, temp: currentTemp + 3 }, // São Gabriel da Palha
+                { lat: -19.5200, lng: -40.6300, temp: currentTemp + 14 }, // Linhares (LITORAL ESCALDANTE)
+                { lat: -20.3400, lng: -40.3600, temp: currentTemp + 10 }, // Vitória
+                { lat: -20.8000, lng: -41.1200, temp: currentTemp - 8 }, // Alegre (MONTANHA GELADA)
+              ],
+              "bahia": [
+                { lat: -14.2098, lng: -41.1625, temp: currentTemp - 6 }, // Vitória da Conquista (altitude FRIA)
+                { lat: -13.8600, lng: -40.0800, temp: currentTemp + 15 }, // Feira de Santana (FORNO)
+                { lat: -14.7900, lng: -39.0400, temp: currentTemp + 12 }, // Ilhéus (litoral QUENTE)
+                { lat: -13.0000, lng: -41.3300, temp: currentTemp - 3 }, // Chapada Diamantina
+              ],
+              "parana": [
+                { lat: -23.3165, lng: -51.1665, temp: currentTemp }, // Londrina
+                { lat: -23.4200, lng: -51.9300, temp: currentTemp - 12 }, // Maringá (GELADO)
+                { lat: -23.0100, lng: -50.9200, temp: currentTemp - 6 }, // Apucarana
+                { lat: -23.7600, lng: -52.0900, temp: currentTemp - 15 }, // Umuarama (CONGELANTE)
+              ],
+            };
+
+            // Gerar pontos de calor baseados nos hot spots da região
+            const heatPoints = [];
+            const spots = hotSpots[selectedRegion] || hotSpots["sul-minas"];
+            
+            // Adicionar pontos principais das cidades
+            spots.forEach(spot => {
+              // Criar área de influência ao redor de cada cidade
+              for (let i = 0; i < 50; i++) {
+                const angle = (Math.PI * 2 * i) / 50;
+                const radius = 0.1 + Math.random() * 0.2;
+                const lat = spot.lat + Math.cos(angle) * radius;
+                const lng = spot.lng + Math.sin(angle) * radius;
+                const tempVariation = spot.temp - (radius * 10);
+                
+                // Armazenar temperatura real junto com as coordenadas
+                heatPoints.push([lat, lng, tempVariation]);
+              }
+            });
+            
+            // Adicionar pontos intermediários entre cidades
+            for (let i = 0; i < spots.length; i++) {
+              for (let j = i + 1; j < spots.length; j++) {
+                const spot1 = spots[i];
+                const spot2 = spots[j];
+                
+                // Interpolar 10 pontos entre cada par de cidades
+                for (let k = 0; k < 10; k++) {
+                  const t = k / 10;
+                  const lat = spot1.lat + (spot2.lat - spot1.lat) * t;
+                  const lng = spot1.lng + (spot2.lng - spot1.lng) * t;
+                  const temp = spot1.temp + (spot2.temp - spot1.temp) * t;
+                  
+                  // Adicionar com alguma variação
+                  for (let m = 0; m < 3; m++) {
+                    const offsetLat = lat + (Math.random() - 0.5) * 0.05;
+                    const offsetLng = lng + (Math.random() - 0.5) * 0.05;
+                    heatPoints.push([offsetLat, offsetLng, temp]);
+                  }
+                }
+              }
+            }
+
+            // Encontrar temperatura mínima e máxima dos pontos reais
+            let minTemp = Infinity;
+            let maxTemp = -Infinity;
+            heatPoints.forEach(point => {
+              const temp = point[2];
+              minTemp = Math.min(minTemp, temp);
+              maxTemp = Math.max(maxTemp, temp);
+            });
+            
+            // Garantir um range mínimo para evitar divisão por zero
+            if (maxTemp - minTemp < 5) {
+              minTemp = minTemp - 2.5;
+              maxTemp = maxTemp + 2.5;
+            }
+            
+            // Normalizar todos os pontos com base no range real
+            const normalizedHeatPoints = heatPoints.map(point => {
+              const [lat, lng, temp] = point;
+              const intensity = (temp - minTemp) / (maxTemp - minTemp);
+              return [lat, lng, Math.max(0, Math.min(1, intensity))];
+            });
+
+            // Calcular onde fica 22°C no gradiente normalizado (sem limitar)
+            const temp22Position = (22 - minTemp) / (maxTemp - minTemp);
+            console.log(`Temp range: ${minTemp}°C to ${maxTemp}°C, 22°C at position: ${temp22Position}`);
+
+            // Criar gradiente com transição clara em 22°C
+            const gradient = {};
+            
+            // Se 22°C está dentro do range, usar sua posição real
+            if (temp22Position > 0 && temp22Position < 1) {
+              // Abaixo de 22°C - tons de azul
+              gradient[0.0] = "#00008B";                        // Azul marinho (muito frio)
+              gradient[temp22Position * 0.3] = "#0000FF";      // Azul puro
+              gradient[temp22Position * 0.6] = "#0080FF";      // Azul médio
+              gradient[temp22Position * 0.85] = "#00CCFF";     // Azul claro
+              gradient[temp22Position - 0.01] = "#00FFFF";     // Ciano (logo antes de 22°C)
+              
+              // Transição em 22°C
+              gradient[temp22Position] = "#FFFFFF";            // Branco exatamente em 22°C
+              
+              // Acima de 22°C - tons quentes
+              gradient[temp22Position + 0.01] = "#FFFF00";     // Amarelo logo após 22°C
+              gradient[temp22Position + (1 - temp22Position) * 0.3] = "#FFA500";  // Laranja
+              gradient[temp22Position + (1 - temp22Position) * 0.6] = "#FF4500";  // Laranja avermelhado
+              gradient[temp22Position + (1 - temp22Position) * 0.85] = "#FF0000"; // Vermelho
+              gradient[1.0] = "#8B0000";                       // Vermelho escuro
+            } else {
+              // Fallback se 22°C estiver fora do range
+              gradient[0.0] = "#00008B";     // Azul marinho
+              gradient[0.2] = "#0000FF";     // Azul puro
+              gradient[0.35] = "#0080FF";    // Azul médio
+              gradient[0.45] = "#00CCFF";    // Azul claro
+              gradient[0.5] = "#FFFFFF";     // Branco
+              gradient[0.55] = "#FFFF00";    // Amarelo
+              gradient[0.7] = "#FFA500";     // Laranja
+              gradient[0.85] = "#FF4500";    // Laranja avermelhado
+              gradient[1.0] = "#FF0000";     // Vermelho
+            }
+
+            // Adicionar camada de calor com configurações para máximo contraste
+            currentMapLayer = L.heatLayer(normalizedHeatPoints, {
+              radius: 60,      // Aumentar muito o raio
+              blur: 5,         // Reduzir blur para bordas mais definidas
+              maxZoom: 17,
+              max: 0.8,        // Reduzir max para espalhar melhor as cores
+              gradient: gradient
+            });
+            currentMapLayer.addTo(map);
+          }
+
+          // Adicionar overlay com dados dos KPIs
+          const tempData = document.querySelector(".weather-kpi-value");
+          if (tempData) {
+            const temp = tempData.textContent;
+            const center = map.getCenter();
+            setTimeout(() => {
+              L.popup()
+                .setLatLng(center)
+                .setContent(
+                  `<b>Temperatura Atual</b><br>${temp}<br><small>Dados em tempo real dos KPIs</small>`
+                )
+                .openOn(map);
+            }, 500);
+          }
+        } else if (layer === "wind_new") {
+          // Usar mapa base e mostrar dados de vento
+          currentMapLayer = L.tileLayer(
+            "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+            {
+              maxZoom: 19,
+              opacity: 0.3,
+              attribution: "© CARTO",
+            }
+          );
+          currentMapLayer.addTo(map);
+
+          // Adicionar indicador de vento dos KPIs
+          const windElements = Array.from(
+            document.querySelectorAll(".weather-kpi-label")
+          ).find((el) => el.textContent === "Vento");
+          if (windElements) {
+            const windValue = windElements
+              .closest(".weather-kpi")
+              .querySelector(".weather-kpi-value").textContent;
+            const windDetail = windElements
+              .closest(".weather-kpi")
+              .querySelector(".weather-kpi-detail").textContent;
+            const center = map.getCenter();
+            setTimeout(() => {
+              L.popup()
+                .setLatLng(center)
+                .setContent(
+                  `<b>Vento</b><br>${windValue}<br>${windDetail}<br><small>Dados em tempo real dos KPIs</small>`
+                )
+                .openOn(map);
+            }, 500);
+          }
+        } else if (layer === "pressure_new") {
+          // Usar mapa base e mostrar dados de pressão
+          currentMapLayer = L.tileLayer(
+            "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+            {
+              maxZoom: 19,
+              opacity: 0.3,
+              attribution: "© CARTO",
+            }
+          );
+          currentMapLayer.addTo(map);
+
+          // Adicionar indicador de pressão dos KPIs
+          const pressureElements = Array.from(
+            document.querySelectorAll(".weather-kpi-label")
+          ).find((el) => el.textContent.includes("Pressão"));
+          if (pressureElements) {
+            const pressureValue = pressureElements
+              .closest(".weather-kpi")
+              .querySelector(".weather-kpi-value").textContent;
+            const center = map.getCenter();
+            setTimeout(() => {
+              L.popup()
+                .setLatLng(center)
+                .setContent(
+                  `<b>Pressão Atmosférica</b><br>${pressureValue} hPa<br><small>Dados em tempo real dos KPIs</small>`
+                )
+                .openOn(map);
+            }, 500);
+          }
+        }
+
+        currentLayer = layer;
+
+        // Atualizar botões ativos
+        if (buttonElement) {
+          document.querySelectorAll(".map-btn").forEach((btn) => {
+            btn.classList.remove("active");
+          });
+          buttonElement.classList.add("active");
+        }
+      }
+
+      // Função para mudar camada do mapa
+      function changeMapLayer(layer, event) {
+        if (map) {
+          const button = event
+            ? event.target
+            : document.querySelector(".map-btn.active");
+          addWeatherLayer(layer, button);
+        }
+      }
+
+      // Função atualizada para incluir mapa
+      async function updateWeatherWithMap() {
+        const selector = document.getElementById("regionSelector");
+        const region = selector.value;
+        const coords = regionCoordinates[region];
+
+        const weatherKPIs = document.getElementById("weatherKPIs");
+        const weatherForecastSidebar = document.getElementById(
+          "weatherForecastSidebar"
+        );
+
+        // Mostrar carregamento
+        weatherKPIs.innerHTML =
+          '<div class="loading">Carregando dados climáticos...</div>';
+        weatherForecastSidebar.innerHTML =
+          '<div class="forecast-sidebar-title">Próximos 7 dias</div>';
+
+        // Buscar dados da API
+        const weatherData = await fetchWeatherData(coords.lat, coords.lon);
+
+        console.log("Weather Data:", weatherData);
+
+        if (!weatherData) {
+          weatherKPIs.innerHTML =
+            '<div class="loading">Erro ao carregar dados climáticos</div>';
+          return;
+        }
+
+        const current = weatherData.current;
+        const daily = weatherData.daily;
+
+        // Formatar horário de nascer e pôr do sol
+        const sunrise = new Date(current.sunrise * 1000).toLocaleTimeString(
+          "pt-BR",
+          { hour: "2-digit", minute: "2-digit" }
+        );
+        const sunset = new Date(current.sunset * 1000).toLocaleTimeString(
+          "pt-BR",
+          { hour: "2-digit", minute: "2-digit" }
+        );
+
+        // Qualidade do ar
+        const airQuality = current.air_quality
+          ? getAirQualityInfo(current.air_quality.main.aqi)
+          : null;
+
+        // Atualizar KPIs climáticos
+        weatherKPIs.innerHTML = `
+          <div class="weather-kpi">
+            <div class="weather-kpi-icon">${getWeatherEmoji(
+              current.weather[0].icon
+            )}</div>
+            <div class="weather-kpi-content">
+              <p class="weather-kpi-value">${Math.round(current.temp)}°C</p>
+              <p class="weather-kpi-label">Temperatura</p>
+              <div class="weather-kpi-detail" title="Sensação: ${Math.round(
+                current.feels_like
+              )}°C | ${current.weather[0].description}">ST: ${Math.round(
+          current.feels_like
+        )}°C</div>
+            </div>
+          </div>
+
+          <div class="weather-kpi">
+            <div class="weather-kpi-icon">💧</div>
+            <div class="weather-kpi-content">
+              <p class="weather-kpi-value">${current.humidity}%</p>
+              <p class="weather-kpi-label">Umidade</p>
+              <div class="weather-kpi-detail">Ideal: 60-70%</div>
+            </div>
+          </div>
+
+          <div class="weather-kpi">
+            <div class="weather-kpi-icon">🌧️</div>
+            <div class="weather-kpi-content">
+              <p class="weather-kpi-value">${Math.round(
+                (daily[0].pop || 0) * 100
+              )}%</p>
+              <p class="weather-kpi-label">Chance de Chuva</p>
+              <div class="weather-kpi-detail">Próximas 24 horas</div>
+            </div>
+          </div>
+
+          <div class="weather-kpi">
+            <div class="weather-kpi-icon">💨</div>
+            <div class="weather-kpi-content">
+              <p class="weather-kpi-value">${Math.round(
+                current.wind_speed * 3.6
+              )} km/h</p>
+              <p class="weather-kpi-label">Vento</p>
+              <div class="weather-kpi-detail">${getWindDirection(
+                current.wind_deg
+              )} (${current.wind_deg}°)</div>
+            </div>
+          </div>
+
+          <div class="weather-kpi">
+            <div class="weather-kpi-icon">🌡️</div>
+            <div class="weather-kpi-content">
+              <p class="weather-kpi-value">${current.pressure}</p>
+              <p class="weather-kpi-label">Pressão (hPa)</p>
+              <div class="weather-kpi-detail">Nuvens: ${current.clouds}%</div>
+            </div>
+          </div>
+
+          <div class="weather-kpi">
+            <div class="weather-kpi-icon">👁️</div>
+            <div class="weather-kpi-content">
+              <p class="weather-kpi-value">${(
+                current.visibility / 1000
+              ).toFixed(1)} km</p>
+              <p class="weather-kpi-label">Visibilidade</p>
+              <div class="weather-kpi-detail">🌅 ${sunrise} | 🌆 ${sunset}</div>
+            </div>
+          </div>
+
+          ${
+            airQuality
+              ? `
+          <div class="weather-kpi">
+            <div class="weather-kpi-icon">🌬️</div>
+            <div class="weather-kpi-content">
+              <p class="weather-kpi-value" style="color: ${airQuality.color}">${
+                  airQuality.label
+                }</p>
+              <p class="weather-kpi-label">Qualidade do Ar</p>
+              <div class="weather-kpi-detail">AQI: ${
+                current.air_quality.main.aqi
+              } | PM2.5: ${current.air_quality.components.pm2_5.toFixed(
+                  1
+                )} μg/m³</div>
+            </div>
+          </div>
+          `
+              : ""
+          }
+
+          <div class="weather-kpi">
+            <div class="weather-kpi-icon">🌡️</div>
+            <div class="weather-kpi-content">
+              <p class="weather-kpi-value">${Math.round(
+                daily[0].temp.min
+              )}°-${Math.round(daily[0].temp.max)}°</p>
+              <p class="weather-kpi-label">Min/Max</p>
+              <div class="weather-kpi-detail">Δ ${Math.round(
+                daily[0].temp.max - daily[0].temp.min
+              )}°C</div>
+            </div>
+          </div>
+        `;
+
+        // Atualizar previsão lateral
+        const daysOfWeek = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+        const forecastHTML = daily
+          .slice(0, 7)
+          .map((day) => {
+            const date = new Date(day.dt * 1000);
+            const dayName = daysOfWeek[date.getDay()];
+            const isToday = new Date().toDateString() === date.toDateString();
+            return `
+            <div class="forecast-day" ${
+              isToday ? 'style="background: #e3f2fd;"' : ""
+            }>
+              <div class="forecast-day-info">
+                <span class="forecast-day-name">${dayName}</span>
+                <span class="forecast-icon">${getWeatherEmoji(
+                  day.weather[0].icon
+                )}</span>
+              </div>
+              <span class="forecast-temp">${Math.round(
+                day.temp.min
+              )}°/${Math.round(day.temp.max)}°</span>
+            </div>
+          `;
+          })
+          .join("");
+
+        weatherForecastSidebar.innerHTML =
+          '<div class="forecast-sidebar-title">Próximos 7 dias</div>' +
+          forecastHTML;
+
+        // Adicionar informação da cidade
+        const header = document.querySelector(".weather-header h2");
+        header.textContent = `Previsão do Tempo - ${coords.name} (${coords.city})`;
+
+        // Inicializar ou atualizar mapa
+        setTimeout(() => {
+          initMap(coords.lat, coords.lon);
+        }, 100);
+      }
+
+      // Usar a função updateWeatherWithMap como updateWeather
+      const updateWeather = updateWeatherWithMap;
+
+      // Carregar dados ao carregar a página
+      window.addEventListener("load", () => {
+        // Criar gráficos iniciais
+        createCharts();
+
+        // Carregar clima inicial
+        updateWeather();
+
+        // Carregar notícias
+        loadRSSFeed(coffeeFeeds[0]);
+
+        // Atualizar tudo a cada 5 minutos
+        setInterval(() => {
+          refreshAll();
+        }, 5 * 60 * 1000);
+      });
+    </script>
+  </body>
+</html>

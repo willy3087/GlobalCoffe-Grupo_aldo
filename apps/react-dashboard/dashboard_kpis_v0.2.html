@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="description" content="Dashboard de KPIs e Previsão Climática para produtores de café">
+    <title>Dashboard KPIs v0.2 - GlobalCoffee</title>
+    
+    <!-- Preconnect para otimização -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- Fontes otimizadas -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== DESIGN TOKENS v0.2 ========== */
+        :root {
+            /* Cores Principais - Sistema de Design Agrícola */
+            --primary-green: #4CAF50;
+            --primary-green-dark: #388E3C;
+            --primary-green-light: #81C784;
+            --earth-brown: #8B4513;
+            --earth-brown-light: #A0522D;
+            --sky-blue: #3498db;
+            --alert-yellow: #FFC107;
+            --alert-red: #F44336;
+            --success-green: #4CAF50;
+            
+            /* Cores Neutras */
+            --gray-900: #1a1a1a;
+            --gray-800: #2d2d2d;
+            --gray-700: #404040;
+            --gray-600: #525252;
+            --gray-500: #737373;
+            --gray-400: #a3a3a3;
+            --gray-300: #d4d4d4;
+            --gray-200: #e5e5e5;
+            --gray-100: #f5f5f5;
+            --white: #ffffff;
+            
+            /* Espaçamentos */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Tipografia */
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 2rem;
+            
+            /* Sombras */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            
+            /* Bordas */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-full: 9999px;
+            
+            /* Transições */
+            --transition-fast: 150ms ease;
+            --transition-base: 250ms ease;
+            --transition-slow: 350ms ease;
+            
+            /* Z-index */
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal-backdrop: 1040;
+            --z-modal: 1050;
+            --z-popover: 1060;
+            --z-tooltip: 1070;
+        }
+        
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --gray-900: #f5f5f5;
+            --gray-800: #e5e5e5;
+            --gray-700: #d4d4d4;
+            --gray-600: #a3a3a3;
+            --gray-500: #737373;
+            --gray-400: #525252;
+            --gray-300: #404040;
+            --gray-200: #2d2d2d;
+            --gray-100: #1a1a1a;
+            --white: #0a0a0a;
+        }
+        
+        /* High Contrast Mode */
+        [data-contrast="high"] {
+            --gray-500: #000000;
+            --gray-400: #000000;
+            --shadow-sm: 0 0 0 2px currentColor;
+            --shadow-md: 0 0 0 2px currentColor;
+        }
+        
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            background-color: var(--gray-100);
+            color: var(--gray-900);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* ========== ACCESSIBILITY ========== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Skip to content link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-green);
+            color: var(--white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-decoration: none;
+            z-index: var(--z-tooltip);
+            border-radius: var(--radius-md);
+        }
+        
+        .skip-link:focus {
+            top: var(--spacing-sm);
+            left: var(--spacing-sm);
+        }
+        
+        /* Focus visible for keyboard navigation */
+        *:focus-visible {
+            outline: 3px solid var(--primary-green);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+        
+        /* ========== HEADER v0.2 ========== */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            position: sticky;
+            top: 0;
+            z-index: var(--z-sticky);
+        }
+        
+        .header h1 {
+            color: var(--primary-green);
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: var(--gray-600);
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-xs);
+        }
+        
+        /* ========== CONTAINER ========== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-xl);
+        }
+        
+        /* ========== KPI CARDS ========== */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .kpi-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-base), box-shadow var(--transition-base);
+        }
+        
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .kpi-card__title {
+            color: var(--gray-600);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .kpi-card__value {
+            color: var(--gray-900);
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .kpi-card__change {
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+        
+        .kpi-card__change--positive {
+            color: var(--success-green);
+        }
+        
+        .kpi-card__change--negative {
+            color: var(--alert-red);
+        }
+        
+        /* ========== CHARTS SECTION ========== */
+        .charts-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .charts-section__title {
+            color: var(--gray-900);
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .chart-placeholder {
+            background: var(--gray-100);
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--radius-md);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-500);
+            font-size: var(--font-size-sm);
+        }
+        
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            margin-top: auto;
+            text-align: center;
+        }
+        
+        .footer p {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+        }
+        
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--spacing-md);
+            }
+            .header {
+                padding: var(--spacing-md);
+            }
+            .kpi-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            .charts-section {
+                padding: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+    <header class="header" role="banner">
+        <h1>Dashboard de KPIs - GlobalCoffee</h1>
+        <p>Previsão Climática e Indicadores para Produtores de Café</p>
+    </header>
+    <main id="main-content" class="container" role="main">
+        <section class="kpi-grid" aria-label="Indicadores principais">
+            <article class="kpi-card" tabindex="0">
+                <h2 class="kpi-card__title">Produção Atual</h2>
+                <p class="kpi-card__value">--</p>
+                <p class="kpi-card__change">--</p>
+            </article>
+            <article class="kpi-card" tabindex="0">
+                <h2 class="kpi-card__title">Precipitação</h2>
+                <p class="kpi-card__value">--</p>
+                <p class="kpi-card__change">--</p>
+            </article>
+            <article class="kpi-card" tabindex="0">
+                <h2 class="kpi-card__title">Temperatura Média</h2>
+                <p class="kpi-card__value">--</p>
+                <p class="kpi-card__change">--</p>
+            </article>
+            <article class="kpi-card" tabindex="0">
+                <h2 class="kpi-card__title">Umidade</h2>
+                <p class="kpi-card__value">--</p>
+                <p class="kpi-card__change">--</p>
+            </article>
+        </section>
+        <section class="charts-section" aria-label="Gráficos e visualizações">
+            <h2 class="charts-section__title">Visualizações</h2>
+            <div class="chart-placeholder" aria-live="polite" aria-busy="false">
+                Gráficos serão exibidos aqui
+            </div>
+        </section>
+    </main>
+    <footer class="footer" role="contentinfo">
+        <p>© 2025 GlobalCoffee - Todos os direitos reservados</p>
+    </footer>
+</body>
+</html>

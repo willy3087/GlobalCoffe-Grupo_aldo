@@ -1,0 +1,46 @@
+graph TD
+  A[Alertas Climáticos Simplificados]
+
+  A --> B[Requisitos Funcionais]
+  B --> B1[Monitoramento Contínuo]
+  B --> B2[Coleta e Integração de Dados]
+  B --> B3[Análise e Geração de Alertas]
+  B --> B4[Critérios de Acionamento]
+  B --> B5[Canais de Entrega]
+  B --> B6[Segmentação e Personalização]
+  B --> B7[Interface e Usabilidade]
+
+  A --> C[Requisitos Não Funcionais]
+  C --> C1[Performance]
+  C --> C2[Disponibilidade e Escalabilidade]
+  C --> C3[Segurança]
+  C --> C4[Confiabilidade]
+
+  A --> D[Regras de Negócio]
+  D --> D1[Critérios de Acionamento]
+  D --> D2[Priorização]
+  D --> D3[Segmentação]
+  D --> D4[Frequência e Horários]
+
+%% Fluxos de Usuário
+
+subgraph Caso de Uso 1: Produtor
+  P[Produtor] --> P1[Recebe alertas personalizados]
+  P1 --> P2[Configura preferências de alerta]
+  P2 --> P3[Visualiza dashboard com insights climáticos]
+  P3 --> P4[Reage a alertas críticos]
+end
+
+subgraph Caso de Uso 2: Cooperativa
+  C[Cooperativa] --> C1[Recebe alertas segmentados por região]
+  C1 --> C2[Analisa relatórios consolidados]
+  C2 --> C3[Comunica produtores sobre riscos]
+  C3 --> C4[Adapta estratégias de cultivo]
+end
+
+subgraph Caso de Uso 3: Trader
+  T[Trader] --> T1[Recebe alertas de mercado e clima]
+  T1 --> T2[Monitora volatilidade e volume de trading]
+  T2 --> T3[Decide operações de compra e venda]
+  T3 --> T4[Configura canais de notificação preferidos]
+end

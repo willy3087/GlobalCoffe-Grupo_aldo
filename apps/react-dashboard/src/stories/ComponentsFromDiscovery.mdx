@@ -1,0 +1,202 @@
+# Componentes Baseados na Pesquisa Discovery
+
+Esta seção documenta os componentes criados especificamente com base na **fase Discovery do projeto Global Coffee**, validados através de pesquisas com produtores, cooperativas e traders.
+
+## 🎯 Persona Principal: José Silva (Produtor)
+
+**Perfil:** Produtor familiar tradicional, 45-60 anos, baixa familiaridade digital
+**Necessidades:** Suporte intensivo no onboarding, comunicação via cooperativa, funcionalidades essenciais simplificadas
+
+---
+
+## 📊 Dashboard KPIs (Clima)
+
+### Características do Componente
+- **Cards grandes e visuais** para facilitar leitura rápida no campo
+- **Ícones meteorológicos** para compreensão imediata sem necessidade de leitura
+- **Cores semânticas** (Verde/Amarelo/Vermelho) para alertas visuais
+
+### KPIs Climáticos Implementados
+- **Temperatura:** Dados essenciais para planejamento agrícola
+- **Umidade:** Monitoramento das condições do solo
+- **Vento:** Informações para aplicação de defensivos
+- **Precipitação:** Acompanhamento de chuvas
+- **Cobertura de Nuvens:** Previsão visual do tempo
+- **Pressão Atmosférica:** Dados complementares
+
+```tsx
+// Exemplo de uso dos KPIs Climáticos
+<WeatherKPICard
+  title="Temperatura"
+  value="24.8°C"
+  trend="stable"
+  icon={<ThermometerIcon />}
+  color="orange"
+  description="Ideal para cultivo"
+/>
+```
+
+---
+
+## 💰 Pricing (Negociação)
+
+### Funcionalidades Validadas
+- **Gráfico candlestick** - Padrão familiar para traders
+- **Tabela de ordens** - Mostra profundidade do mercado  
+- **Atualização em tempo real** - Indicador visual de dados "vivos"
+- **Múltiplas perspectivas** - Canais, qualidade, mercados, componentes de preço
+
+### Dados Integrados
+- **ICE Futures NY** - Mercado internacional
+- **BM&F Bovespa** - Mercado nacional
+- **CEPEA/ESALQ** - Preços regionais
+- **Mercado Spot Local** - Preços da região
+
+---
+
+## 📈 KPIs Principais (Produtor)
+
+Baseado na especificação técnica das **linhas 375-376** do documento:
+
+### Indicadores Essenciais
+1. **Preço Médio Atual** - Com variação diária
+2. **Tipo Mais Valorizado** - Com prêmio de qualidade  
+3. **Canal Mais Vantajoso** - Considerando comissões e benefícios
+4. **Índice Climático da Safra** - Com probabilidade associada
+
+### APIs Integradas
+- **Commodities-API** → Preços café USD/BRL
+- **Alpha Vantage** → Volatilidade e análise técnica
+- **CEPEA** → Preços regionais
+- **CONAB** → Análise de canais
+- **OpenWeatherMap** → Índice climático
+
+```tsx
+// KPI Card otimizado para produtores
+<KPICard
+  title="Preço Médio"
+  value="$4.25"
+  unit="/lb"
+  change={3.2}
+  changeType="increase"
+  status="positive"
+  statusText="Alta"
+  subtitle="Baseado em Commodities-API + Yahoo Finance"
+/>
+```
+
+---
+
+## 🔮 Simulação de Cenários (30 dias)
+
+### Cenários Modelados
+- **Otimista:** +15% (25% probabilidade)
+- **Realista:** +5% (60% probabilidade)  
+- **Pessimista:** -10% (15% probabilidade)
+
+### Recomendações de Hedge
+- **Proteção recomendada:** 30-50% da produção
+- **Instrumentos:** Contratos BMF/ICE (manual)
+- **Eficácia:** Backtesting validado em 5 anos
+
+---
+
+## 🏪 Canais de Comercialização
+
+### Canal: Cooperativa
+- **Segurança:** 95%
+- **Comissão:** 0.5% fixo
+- **Vantagens:** Assistência técnica, credibilidade
+
+### Canal: Corretor  
+- **Flexibilidade:** 100%
+- **Comissão:** 0.5-1% variável
+- **Vantagens:** Agilidade, negociação direta
+
+```tsx
+// Comparativo de canais
+<ChannelComparisonCard
+  channels={[
+    {
+      name: "Cooperativa",
+      security: 95,
+      commission: 0.5,
+      flexibility: 70
+    },
+    {
+      name: "Corretor", 
+      security: 80,
+      commission: 0.75,
+      flexibility: 100
+    }
+  ]}
+/>
+```
+
+---
+
+## 💡 Componentes de Preço
+
+### Distribuição Validada
+- **Produção:** 45%
+- **Logística:** 20%
+- **Benefício:** 15%
+- **Mercado:** 12%
+- **Taxas:** 8%
+
+---
+
+## 🛡️ Instrumentos de Proteção
+
+### Contratos Disponíveis
+- **BMF (Brasil)** - Mercado doméstico
+- **ICE NY (EUA)** - Mercado internacional
+
+### Eficácia Comprovada
+- **Contratos Futuros:** 75% eficácia
+- **Opções de Venda:** 60% eficácia
+- **Recomendação:** 30% da safra protegida
+
+---
+
+## 📱 Funcionalidades para José Silva
+
+### Essenciais Implementadas
+1. **Controle financeiro simplificado** - KPICard com dados básicos
+2. **Acompanhamento de safra** - StatusPill para fases da produção
+3. **Suporte direto** - Links para FAQ, chamados, email
+4. **Onboarding assistido** - Componentes progressivos
+5. **Comunicação via cooperativa** - Interface integrada
+6. **Relatórios simples** - Exportação one-click
+7. **Alertas climáticos** - Cards visuais simplificados
+8. **QR-Code para rastreabilidade** - Componente básico
+
+### Princípios de UX para José
+- **Cards grandes e visuais** - Facilitar leitura no campo
+- **Ícones sem texto** - Compreensão imediata
+- **Cores semânticas** - Verde = bom, Vermelho = atenção
+- **Interface progressiva** - Mais detalhes conforme familiaridade
+- **Suporte contextual** - Ajuda sempre disponível
+
+---
+
+## 🏗️ Arquitetura de Componentes
+
+Todos os componentes foram estruturados seguindo os **Princípios de Design** validados:
+
+### Simplicidade Visual
+- Preto e branco para wireframes
+- Cores apenas para status e alertas
+- Foco na estrutura, não na decoração
+
+### Hierarquia Clara
+- Informações organizadas por prioridade
+- José Silva vê primeiro o que mais importa
+- Dados secundários em segundo plano
+
+### Acessibilidade
+- Fontes legíveis em dispositivos móveis
+- Contraste adequado para uso no campo
+- Navegação intuitiva para baixa digitalização
+
+Esta documentação garante que todos os componentes atendam às necessidades reais validadas durante a fase Discovery, priorizando a experiência do produtor José Silva.

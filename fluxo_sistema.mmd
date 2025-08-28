@@ -1,0 +1,123 @@
+---
+config:
+  layout: elk
+  look: classic
+  id: 27994a05-25a6-4335-be3f-c2761c5c519f
+---
+flowchart TD
+    A["Pequena Cooperativa Regional"] --> B["Módulo financeiro em nuvem plug-and-play"] & C["Rastreabilidade com QR-Code + blockchain simplificado"] & D["API climática regional integrada"] & E["Portal web de ofertas spot"] & F["Onboarding assistido e recepção digital"] & G["Alertas climáticos simplificados"] & H["Exportação de relatórios para compradores"]
+    B --> B1["Dashboard Financeiro"] & B2["Gestão de Receitas"] & B3["Gestão de Despesas"] & B7["Relatórios Financeiros"] & B8["Integração API"] & B9["Segurança e Backup em Nuvem"] & B10["Onboarding Financeiro Assistido"]
+    B7 --> A
+    B8 --> C & E
+    B10 --> B1
+    D --> D1["Coleta de Dados Climáticos Regionais"] & D2["Processamento e Análise de Dados"] & D3["API REST para Consulta"] & D4["Alertas Climáticos Personalizados"] & D5["Integração com Módulo Financeiro"] & D6["Dashboard Climático"]
+    D1 --> D2
+    D2 --> D3 & D6
+    D3 --> D4 & D5
+    C --> C1["Geração de QR-Code para Certificados"] & C2["Registro de certificados"] & C3["Leitura e Verificação de QR-Code"] & C4["Dashboard de Rastreabilidade"] & C5["Exportação de Relatórios de Rastreabilidade"]
+    C1 --> C2
+    C2 --> C3 & C4
+    C4 --> C5
+    E --> E1["Cadastro de Ofertas Spot"] & E2["Consulta e Busca de Ofertas"] & E3["Negociação e Fechamento"] & E4["Notificações de Novas Ofertas"] & E5["Relatórios de Transações"]
+    E1 --> E2
+    E2 --> E3
+    E3 --> E4 & E5
+    G --> G1["Monitoramento Climático Simplificado"] & G2["Configuração de Alertas Personalizados"] & G3["Envio de Notificações via SMS/Email"] & G4["Dashboard de Alertas"]
+    G1 --> G2
+    G2 --> G3
+    G3 --> G4
+    H --> H1["Dashboard Geral da Aplicação"] & H3["Geração de Relatórios em PDF/Excel"] & H4["Envio Automático para Compradores"] & H5["Histórico de Relatórios Enviados"]
+    H3 --> H4
+    H4 --> H5
+    H1 --> H3
+     A:::Aqua
+     B:::Peach
+     C:::Aqua
+     C:::Ash
+     C:::Class_02
+     D:::Aqua
+     D:::Ash
+     E:::Aqua
+     E:::Rose
+     F:::Aqua
+     F:::Pine
+     G:::Aqua
+     G:::Ash
+     H:::Aqua
+     H:::Rose
+     B1:::Aqua
+     B1:::Sky
+     B2:::Aqua
+     B2:::Peach
+     B3:::Aqua
+     B3:::Peach
+     B7:::Aqua
+     B7:::Peach
+     B8:::Aqua
+     B8:::Peach
+     B9:::Aqua
+     B9:::Peach
+     B10:::Aqua
+     B10:::Peach
+     D1:::Aqua
+     D1:::Ash
+     D1:::Class_03
+     D1:::Class_03
+     D2:::Aqua
+     D2:::Class_04
+     D2:::Class_03
+     D3:::Aqua
+     D3:::Class_03
+     D4:::Aqua
+     D4:::Sky
+     D5:::Aqua
+     D5:::Peach
+     D6:::Aqua
+     D6:::Sky
+     C1:::Aqua
+     C1:::Class_02
+     C2:::Aqua
+     C2:::Class_02
+     C3:::Aqua
+     C3:::Class_02
+     C4:::Aqua
+     C4:::Class_02
+     C4:::Sky
+     C5:::Aqua
+     C5:::Rose
+     C5:::Sky
+     C5:::Class_02
+     E1:::Aqua
+     E1:::Rose
+     E2:::Aqua
+     E2:::Rose
+     E3:::Aqua
+     E3:::Rose
+     E4:::Aqua
+     E4:::Rose
+     E5:::Aqua
+     E5:::Sky
+     G1:::Aqua
+     G1:::Class_03
+     G2:::Aqua
+     G2:::Ash
+     G2:::Class_03
+     G3:::Aqua
+     G3:::Class_03
+     G4:::Aqua
+     G4:::Class_03
+     H1:::Aqua
+     H1:::Pine
+     H3:::Aqua
+     H4:::Aqua
+     H5:::Aqua
+    classDef Aqua stroke-width:1px, stroke-dasharray:none, stroke:#46EDC8, fill:#DEFFF8, color:#378E7A
+    classDef Class_04 stroke-width:4px, stroke-dasharray: 5, stroke:#FFFFFF, fill:#757575, color:#FFFFFF
+    classDef Sky stroke-width:1px, stroke-dasharray:none, stroke:#374D7C, fill:#E2EBFF, color:#374D7C
+    classDef Ash stroke-width:1px, stroke-dasharray:none, stroke:#999999, fill:#EEEEEE, color:#000000
+    classDef Class_03 stroke:#616161, fill:#fdfdfd, color:#424242, stroke-width:2px, stroke-dasharray: 2
+    classDef Rose stroke-width:1px, stroke-dasharray:none, stroke:#FF5978, fill:#FFDFE5, color:#8E2236
+    classDef Pine stroke-width:1px, stroke-dasharray:none, stroke:#254336, fill:#27654A, color:#FFFFFF
+    classDef Class_02 stroke:#2962FF, fill:#BBDEFB, color:#2962FF
+    classDef Peach stroke-width:1px, stroke-dasharray:none, stroke:#FBB35A, fill:#FFEFDB, color:#8F632D
+    style B stroke:#FFD600,fill:#FFE0B2,color:#616161

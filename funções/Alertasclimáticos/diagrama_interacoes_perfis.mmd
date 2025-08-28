@@ -1,0 +1,87 @@
+%%{init: {'theme': 'default', 'themeVariables': { 'primaryColor': '#e1e5f2', 'primaryTextColor': '#000', 'primaryBorderColor': '#7589a2', 'lineColor': '#5E5C5C', 'secondaryColor': '#f4f6fa', 'tertiaryColor': '#ffffff', 'background': '#ffffff', 'mainBkg': '#e1e5f2', 'secondBkg': '#f4f6fa', 'tertiaryBkg': '#ffffff', 'primaryBkgColor': '#e1e5f2', 'secondaryBkgColor': '#f4f6fa', 'tertiaryBkgColor': '#ffffff', 'lineWidth': 2, 'fontFamily': 'Arial, sans-serif' }}}%%
+flowchart TD
+    subgraph Perfis_de_Usuario
+        direction TB
+        Produtor[Produtor]
+        Cooperativa[Cooperativa]
+        Trader[Trader]
+    end
+
+    subgraph Interacoes_Produtor
+        direction TB
+        P_Login[Login na plataforma]
+        P_Dashboard[Dashboard Principal]
+        P_Recebe_Alertas[Recebe alertas personalizados]
+        P_Visualiza_Alertas[Visualiza alertas e notificações]
+        P_Configura[Configura preferências de alerta]
+        P_Reage[Reage a alertas críticos]
+
+        Produtor --> P_Login --> P_Dashboard
+        P_Dashboard --> P_Recebe_Alertas --> P_Visualiza_Alertas
+        P_Dashboard --> P_Configura
+        P_Dashboard --> P_Reage
+    end
+
+    subgraph Interacoes_Cooperativa
+        direction TB
+        C_Login[Login na plataforma]
+        C_Dashboard[Dashboard Principal]
+        C_KPI_1["Taxa de Resposta aos Alertas"]
+        C_KPI_3["Cobertura Regional"]
+        C_KPI_5["Precisão dos Alertas"]
+        C_KPI_6["Taxa de Falsos Positivos"]
+        C_KPI_7["Índice de Severidade Climática"]
+        C_KPI_8["Tempo de Antecedência dos Alertas"]
+        C_KPI_10["ROI das Ações Preventivas"]
+        C_KPI_11["Custo por Alerta Processado"]
+        C_KPI_13["Pegada de Carbono"]
+        C_KPI_15["Índice de Conformidade ESG"]
+        C_KPI_16["Taxa de Adoção de Práticas Sustentáveis"]
+        C_KPI_17["Taxa de Abertura de Alertas"]
+        C_KPI_18["Tempo de Disseminação"]
+        C_KPI_19["Satisfação dos Produtores (NPS)"]
+        C_KPI_20["Taxa de Conversão de Alertas em Ações"]
+        C_KPI_21["Acurácia dos Dados Meteorológicos"]
+        C_KPI_24["Taxa de Disponibilidade do Sistema"]
+        C_Recebe_Alertas[Recebe alertas segmentados por região]
+        C_Visualiza_Relatorios[Visualiza relatórios consolidados]
+        C_Comunica_Produtores[Comunica produtores sobre riscos]
+        C_Adapta_Estrategias[Adapta estratégias de cultivo]
+
+        Cooperativa --> C_Login --> C_Dashboard
+        C_Dashboard --> C_KPI_1
+        C_Dashboard --> C_KPI_3
+        C_Dashboard --> C_KPI_5
+        C_Dashboard --> C_KPI_6
+        C_Dashboard --> C_KPI_7
+        C_Dashboard --> C_KPI_8
+        C_Dashboard --> C_KPI_10
+        C_Dashboard --> C_KPI_11
+        C_Dashboard --> C_KPI_13
+        C_Dashboard --> C_KPI_15
+        C_Dashboard --> C_KPI_16
+        C_Dashboard --> C_KPI_17
+        C_Dashboard --> C_KPI_18
+        C_Dashboard --> C_KPI_19
+        C_Dashboard --> C_KPI_20
+        C_Dashboard --> C_KPI_21
+        C_Dashboard --> C_KPI_24
+        C_Dashboard --> C_Recebe_Alertas --> C_Visualiza_Relatorios
+        C_Dashboard --> C_Comunica_Produtores
+        C_Dashboard --> C_Adapta_Estrategias
+    end
+
+    subgraph Interacoes_Trader
+        direction TB
+        T_Login[Login na plataforma]
+        T_Dashboard[Dashboard Principal]
+        T_Recebe_Alertas[Recebe alertas de mercado e clima]
+        T_Monitora[Monitora volatilidade e volume de trading]
+        T_Decide_Operacoes[Decide operações de compra e venda]
+        T_Configura_Notificacoes[Configura canais de notificação]
+
+        Trader --> T_Login --> T_Dashboard
+        T_Dashboard --> T_Recebe_Alertas --> T_Monitora
+        T_Dashboard --> T_Decide_Operacoes
+        T_Dashboard --> T_Configura_Notificacoes
+    end

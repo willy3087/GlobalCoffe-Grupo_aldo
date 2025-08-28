@@ -1,0 +1,1 @@
+- Planejamento: seleção e confirmação de ações estratégicas.

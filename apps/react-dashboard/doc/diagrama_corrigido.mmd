@@ -1,0 +1,321 @@
+---
+id: f0251b55-8098-4a10-bec5-5dc261c21c9a
+---
+graph TD
+    terminal-4bf832b538582e046a09c07602c6cebc["Terminal"]
+    terminal-b769167cd8f9dc343445a89a5d581c52["Terminal"]
+    terminal-c30b79bb0ef3dd443345e6c88c47c87d["Terminal"]
+    terminal-83266b0aee84ecc1140fc6cd97657814["Terminal"]
+    terminal-7a147fb9b53fc16333871f5fc7f068bc["Terminal"]
+    terminal-e445cbae03877e04499fadb8666ac14d["Terminal"]
+    
+    subgraph search-results-group-e445cbae03877e04499fadb8666ac14d["Search Results"]
+        search-result-e445cbae03877e04499fadb8666ac14d["search-result-e445cbae03877e04499fadb8666ac14d"]
+        report-section-e445cbae03877e04499fadb8666ac14d-0["report-section-e445cbae03877e04499fadb8666ac14d-0"]
+        report-section-e445cbae03877e04499fadb8666ac14d-1["report-section-e445cbae03877e04499fadb8666ac14d-1"]
+        
+        subgraph section-diagram-e445cbae-wrapper["Página KPIs do Produtor [app/features/kpis/KPIsProdutor.tsx]"]
+            alertSystem_e445cbae["Alert System<br>Internal System"]
+            alphaVantage_e445cbae["Alpha Vantage<br>External API"]
+            backtestingEngine_e445cbae["Backtesting Engine<br>Internal System"]
+            cepeaEsalq_e445cbae["CEPEA/ESALQ<br>Web Scraping"]
+            coffeeResearch_e445cbae["Coffee Research<br>Web Scraping"]
+            commoditiesAPI_e445cbae["Commodities-API<br>External API"]
+            conab_e445cbae["CONAB<br>Web Scraping"]
+            ibge_e445cbae["IBGE<br>External Data"]
+            iceMarketData_e445cbae["ICE Market Data API<br>External API"]
+            kpiPage_e445cbae["Página KPIs do Produtor<br>React Component"]
+            manualDB_e445cbae["Manual Database<br>Internal Data"]
+            newsAPI_e445cbae["NewsAPI<br>External API"]
+            openAI_e445cbae["OpenAI<br>External AI Service"]
+            openWeatherMap_e445cbae["OpenWeatherMap API<br>External API"]
+            proprietaryDB_e445cbae["Proprietary Database<br>Internal Data"]
+            sagarpaConadesuca_e445cbae["SAGARPA CONADESUCA<br>Web Scraping"]
+            scaCoffee_e445cbae["SCA Coffee<br>Web Scraping"]
+            tradingEconomics_e445cbae["Trading Economics<br>External API"]
+            usdaFAS_e445cbae["USDA FAS API<br>External API"]
+            yahooFinance_e445cbae["Yahoo Finance<br>External API"]
+            
+            subgraph calculadoraSection_e445cbae["7. Calculadora de Preços"]
+                ajusteQualidade_e445cbae["Ajuste Qualidade<br>Calculation"]
+                comissaoCanal_e445cbae["Comissão Canal<br>Calculation"]
+                precoBase_e445cbae["Preço Base<br>Calculation"]
+            end
+            
+            subgraph canaisSection_e445cbae["3. Canais de Comercialização"]
+                viaCooperativa_e445cbae["Via Cooperativa<br>Channel Analysis"]
+                viaCorretor_e445cbae["Via Corretor<br>Channel Analysis"]
+            end
+            
+            subgraph comparativoSection_e445cbae["4. Comparativo de Mercados"]
+                componentesPreco_e445cbae["Componentes do Preço<br>Algorithm"]
+                mercadoExterno_e445cbae["Mercado Externo<br>Market Data"]
+                mercadoInterno_e445cbae["Mercado Interno<br>Market Data"]
+                precosBolsa_e445cbae["Preços por Bolsa<br>Market Data"]
+            end
+            
+            subgraph instrumentosSection_e445cbae["5. Instrumentos de Proteção"]
+                detalhesContratos_e445cbae["Detalhes Contratos BMF/NY<br>Manual Data"]
+                eficaciaEstrategias_e445cbae["Eficácia Estratégias<br>Backtesting"]
+                recomendacoesPersonalizadas_e445cbae["Recomendações Personalizadas<br>AI/Algorithm"]
+            end
+            
+            subgraph kpiSection_e445cbae["1. KPIs Principais"]
+                climaSafra_e445cbae["Clima Safra<br>KPI"]
+                melhorCanal_e445cbae["Melhor Canal<br>KPI"]
+                precoMedio_e445cbae["Preço Médio Hoje<br>KPI"]
+                tipoValorizado_e445cbae["Tipo mais Valorizado<br>KPI"]
+            end
+            
+            subgraph sidebarSection_e445cbae["6. Sidebar - Alertas e Informações"]
+                alertasTempoReal_e445cbae["Alertas Tempo Real<br>System"]
+                dicasDia_e445cbae["Dicas do Dia<br>AI/Editorial"]
+                statusMercado_e445cbae["Status do Mercado<br>Temporal Logic"]
+            end
+            
+            subgraph simulacaoSection_e445cbae["2. Simulação de Cenários"]
+                cenarios_e445cbae["Cenários (Otimista, Realista, Pessimista)<br>Simulation"]
+                recomendacaoHedge_e445cbae["Recomendação Hedge<br>Algorithm"]
+            end
+            
+            %% Edges for section-diagram-e445cbae
+            kpiPage_e445cbae -->|displays| precoMedio_e445cbae
+            kpiPage_e445cbae -->|displays| tipoValorizado_e445cbae
+            kpiPage_e445cbae -->|displays| melhorCanal_e445cbae
+            kpiPage_e445cbae -->|displays| climaSafra_e445cbae
+            kpiPage_e445cbae -->|displays| cenarios_e445cbae
+            kpiPage_e445cbae -->|displays| recomendacaoHedge_e445cbae
+            kpiPage_e445cbae -->|displays| viaCooperativa_e445cbae
+            kpiPage_e445cbae -->|displays| viaCorretor_e445cbae
+            kpiPage_e445cbae -->|displays| mercadoInterno_e445cbae
+            kpiPage_e445cbae -->|displays| mercadoExterno_e445cbae
+            kpiPage_e445cbae -->|displays| precosBolsa_e445cbae
+            kpiPage_e445cbae -->|displays| componentesPreco_e445cbae
+            kpiPage_e445cbae -->|displays| detalhesContratos_e445cbae
+            kpiPage_e445cbae -->|displays| eficaciaEstrategias_e445cbae
+            kpiPage_e445cbae -->|displays| recomendacoesPersonalizadas_e445cbae
+            kpiPage_e445cbae -->|displays| alertasTempoReal_e445cbae
+            kpiPage_e445cbae -->|displays| dicasDia_e445cbae
+            kpiPage_e445cbae -->|displays| statusMercado_e445cbae
+            kpiPage_e445cbae -->|displays| precoBase_e445cbae
+            kpiPage_e445cbae -->|displays| ajusteQualidade_e445cbae
+            kpiPage_e445cbae -->|displays| comissaoCanal_e445cbae
+            
+            precoMedio_e445cbae -->|gets price| commoditiesAPI_e445cbae
+            precoMedio_e445cbae -->|converts| yahooFinance_e445cbae
+            tipoValorizado_e445cbae -->|scrapes SCA Score| scaCoffee_e445cbae
+            tipoValorizado_e445cbae -->|scrapes chemical components| coffeeResearch_e445cbae
+            tipoValorizado_e445cbae -->|scrapes defect types| sagarpaConadesuca_e445cbae
+            melhorCanal_e445cbae -->|scrapes analysis| conab_e445cbae
+            melhorCanal_e445cbae -->|uses| manualDB_e445cbae
+            climaSafra_e445cbae -->|gets weather data| openWeatherMap_e445cbae
+            cenarios_e445cbae -->|gets price| commoditiesAPI_e445cbae
+            cenarios_e445cbae -->|gets volatility| alphaVantage_e445cbae
+            cenarios_e445cbae -->|gets production data| tradingEconomics_e445cbae
+            recomendacaoHedge_e445cbae -->|uses volatility| alphaVantage_e445cbae
+            viaCooperativa_e445cbae -->|scrapes analysis| conab_e445cbae
+            viaCooperativa_e445cbae -->|uses productivity data| ibge_e445cbae
+            viaCooperativa_e445cbae -->|uses| proprietaryDB_e445cbae
+            viaCorretor_e445cbae -->|uses| proprietaryDB_e445cbae
+            mercadoInterno_e445cbae -->|gets volume| usdaFAS_e445cbae
+            mercadoInterno_e445cbae -->|gets price| commoditiesAPI_e445cbae
+            mercadoInterno_e445cbae -->|converts| yahooFinance_e445cbae
+            mercadoExterno_e445cbae -->|gets volume| usdaFAS_e445cbae
+            mercadoExterno_e445cbae -->|gets price| iceMarketData_e445cbae
+            mercadoExterno_e445cbae -->|uses for trend| alphaVantage_e445cbae
+            precosBolsa_e445cbae -->|gets BMF price| commoditiesAPI_e445cbae
+            precosBolsa_e445cbae -->|gets ICE price| iceMarketData_e445cbae
+            precosBolsa_e445cbae -->|scrapes CEPEA price| cepeaEsalq_e445cbae
+            precosBolsa_e445cbae -->|uses local data| proprietaryDB_e445cbae
+            componentesPreco_e445cbae -->|uses production costs| ibge_e445cbae
+            componentesPreco_e445cbae -->|uses logistics data| conab_e445cbae
+            componentesPreco_e445cbae -->|uses| proprietaryDB_e445cbae
+            detalhesContratos_e445cbae -->|updated from| manualDB_e445cbae
+            eficaciaEstrategias_e445cbae -->|uses| backtestingEngine_e445cbae
+            backtestingEngine_e445cbae -->|gets historical data| commoditiesAPI_e445cbae
+            recomendacoesPersonalizadas_e445cbae -->|gets volatility| alphaVantage_e445cbae
+            recomendacoesPersonalizadas_e445cbae -->|uses| openAI_e445cbae
+            alertasTempoReal_e445cbae -->|gets price| commoditiesAPI_e445cbae
+            alertasTempoReal_e445cbae -->|gets volatility| alphaVantage_e445cbae
+            alertasTempoReal_e445cbae -->|reads RSS| conab_e445cbae
+            alertasTempoReal_e445cbae -->|gets news| newsAPI_e445cbae
+            alertasTempoReal_e445cbae -->|uses| alertSystem_e445cbae
+            dicasDia_e445cbae -->|gets price| commoditiesAPI_e445cbae
+            dicasDia_e445cbae -->|gets weather| openWeatherMap_e445cbae
+            dicasDia_e445cbae -->|gets volatility| alphaVantage_e445cbae
+            dicasDia_e445cbae -->|gets news| newsAPI_e445cbae
+            dicasDia_e445cbae -->|generates tips| openAI_e445cbae
+            statusMercado_e445cbae -->|uses| alertSystem_e445cbae
+            precoBase_e445cbae -->|gets price| commoditiesAPI_e445cbae
+            precoBase_e445cbae -->|converts| yahooFinance_e445cbae
+            ajusteQualidade_e445cbae -->|scrapes price table| cepeaEsalq_e445cbae
+            comissaoCanal_e445cbae -->|gets from| proprietaryDB_e445cbae
+        end
+        
+        search-result-e445cbae03877e04499fadb8666ac14d --> report-section-e445cbae03877e04499fadb8666ac14d-0
+        report-section-e445cbae03877e04499fadb8666ac14d-0 --> report-section-e445cbae03877e04499fadb8666ac14d-1
+    end
+    
+    subgraph search-results-group-7a147fb9b53fc16333871f5fc7f068bc["Search Results"]
+        search-result-7a147fb9b53fc16333871f5fc7f068bc["search-result-7a147fb9b53fc16333871f5fc7f068bc"]
+        report-section-7a147fb9b53fc16333871f5fc7f068bc-0["report-section-7a147fb9b53fc16333871f5fc7f068bc-0"]
+        report-section-7a147fb9b53fc16333871f5fc7f068bc-1["report-section-7a147fb9b53fc16333871f5fc7f068bc-1"]
+        report-section-7a147fb9b53fc16333871f5fc7f068bc-3["report-section-7a147fb9b53fc16333871f5fc7f068bc-3"]
+        report-section-7a147fb9b53fc16333871f5fc7f068bc-16["report-section-7a147fb9b53fc16333871f5fc7f068bc-16"]
+        
+        subgraph section-diagram-7a147fb-visao-wrapper["Visão Geral da Página [KPIsProdutor.tsx]"]
+            calculatorModal_7a147fb["Modal Calculadora<br>Price Simulation"]
+            channels_7a147fb["Canais de Comercialização<br>Sales Channels"]
+            header_7a147fb["Header<br>Navigation"]
+            kpiPage_7a147fb["KPIsProdutor<br>Dashboard Page"]
+            kpis_7a147fb["KPIs Principais<br>Market Indicators"]
+            markets_7a147fb["Comparativo de Mercados<br>Market Analysis"]
+            protection_7a147fb["Instrumentos de Proteção<br>Hedge Options"]
+            sidebar_7a147fb["Sidebar<br>Quick Actions/Alerts"]
+            simulation_7a147fb["Simulação de Cenários<br>Price Forecast"]
+            
+            kpiPage_7a147fb -->|contains| header_7a147fb
+            kpiPage_7a147fb -->|contains| kpis_7a147fb
+            kpiPage_7a147fb -->|contains| simulation_7a147fb
+            kpiPage_7a147fb -->|contains| channels_7a147fb
+            kpiPage_7a147fb -->|contains| markets_7a147fb
+            kpiPage_7a147fb -->|contains| protection_7a147fb
+            kpiPage_7a147fb -->|contains| sidebar_7a147fb
+            kpiPage_7a147fb -->|contains| calculatorModal_7a147fb
+        end
+        
+        subgraph section-diagram-7a147fb-detalhamento-wrapper["Detalhamento dos Itens da Página"]
+            apiDoc_7a147fb_det["Tabela_APIs_KPIs_GlobalCoffee.md<br>API Definitions"]
+            calcModal_7a147fb_det["Calculadora de Preços<br>Modal Component"]
+            canais_7a147fb_det["Canais de Comercialização<br>Channel Data"]
+            cepeaAPI_7a147fb_det["CEPEA/ESALQ<br>External Data"]
+            commoditiesAPI_7a147fb_det["Commodities API<br>External Data"]
+            conabCrawler_7a147fb_det["CONAB Crawler<br>External Data"]
+            header_7a147fb_det["Header<br>UI Component"]
+            ibgeAPI_7a147fb_det["IBGE Estatísticas<br>External Data"]
+            iceAPI_7a147fb_det["ICE Market Data<br>External Data"]
+            kpis_7a147fb_det["KPIs Principais<br>Market Data"]
+            mercados_7a147fb_det["Comparativo de Mercados<br>Market Comparison"]
+            openWeatherAPI_7a147fb_det["OpenWeatherMap API<br>External Data"]
+            page_7a147fb_det["KPIsProdutor.tsx<br>Main Page"]
+            protecao_7a147fb_det["Instrumentos de Proteção<br>Hedge Options"]
+            sidebar_7a147fb_det["Sidebar<br>Utility Panel"]
+            simulacao_7a147fb_det["Simulação de Cenários<br>Forecast Data"]
+            usdaAPI_7a147fb_det["USDA PSD Online API<br>External Data"]
+            
+            page_7a147fb_det -->|displays| header_7a147fb_det
+            page_7a147fb_det -->|displays| kpis_7a147fb_det
+            page_7a147fb_det -->|displays| simulacao_7a147fb_det
+            page_7a147fb_det -->|displays| canais_7a147fb_det
+            page_7a147fb_det -->|displays| mercados_7a147fb_det
+            page_7a147fb_det -->|displays| protecao_7a147fb_det
+            page_7a147fb_det -->|displays| sidebar_7a147fb_det
+            page_7a147fb_det -->|triggers| calcModal_7a147fb_det
+            kpis_7a147fb_det -->|uses mock/derived| commoditiesAPI_7a147fb_det
+            kpis_7a147fb_det -->|uses mock/derived| openWeatherAPI_7a147fb_det
+            simulacao_7a147fb_det -->|internal calc| apiDoc_7a147fb_det
+            canais_7a147fb_det -->|uses mock/derived| conabCrawler_7a147fb_det
+            mercados_7a147fb_det -->|uses mock/derived| usdaAPI_7a147fb_det
+            mercados_7a147fb_det -->|uses mock/derived| ibgeAPI_7a147fb_det
+            mercados_7a147fb_det -->|uses mock/derived| commoditiesAPI_7a147fb_det
+            mercados_7a147fb_det -->|uses mock/derived| iceAPI_7a147fb_det
+            mercados_7a147fb_det -->|uses mock/derived| cepeaAPI_7a147fb_det
+            protecao_7a147fb_det -->|mock data| page_7a147fb_det
+            sidebar_7a147fb_det -->|mock data| page_7a147fb_det
+            calcModal_7a147fb_det -->|uses mock/derived| cepeaAPI_7a147fb_det
+            calcModal_7a147fb_det -->|uses mock/derived| commoditiesAPI_7a147fb_det
+        end
+        
+        subgraph section-diagram-7a147fb-resumo-wrapper["Resumo das Informações Não Fornecidas pelas Fontes da Tabela de APIs"]
+            apiDoc_7a147fb_res["Tabela_APIs_KPIs_GlobalCoffee.md<br>API Spec"]
+            kpiPage_7a147fb_res["KPIsProdutor.tsx<br>UI Page"]
+            
+            subgraph Sidebar_7a147fb_res["Sidebar"]
+                sidebarAlertas_7a147fb_res["Alertas em Tempo Real<br>Mock Data"]
+                sidebarDicas_7a147fb_res["Dicas do Dia<br>Mock Data"]
+                sidebarStatusMercado_7a147fb_res["Status do Mercado<br>Mock Data"]
+            end
+            
+            subgraph KPIsPrincipais_7a147fb_res["KPIs Principais"]
+                kpiAlertaMercado_7a147fb_res["Alerta Momento do Mercado<br>Internal Text"]
+                kpiClimaSafra_7a147fb_res["Clima Safra Interpretation<br>Mock Data"]
+                kpiMelhorCanal_7a147fb_res["Melhor Canal<br>Mock Data"]
+                kpiTipoValorizado_7a147fb_res["Tipo mais Valorizado<br>Mock Data"]
+            end
+            
+            subgraph SimulacaoCenarios_7a147fb_res["Simulação de Cenários"]
+                simAlertaHedge_7a147fb_res["Alerta Recomendação de Hedge<br>Internal Text"]
+                simCenariosValores_7a147fb_res["Cenários<br>Mock Data"]
+            end
+            
+            subgraph CanaisComercializacao_7a147fb_res["Canais de Comercialização"]
+                canaisComissoes_7a147fb_res["Comissões<br>Mock Data"]
+                canaisPercentuais_7a147fb_res["Percentuais<br>Mock Data"]
+            end
+            
+            subgraph ComparativoMercados_7a147fb_res["Comparativo de Mercados"]
+                mercadoComponentesPreco_7a147fb_res["Componentes do Preço<br>Mock Data"]
+                mercadoVolumesTendencias_7a147fb_res["Volumes e Tendências<br>Mock Data"]
+            end
+            
+            subgraph InstrumentosProtecao_7a147fb_res["Instrumentos de Proteção"]
+                protecaoContratos_7a147fb_res["Detalhes Contratos<br>Mock Data"]
+                protecaoEstrategias_7a147fb_res["Eficácia Estratégias<br>Mock Data"]
+                protecaoRecomendacao_7a147fb_res["Recomendação Personalizada<br>Mock Data"]
+            end
+            
+            subgraph ModalCalculadora_7a147fb_res["Modal da Calculadora de Preços"]
+                calcAjustesComissao_7a147fb_res["Ajustes Qualidade/Comissão<br>Fixed Logic"]
+                calcPrecoBase_7a147fb_res["Preço Base R$ 650<br>Mock Data"]
+            end
+            
+            kpiPage_7a147fb_res -->|displays| kpiTipoValorizado_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| kpiMelhorCanal_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| kpiClimaSafra_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| kpiAlertaMercado_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| simCenariosValores_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| simAlertaHedge_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| canaisPercentuais_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| canaisComissoes_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| mercadoVolumesTendencias_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| mercadoComponentesPreco_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| protecaoContratos_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| protecaoEstrategias_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| protecaoRecomendacao_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| sidebarAlertas_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| sidebarDicas_7a147fb_res
+            kpiPage_7a147fb_res -->|displays| sidebarStatusMercado_7a147fb_res
+            kpiPage_7a147fb_res -->|uses| calcPrecoBase_7a147fb_res
+            kpiPage_7a147fb_res -->|uses| calcAjustesComissao_7a147fb_res
+            
+            apiDoc_7a147fb_res -->|does not provide| kpiTipoValorizado_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| kpiMelhorCanal_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| kpiClimaSafra_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| kpiAlertaMercado_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| simCenariosValores_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| simAlertaHedge_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| canaisPercentuais_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| canaisComissoes_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| mercadoVolumesTendencias_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| mercadoComponentesPreco_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| protecaoContratos_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| protecaoEstrategias_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| protecaoRecomendacao_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| sidebarAlertas_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| sidebarDicas_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| sidebarStatusMercado_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| calcPrecoBase_7a147fb_res
+            apiDoc_7a147fb_res -->|does not provide| calcAjustesComissao_7a147fb_res
+        end
+        
+        report-section-7a147fb9b53fc16333871f5fc7f068bc-1 -->|Diagram| section-diagram-7a147fb-visao-wrapper
+        report-section-7a147fb9b53fc16333871f5fc7f068bc-3 -->|Diagram| section-diagram-7a147fb-detalhamento-wrapper
+        report-section-7a147fb9b53fc16333871f5fc7f068bc-16 -->|Diagram| section-diagram-7a147fb-resumo-wrapper
+        search-result-7a147fb9b53fc16333871f5fc7f068bc --> report-section-7a147fb9b53fc16333871f5fc7f068bc-0
+        report-section-7a147fb9b53fc16333871f5fc7f068bc-0 --> report-section-7a147fb9b53fc16333871f5fc7f068bc-1
+        report-section-7a147fb9b53fc16333871f5fc7f068bc-0 --> report-section-7a147fb9b53fc16333871f5fc7f068bc-3
+        report-section-7a147fb9b53fc16333871f5fc7f068bc-0 --> report-section-7a147fb9b53fc16333871f5fc7f068bc-16
+    end
+    
+    search-results-group-e445cbae03877e04499fadb8666ac14d -->|Provides context to| terminal-e445cbae03877e04499fadb8666ac14d
+    search-results-group-7a147fb9b53fc16333871f5fc7f068bc -->|Provides context to| terminal-7a147fb9b53fc16333871f5fc7f068bc

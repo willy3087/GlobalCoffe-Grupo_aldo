@@ -1,0 +1,31 @@
+{
+  "total_original": 15400,
+  "total_reorganized": 1471,
+  "lost_files_count": 15400,
+  "new_files_count": 1471,
+  "common_files_count": 0,
+  "lost_files_sample": [
+    "backups/backup_globalcoffee_20250730_125453/venv/lib/python3.11/site-packages/setuptools/_vendor/autocommand/autoparse.py",
+    "backups/backup_globalcoffee_20250730_132151/venv/lib/python3.11/site-packages/setuptools/tests/config/downloads/preload.py",
+    "node_modules/next/dist/shared/lib/server-inserted-html.shared-runtime.js.map",
+    "node_modules/next/dist/compiled/stream-http/",
+    "backups/backup_globalcoffee_20250730_132151/venv/lib/python3.11/site-packages/setuptools/tests/test_egg_info.py",
+    "node_modules/@swc/helpers/_/_async_generator_delegate/package.json",
+    "node_modules/@swc/helpers/src/_class_private_method_set.mjs",
+    "venv/lib/python3.11/site-packages/lxml/includes/libxslt/xsltexports.h",
+    "node_modules/next/dist/compiled/loader-utils3/LICENSE",
+    "node_modules/next/dist/compiled/node-html-parser/package.json"
+  ],
+  "new_files_sample": [
+    "GlobalCoffee_Reorganizado/src/scripts/table_3.py",
+    "GlobalCoffee_Reorganizado/docs/business/features/funcao_persona3.md",
+    "GlobalCoffee_Reorganizado/src/scripts/search.py",
+    "GlobalCoffee_Reorganizado/src/scripts/padding.py",
+    "GlobalCoffee_Reorganizado/src/scripts/__init___42.py",
+    "GlobalCoffee_Reorganizado/outros/etree.cpython-311-darwin.so",
+    "GlobalCoffee_Reorganizado/src/scripts/install_egg_info.py",
+    "GlobalCoffee_Reorganizado/duplicados/py_d41d8cd9_6.typed",
+    "GlobalCoffee_Reorganizado/src/scripts/structures.py",
+    "GlobalCoffee_Reorganizado/duplicados/INSTALLER_365c9bfe_1"
+  ]
+}

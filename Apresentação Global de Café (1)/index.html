@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Coffee - Discovery Completo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Navegação Lateral Fixa -->
+        <nav class="sidebar-nav">
+            <div class="nav-logo">
+                <span class="coffee-icon">☕</span>
+                <span class="nav-title">Global Coffee</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#slide-1" class="nav-link active" data-slide="1">Abertura</a></li>
+                <li><a href="#slide-2" class="nav-link" data-slide="2">Visão Executiva</a></li>
+                <li><a href="#slide-3" class="nav-link" data-slide="3">Análise de Mercado</a></li>
+                <li><a href="#slide-4" class="nav-link" data-slide="4">Validação de Hipóteses</a></li>
+                <li><a href="#slide-5" class="nav-link" data-slide="5">Gaps Identificados</a></li>
+                <li><a href="#slide-6" class="nav-link" data-slide="6">Funcionalidades Tier 1</a></li>
+                <li><a href="#slide-7" class="nav-link" data-slide="7">Sistema de Alertas 24h</a></li>
+                <li><a href="#slide-8" class="nav-link" data-slide="8">Arquitetura Técnica</a></li>
+                <li><a href="#slide-9" class="nav-link" data-slide="9">Roadmap 6 Meses</a></li>
+                <li><a href="#slide-10" class="nav-link" data-slide="10">Próximos Passos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <!-- Slide 1: Abertura -->
+            <section class="slide active" id="slide-1">
+                <div class="slide-content">
+                    <div class="title-slide">
+                        <div class="hero-logo">
+                            <span class="hero-coffee-icon">☕</span>
+                            <h1 class="hero-title">Global Coffee</h1>
+                        </div>
+                        <h2 class="main-title">Discovery Completo</h2>
+                        <p class="subtitle">Metodologia Duplo Diamante | Julho 2025 | Fase Discovery</p>
+                        <div class="hero-metrics">
+                            <div class="metric-card">
+                                <span class="metric-value">USD 450Bi</span>
+                                <span class="metric-label">Mercado Global</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-value">264k</span>
+                                <span class="metric-label">Produtores Brasil</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-value">5 Gaps</span>
+                                <span class="metric-label">Identificados</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: Visão Executiva -->
+            <section class="slide" id="slide-2">
+                <div class="slide-content">
+                    <h2 class="slide-title">Visão Executiva</h2>
+                    <div class="executive-summary">
+                        <div class="summary-points">
+                            <div class="summary-point">
+                                <span class="point-icon">🎯</span>
+                                <div class="point-content">
+                                    <h3>Oportunidade Identificada</h3>
+                                    <p>Mercado de café global de USD 450Bi com baixa digitalização (25-70% por segmento)</p>
+                                </div>
+                            </div>
+                            <div class="summary-point">
+                                <span class="point-icon">✅</span>
+                                <div class="point-content">
+                                    <h3>Hipóteses Validadas</h3>
+                                    <p>3 hipóteses críticas validadas (H1, H2, H4) com ROI de 25-50%</p>
+                                </div>
+                            </div>
+                            <div class="summary-point">
+                                <span class="point-icon">🚀</span>
+                                <div class="point-content">
+                                    <h3>Solução Proposta</h3>
+                                    <p>Plataforma integrada com blockchain, alertas 24h e assinatura coletiva</p>
+                                </div>
+                            </div>
+                            <div class="summary-point">
+                                <span class="point-icon">💰</span>
+                                <div class="point-content">
+                                    <h3>Projeção Financeira</h3>
+                                    <p>Receita projetada: USD 100k em 6 meses com 10k usuários</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kpi-overview">
+                            <h3>Métricas-Chave</h3>
+                            <div class="kpi-grid">
+                                <div class="kpi-item">
+                                    <span class="kpi-value">USD 450Bi</span>
+                                    <span class="kpi-label">TAM Global</span>
+                                </div>
+                                <div class="kpi-item">
+                                    <span class="kpi-value">264k</span>
+                                    <span class="kpi-label">Produtores Brasil</span>
+                                </div>
+                                <div class="kpi-item">
+                                    <span class="kpi-value">5.6%</span>
+                                    <span class="kpi-label">Crescimento Médio</span>
+                                </div>
+                                <div class="kpi-item">
+                                    <span class="kpi-value">97</span>
+                                    <span class="kpi-label">Cooperativas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: Análise de Mercado -->
+            <section class="slide" id="slide-3">
+                <div class="slide-content">
+                    <h2 class="slide-title">Análise de Mercado</h2>
+                    <div class="market-analysis">
+                        <div class="market-segments">
+                            <h3>Segmentação dos 5 Mercados Principais</h3>
+                            <div class="segments-grid">
+                                <div class="segment-card">
+                                    <div class="segment-header">
+                                        <h4>Café Commodity</h4>
+                                        <span class="segment-value">USD 180Bi</span>
+                                    </div>
+                                    <div class="segment-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">Crescimento:</span>
+                                            <span class="metric-value">2.5%</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">Digitalização:</span>
+                                            <span class="metric-value">25%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="segment-card">
+                                    <div class="segment-header">
+                                        <h4>Café Especial</h4>
+                                        <span class="segment-value">USD 65Bi</span>
+                                    </div>
+                                    <div class="segment-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">Crescimento:</span>
+                                            <span class="metric-value">12%</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">Digitalização:</span>
+                                            <span class="metric-value">45%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="segment-card">
+                                    <div class="segment-header">
+                                        <h4>Cooperativas</h4>
+                                        <span class="segment-value">USD 45Bi</span>
+                                    </div>
+                                    <div class="segment-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">Crescimento:</span>
+                                            <span class="metric-value">6.5%</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">Digitalização:</span>
+                                            <span class="metric-value">30%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="segment-card">
+                                    <div class="segment-header">
+                                        <h4>Traders/Exportadores</h4>
+                                        <span class="segment-value">USD 75Bi</span>
+                                    </div>
+                                    <div class="segment-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">Crescimento:</span>
+                                            <span class="metric-value">4.2%</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">Digitalização:</span>
+                                            <span class="metric-value">55%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="segment-card">
+                                    <div class="segment-header">
+                                        <h4>Roasters/Marcas</h4>
+                                        <span class="segment-value">USD 85Bi</span>
+                                    </div>
+                                    <div class="segment-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">Crescimento:</span>
+                                            <span class="metric-value">8.1%</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">Digitalização:</span>
+                                            <span class="metric-value">70%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="market-charts">
+                            <div class="chart-container">
+                                <h3>Crescimento por Segmento</h3>
+                                <canvas id="growthChart" width="400" height="200"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <h3>Nível de Digitalização</h3>
+                                <canvas id="digitalizationChart" width="400" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Validação de Hipóteses -->
+            <section class="slide" id="slide-4">
+                <div class="slide-content">
+                    <h2 class="slide-title">Validação de Hipóteses</h2>
+                    <div class="hypothesis-validation">
+                        <div class="hypothesis-cards">
+                            <div class="hypothesis-card validated">
+                                <div class="hypothesis-header">
+                                    <span class="hypothesis-id">H1</span>
+                                    <span class="validation-status">✅ Validada</span>
+                                </div>
+                                <h3>Ganho ≥ 5% com previsão climática</h3>
+                                <div class="hypothesis-evidence">
+                                    <p><strong>Evidência:</strong> Embrapa demonstra 6-8% de ganho em produtividade</p>
+                                    <div class="hypothesis-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">ROI:</span>
+                                            <span class="metric-value">35%</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">Investimento:</span>
+                                            <span class="metric-value">USD 25k</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hypothesis-card validated">
+                                <div class="hypothesis-header">
+                                    <span class="hypothesis-id">H2</span>
+                                    <span class="validation-status">✅ Validada</span>
+                                </div>
+                                <h3>Prêmio ≥ 3% via rastreabilidade</h3>
+                                <div class="hypothesis-evidence">
+                                    <p><strong>Evidência:</strong> 70% dos compradores globais aceitam prêmios ≥3%</p>
+                                    <div class="hypothesis-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">ROI:</span>
+                                            <span class="metric-value">25%</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">Investimento:</span>
+                                            <span class="metric-value">USD 200k</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hypothesis-card validated">
+                                <div class="hypothesis-header">
+                                    <span class="hypothesis-id">H4</span>
+                                    <span class="validation-status">✅ Validada</span>
+                                </div>
+                                <h3>Assinatura coletiva ≤ US$ 5/produtor</h3>
+                                <div class="hypothesis-evidence">
+                                    <p><strong>Evidência:</strong> 85% de aceitação para assinaturas ≤ US$5</p>
+                                    <div class="hypothesis-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">ROI:</span>
+                                            <span class="metric-value">50%</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">Receita Potencial:</span>
+                                            <span class="metric-value">USD 1.32M</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="validation-summary">
+                            <h3>Resumo da Validação</h3>
+                            <div class="validation-stats">
+                                <div class="stat-item">
+                                    <span class="stat-icon">✅</span>
+                                    <span class="stat-text">3 hipóteses validadas com dados científicos</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">📊</span>
+                                    <span class="stat-text">ROI médio de 37% nas funcionalidades validadas</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">🎯</span>
+                                    <span class="stat-text">Potencial de receita de USD 1.32M validado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Gaps Identificados -->
+            <section class="slide" id="slide-5">
+                <div class="slide-content">
+                    <h2 class="slide-title">Gaps Identificados</h2>
+                    <div class="gaps-analysis">
+                        <div class="gaps-table">
+                            <div class="table-header">
+                                <div class="col-gap">Gap</div>
+                                <div class="col-evidence">Evidência</div>
+                                <div class="col-impact">Impacto</div>
+                                <div class="col-priority">Prioridade</div>
+                            </div>
+                            <div class="table-body">
+                                <div class="gap-row">
+                                    <div class="gap-id">
+                                        <span class="gap-label">G1</span>
+                                        <span class="gap-title">Trader personas pouco detalhadas</span>
+                                    </div>
+                                    <div class="gap-evidence">Dificuldade de acesso a decisores</div>
+                                    <div class="gap-impact">Risco de MVP não atender requisitos</div>
+                                    <div class="gap-priority alta">Alta</div>
+                                </div>
+                                <div class="gap-row">
+                                    <div class="gap-id">
+                                        <span class="gap-label">G2</span>
+                                        <span class="gap-title">Precificação de especiais ausente</span>
+                                    </div>
+                                    <div class="gap-evidence">Liberdade de preço acima da bolsa</div>
+                                    <div class="gap-impact">Distorção de previsão de margens</div>
+                                    <div class="gap-priority media">Média</div>
+                                </div>
+                                <div class="gap-row">
+                                    <div class="gap-id">
+                                        <span class="gap-label">G3</span>
+                                        <span class="gap-title">Papel das cooperativas subestimado</span>
+                                    </div>
+                                    <div class="gap-evidence">Cooperativas dominam crédito e exportação</div>
+                                    <div class="gap-impact">Falha na estratégia de aquisição</div>
+                                    <div class="gap-priority alta">Alta</div>
+                                </div>
+                                <div class="gap-row">
+                                    <div class="gap-id">
+                                        <span class="gap-label">G4</span>
+                                        <span class="gap-title">Dependência de certificações não contemplada</span>
+                                    </div>
+                                    <div class="gap-evidence">Selos decisivos para mercado premium</div>
+                                    <div class="gap-impact">Rastreabilidade incompleta</div>
+                                    <div class="gap-priority alta">Alta</div>
+                                </div>
+                                <div class="gap-row">
+                                    <div class="gap-id">
+                                        <span class="gap-label">G5</span>
+                                        <span class="gap-title">Volatilidade extrema ignorada</span>
+                                    </div>
+                                    <div class="gap-evidence">Variação de R$ 250 para R$ 2.500 em 12 meses</div>
+                                    <div class="gap-impact">Acurácia irrealista</div>
+                                    <div class="gap-priority critica">Crítica</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gaps-summary">
+                            <h3>Distribuição por Prioridade</h3>
+                            <div class="priority-stats">
+                                <div class="priority-item critica">
+                                    <span class="priority-count">1</span>
+                                    <span class="priority-label">Crítica</span>
+                                </div>
+                                <div class="priority-item alta">
+                                    <span class="priority-count">3</span>
+                                    <span class="priority-label">Alta</span>
+                                </div>
+                                <div class="priority-item media">
+                                    <span class="priority-count">1</span>
+                                    <span class="priority-label">Média</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 6: Funcionalidades Tier 1 -->
+            <section class="slide" id="slide-6">
+                <div class="slide-content">
+                    <h2 class="slide-title">Funcionalidades Prioritárias - Tier 1</h2>
+                    <div class="features-tier1">
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <h3>API de Preços Commodity Real-time</h3>
+                                    <div class="feature-roi">ROI: 45%</div>
+                                </div>
+                                <div class="feature-details">
+                                    <p>Integração com múltiplas fontes de preços globais</p>
+                                    <div class="feature-metrics">
+                                        <span class="metric">Custo: USD 150k</span>
+                                        <span class="metric">Prazo: 2 sprints</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <h3>EUDR Compliance Scanner</h3>
+                                    <div class="feature-roi">ROI: 60%</div>
+                                </div>
+                                <div class="feature-details">
+                                    <p>Verificação automática de desflorestamento</p>
+                                    <div class="feature-metrics">
+                                        <span class="metric">Custo: USD 300k</span>
+                                        <span class="metric">Prazo: 4 sprints</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <h3>Sistema de Assinatura Digital US$5/ano</h3>
+                                    <div class="feature-roi">ROI: 50%</div>
+                                </div>
+                                <div class="feature-details">
+                                    <p>Modelo freemium para cooperativas</p>
+                                    <div class="feature-metrics">
+                                        <span class="metric">Custo: USD 50k</span>
+                                        <span class="metric">Prazo: 2 sprints</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <h3>Blockchain QR Code Rastreabilidade</h3>
+                                    <div class="feature-roi">ROI: 25%</div>
+                                </div>
+                                <div class="feature-details">
+                                    <p>Sistema de QR codes únicos por lote</p>
+                                    <div class="feature-metrics">
+                                        <span class="metric">Custo: USD 200k</span>
+                                        <span class="metric">Prazo: 3 sprints</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <h3>Integração PIX/Mobile Money</h3>
+                                    <div class="feature-roi">ROI: 35%</div>
+                                </div>
+                                <div class="feature-details">
+                                    <p>Pagamentos instantâneos para produtores</p>
+                                    <div class="feature-metrics">
+                                        <span class="metric">Custo: USD 100k</span>
+                                        <span class="metric">Prazo: 2 sprints</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-header">
+                                    <h3>Aplicativo Mobile Offline-First</h3>
+                                    <div class="feature-roi">ROI: 40%</div>
+                                </div>
+                                <div class="feature-details">
+                                    <p>Funcionalidade completa sem internet</p>
+                                    <div class="feature-metrics">
+                                        <span class="metric">Custo: USD 200k</span>
+                                        <span class="metric">Prazo: 4 sprints</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="investment-chart">
+                            <h3>Distribuição de Investimento</h3>
+                            <canvas id="investmentChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7: Sistema de Alertas 24h -->
+            <section class="slide" id="slide-7">
+                <div class="slide-content">
+                    <h2 class="slide-title">Sistema de Alertas 24h</h2>
+                    <div class="alerts-system">
+                        <div class="alert-cycles">
+                            <h3>4 Ciclos Diários de Deep Research</h3>
+                            <div class="cycles-grid">
+                                <div class="cycle-card">
+                                    <div class="cycle-time">06:00 EST</div>
+                                    <div class="cycle-info">
+                                        <h4>Análise Matinal</h4>
+                                        <p>Américas abrem, Europa ativa</p>
+                                        <div class="cycle-efficiency">Eficácia: 95%</div>
+                                    </div>
+                                </div>
+                                <div class="cycle-card">
+                                    <div class="cycle-time">12:00 EST</div>
+                                    <div class="cycle-info">
+                                        <h4>Análise Meio-dia</h4>
+                                        <p>Pico Américas/Europa</p>
+                                        <div class="cycle-efficiency">Eficácia: 98%</div>
+                                    </div>
+                                </div>
+                                <div class="cycle-card">
+                                    <div class="cycle-time">18:00 EST</div>
+                                    <div class="cycle-info">
+                                        <h4>Análise Vespertina</h4>
+                                        <p>Fechamento Américas, Ásia abre</p>
+                                        <div class="cycle-efficiency">Eficácia: 88%</div>
+                                    </div>
+                                </div>
+                                <div class="cycle-card">
+                                    <div class="cycle-time">00:00 EST</div>
+                                    <div class="cycle-info">
+                                        <h4>Análise Noturna</h4>
+                                        <p>Ásia ativa</p>
+                                        <div class="cycle-efficiency">Eficácia: 82%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert-dashboard">
+                            <h3>Dashboard de Performance</h3>
+                            <div class="dashboard-metrics">
+                                <div class="dashboard-metric">
+                                    <span class="metric-value">87%</span>
+                                    <span class="metric-label">Precisão</span>
+                                </div>
+                                <div class="dashboard-metric">
+                                    <span class="metric-value">285ms</span>
+                                    <span class="metric-label">Tempo Resposta</span>
+                                </div>
+                                <div class="dashboard-metric">
+                                    <span class="metric-value">99.8%</span>
+                                    <span class="metric-label">Uptime</span>
+                                </div>
+                                <div class="dashboard-metric">
+                                    <span class="metric-value">6,100</span>
+                                    <span class="metric-label">Alertas/Dia</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert-types">
+                            <h3>Tipos de Alertas por Prioridade</h3>
+                            <canvas id="alertTypesChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 8: Arquitetura Técnica -->
+            <section class="slide" id="slide-8">
+                <div class="slide-content">
+                    <h2 class="slide-title">Arquitetura Técnica</h2>
+                    <div class="tech-architecture">
+                        <div class="tech-stack">
+                            <div class="stack-layer">
+                                <h3>Frontend</h3>
+                                <div class="tech-items">
+                                    <span class="tech-item">React Native</span>
+                                    <span class="tech-item">Dashboard React/TypeScript</span>
+                                    <span class="tech-item">PWA</span>
+                                </div>
+                            </div>
+                            <div class="stack-layer">
+                                <h3>Backend</h3>
+                                <div class="tech-items">
+                                    <span class="tech-item">Node.js microservices</span>
+                                    <span class="tech-item">Python IA/analytics</span>
+                                    <span class="tech-item">Kong API Gateway</span>
+                                </div>
+                            </div>
+                            <div class="stack-layer">
+                                <h3>Blockchain & Dados</h3>
+                                <div class="tech-items">
+                                    <span class="tech-item">Ethereum</span>
+                                    <span class="tech-item">IPFS</span>
+                                    <span class="tech-item">PostgreSQL</span>
+                                    <span class="tech-item">MongoDB</span>
+                                    <span class="tech-item">Redis</span>
+                                </div>
+                            </div>
+                            <div class="stack-layer">
+                                <h3>Infraestrutura</h3>
+                                <div class="tech-items">
+                                    <span class="tech-item">Kubernetes AWS/GCP</span>
+                                    <span class="tech-item">Docker</span>
+                                    <span class="tech-item">Load balancers</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="architecture-specs">
+                            <h3>Especificações de Performance</h3>
+                            <div class="specs-grid">
+                                <div class="spec-item">
+                                    <span class="spec-label">Latência API:</span>
+                                    <span class="spec-value">< 100ms</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Throughput:</span>
+                                    <span class="spec-value">10k req/s</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Uptime:</span>
+                                    <span class="spec-value">99.9%</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Escalabilidade:</span>
+                                    <span class="spec-value">1M+ usuários</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 9: Roadmap 6 Meses -->
+            <section class="slide" id="slide-9">
+                <div class="slide-content">
+                    <h2 class="slide-title">Roadmap 6 Meses</h2>
+                    <div class="roadmap-timeline">
+                        <div class="timeline-header">
+                            <h3>Timeline Visual com Marcos e Projeções</h3>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-item">
+                                <div class="timeline-period">Sprint 1-2</div>
+                                <div class="timeline-content">
+                                    <h4>MVP API preços + auth</h4>
+                                    <div class="timeline-metrics">
+                                        <span class="metric">100 usuários</span>
+                                        <span class="metric">USD 0 receita</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-period">Sprint 3-4</div>
+                                <div class="timeline-content">
+                                    <h4>Certificados + blockchain</h4>
+                                    <div class="timeline-metrics">
+                                        <span class="metric">500 usuários</span>
+                                        <span class="metric">USD 2k receita</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-period">Sprint 5-6</div>
+                                <div class="timeline-content">
+                                    <h4>PIX + assinaturas</h4>
+                                    <div class="timeline-metrics">
+                                        <span class="metric">1k usuários</span>
+                                        <span class="metric">USD 8k receita</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-period">Sprint 7-8</div>
+                                <div class="timeline-content">
+                                    <h4>EUDR compliance</h4>
+                                    <div class="timeline-metrics">
+                                        <span class="metric">2k usuários</span>
+                                        <span class="metric">USD 25k receita</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-period">Sprint 9-10</div>
+                                <div class="timeline-content">
+                                    <h4>App mobile completo</h4>
+                                    <div class="timeline-metrics">
+                                        <span class="metric">5k usuários</span>
+                                        <span class="metric">USD 50k receita</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-period">Sprint 11-12</div>
+                                <div class="timeline-content">
+                                    <h4>IA + analytics</h4>
+                                    <div class="timeline-metrics">
+                                        <span class="metric">10k usuários</span>
+                                        <span class="metric">USD 100k receita</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="financial-projection">
+                            <h3>Projeção Financeira</h3>
+                            <canvas id="revenueChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 10: Próximos Passos -->
+            <section class="slide" id="slide-10">
+                <div class="slide-content">
+                    <h2 class="slide-title">Próximos Passos</h2>
+                    <div class="next-steps">
+                        <div class="immediate-actions">
+                            <h3>Ações Imediatas (Próximas 2 Semanas)</h3>
+                            <div class="actions-grid">
+                                <div class="action-card">
+                                    <span class="action-icon">🔬</span>
+                                    <div class="action-content">
+                                        <h4>Validar pilot com Cooxupé/Minasul</h4>
+                                        <p>Iniciar conversas com cooperativas líderes para validação inicial</p>
+                                    </div>
+                                </div>
+                                <div class="action-card">
+                                    <span class="action-icon">⚙️</span>
+                                    <div class="action-content">
+                                        <h4>Setup do stack tecnológico MVP</h4>
+                                        <p>Configurar infraestrutura básica e ambientes de desenvolvimento</p>
+                                    </div>
+                                </div>
+                                <div class="action-card">
+                                    <span class="action-icon">👥</span>
+                                    <div class="action-content">
+                                        <h4>Contratação equipe core (5 devs)</h4>
+                                        <p>Recrutar desenvolvedores especializados em blockchain e APIs</p>
+                                    </div>
+                                </div>
+                                <div class="action-card">
+                                    <span class="action-icon">🔌</span>
+                                    <div class="action-content">
+                                        <h4>Desenvolvimento integração API pricing</h4>
+                                        <p>Implementar conexões com fontes de preços em tempo real</p>
+                                    </div>
+                                </div>
+                                <div class="action-card">
+                                    <span class="action-icon">🚀</span>
+                                    <div class="action-content">
+                                        <h4>Launch pilot com 100 produtores</h4>
+                                        <p>Executar piloto controlado para validação do produto</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="strategic-partnerships">
+                            <h3>Parcerias Estratégicas</h3>
+                            <div class="partnerships-grid">
+                                <div class="partnership-card">
+                                    <h4>Rainforest Alliance</h4>
+                                    <p>API certificações</p>
+                                    <span class="partnership-type">Técnica</span>
+                                </div>
+                                <div class="partnership-card">
+                                    <h4>Banco Central Brasil</h4>
+                                    <p>Integração PIX oficial</p>
+                                    <span class="partnership-type">Regulatória</span>
+                                </div>
+                                <div class="partnership-card">
+                                    <h4>NASA/Google</h4>
+                                    <p>Dados satelitais</p>
+                                    <span class="partnership-type">Dados</span>
+                                </div>
+                                <div class="partnership-card">
+                                    <h4>Embrapa</h4>
+                                    <p>Validação científica</p>
+                                    <span class="partnership-type">Acadêmica</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="final-recommendations">
+                            <h3>Recomendações Finais</h3>
+                            <div class="recommendations-list">
+                                <div class="recommendation-item">
+                                    <span class="rec-icon">🎯</span>
+                                    <span class="rec-text">Focar na validação com cooperativas grandes antes de expandir</span>
+                                </div>
+                                <div class="recommendation-item">
+                                    <span class="rec-icon">🔐</span>
+                                    <span class="rec-text">Priorizar compliance EUDR para diferenciação competitiva</span>
+                                </div>
+                                <div class="recommendation-item">
+                                    <span class="rec-icon">🌍</span>
+                                    <span class="rec-text">Estabelecer parcerias antes de iniciar desenvolvimento</span>
+                                </div>
+                                <div class="recommendation-item">
+                                    <span class="rec-icon">📊</span>
+                                    <span class="rec-text">Implementar métricas de sucesso desde o Sprint 1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

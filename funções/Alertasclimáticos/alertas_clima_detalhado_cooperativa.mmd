@@ -1,0 +1,78 @@
+graph TD
+  C[Cooperativa] -->|Login| C1[Login na plataforma Global Coffee]
+  C1 -->|Acesso| C2[Dashboard Principal]
+  C2 -->|Recebe| C3[Alertas segmentados por região]
+
+  C3 -->|Visualiza| C3a[Alertas no painel de notificações]
+  C3a -->|Clica| C3b[Relatório consolidado]
+
+  C3b -->|Abre| C4[Relatório Consolidado]
+  C4 -->|Mostra| C4a[Dados agregados de produtores e regiões]
+  C4a -->|Filtra| C4b[Por região, tipo de cultivo e período]
+  C4a -->|Exporta| C4c[Relatório em PDF ou Excel]
+
+  C2 -->|Comunica| C5[Produtores sobre riscos]
+  C5 -->|Clica| C5a["Enviar Comunicação"]
+  C5a -->|Seleciona| C5b[Produtores ou grupos]
+  C5b -->|Escreve| C5c[Mensagem personalizada]
+  C5c -->|Envia| C5d["Enviar"]
+  C5d -->|Confirma| C5e[Confirmação de envio]
+
+  C2 -->|Adapta| C6[Estratégias de cultivo]
+  C6 -->|Clica| C6a["Planejamento"]
+  C6a -->|Visualiza| C6b[Recomendações baseadas nos alertas]
+  C6b -->|Seleciona| C6c[Ações para implementação]
+  C6c -->|Confirma| C6d[Plano e agenda monitoramento]
+
+  %% Novas categorias de KPIs no Dashboard
+  C2 -->|Visualiza| K1[KPIs Operacionais]
+  C2 -->|Visualiza| K2[KPIs de Gestão de Riscos]
+  C2 -->|Visualiza| K3[KPIs Econômicos]
+  C2 -->|Visualiza| K4[KPIs de Sustentabilidade]
+  C2 -->|Visualiza| K5[KPIs de Comunicação e Engajamento]
+  C2 -->|Visualiza| K6[KPIs de Qualidade de Dados]
+
+  %% KPIs Operacionais
+  K1 -->|Clique para detalhes| K1_1[Taxa de Resposta aos Alertas]
+  K1 -->|Clique para detalhes| K1_2[Tempo Médio de Resposta]
+  K1 -->|Clique para detalhes| K1_3[Cobertura Regional]
+  K1 -->|Clique para detalhes| K1_4[Taxa de Engajamento do Dashboard]
+
+  %% KPIs de Gestão de Riscos
+  K2 -->|Clique para detalhes| K2_1[Precisão dos Alertas]
+  K2 -->|Clique para detalhes| K2_2[Taxa de Falsos Positivos]
+  K2 -->|Clique para detalhes| K2_3[Índice de Severidade Climática]
+  K2 -->|Clique para detalhes| K2_4[Tempo de Antecedência dos Alertas]
+
+  %% KPIs Econômicos
+  K3 -->|Clique para detalhes| K3_1[Perdas Evitadas]
+  K3 -->|Clique para detalhes| K3_2[ROI das Ações Preventivas]
+  K3 -->|Clique para detalhes| K3_3[Custo por Alerta Processado]
+  K3 -->|Clique para detalhes| K3_4[Impacto na Produtividade]
+
+  %% KPIs de Sustentabilidade
+  K4 -->|Clique para detalhes| K4_1[Pegada de Carbono]
+  K4 -->|Clique para detalhes| K4_2[Eficiência Hídrica]
+  K4 -->|Clique para detalhes| K4_3[Índice de Conformidade ESG]
+  K4 -->|Clique para detalhes| K4_4[Taxa de Adoção de Práticas Sustentáveis]
+
+  %% KPIs de Comunicação e Engajamento
+  K5 -->|Clique para detalhes| K5_1[Taxa de Abertura de Alertas]
+  K5 -->|Clique para detalhes| K5_2[Tempo de Disseminação]
+  K5 -->|Clique para detalhes| K5_3["Satisfação dos Produtores (NPS)"]
+  K5 -->|Clique para detalhes| K5_4[Taxa de Conversão de Alertas em Ações]
+
+  %% KPIs de Qualidade de Dados
+  K6 -->|Clique para detalhes| K6_1[Acurácia dos Dados Meteorológicos]
+  K6 -->|Clique para detalhes| K6_2[Completude dos Dados]
+  K6 -->|Clique para detalhes| K6_3[Latência dos Dados]
+  K6 -->|Clique para detalhes| K6_4[Taxa de Disponibilidade do Sistema]
+
+  %% Interações detalhadas para KPIs (exemplo para KPIs Operacionais)
+  K1_1 -->|Filtra por período| K1_1a[Filtros de data e região]
+  K1_1a -->|Exporta| K1_1b[Exportar relatório CSV/PDF]
+  K1_2 -->|Visualiza gráfico| K1_2a[Gráfico de tempo médio de resposta]
+  K1_3 -->|Mapa interativo| K1_3a[Mapa de cobertura regional]
+  K1_4 -->|Dashboard detalhado| K1_4a[Análise de uso e engajamento]
+
+  %% Similar para outras categorias pode ser expandido conforme necessidade

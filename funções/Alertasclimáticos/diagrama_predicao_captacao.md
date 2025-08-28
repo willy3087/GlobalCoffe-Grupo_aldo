@@ -1,0 +1,36 @@
+```mermaid
+flowchart TD
+    subgraph API_Climatica_Integrada
+        direction TB
+        CD[Coleta e Integração de Dados]
+        PD[Processamento e Predição]
+        API[API REST para Consulta]
+        AL[Alertas Climáticos Personalizados]
+        FI[Integração com Módulo Financeiro]
+        DB[Dashboard Climático]        CD --> PD
+        PD --> API
+        API --> AL
+        API --> FI
+        PD --> DB
+        AL --> DB
+    end    subgraph Fontes_de_Dados
+        direction LR
+        API_Meteorologica[API Meteorológica]
+        Bolsa_Cafe[Bolsas de Café]
+        Noticias[Notícias e Mídias Sociais]
+        Dados_Economicos[Dados Econômicos e Exportação]        API_Meteorologica --> CD
+        Bolsa_Cafe --> CD
+        Noticias --> CD
+        Dados_Economicos --> CD
+    end    subgraph Funcionalidades_Predicao
+        direction TB
+        Normalizacao[Normalização e Limpeza]
+        Anomalias[Detecção de Anomalias]
+        Modelos[Modelos de Linguagem (LLM)]
+        Scoring[Scoring de Impacto e Relevância]        CD --> Normalizacao
+        Normalizacao --> Anomalias
+        Anomalias --> Modelos
+        Modelos --> Scoring
+        Scoring --> PD
+    end
+```

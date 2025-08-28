@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>user_stories_global_coffee.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///Users/williamduarte/Documents/Muralis/GlobalCoffe-Grupo_aldo/R%3A%5C2.Travail%5C1.Enseignement%5CCours%5C_1.Outils%5C2.Developpement%5C1.SCSS%5Cmain.css" type="text/css"><link rel="stylesheet" href="file:///Users/williamduarte/Documents/Muralis/GlobalCoffe-Grupo_aldo/D%3A%5Crdaros%5CCours%5C_1.Outils%5C2.Developpement%5C1.SCSS%5Cmain.css" type="text/css">
+</head>
+
+<body>
+    <h1 id="user-stories---plataforma-global-coffee">User Stories - Plataforma Global Coffee</h1>
+<h2 id="%C3%ADndice">Índice</h2>
+<ol>
+<li><a href="#produtores-individuais">Produtores Individuais</a>
+<ul>
+<li><a href="#persona-1-jos%C3%A9-silva---pequeno-produtor-familiar-tradicional">Persona 1: José Silva - Pequeno Produtor Familiar Tradicional</a></li>
+<li><a href="#persona-2-roberto-santos---m%C3%A9dio-produtor-conectado">Persona 2: Roberto Santos - Médio Produtor Conectado</a></li>
+<li><a href="#persona-3-ana-carolina-lima---jovem-produtora-inovadora">Persona 3: Ana Carolina Lima - Jovem Produtora Inovadora</a></li>
+</ul>
+</li>
+<li><a href="#cooperativas">Cooperativas</a>
+<ul>
+<li><a href="#persona-a-pequena-cooperativa-regional">Persona A: Pequena Cooperativa Regional</a></li>
+<li><a href="#persona-b-grande-cooperativa-exportadora">Persona B: Grande Cooperativa Exportadora</a></li>
+<li><a href="#persona-c-cons%C3%B3rcio-digital-de-cooperativas">Persona C: Consórcio Digital de Cooperativas</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="produtores-individuais">Produtores Individuais</h2>
+<h3 id="persona-1-jos%C3%A9-silva---pequeno-produtor-familiar-tradicional">Persona 1: José Silva - Pequeno Produtor Familiar Tradicional</h3>
+<h4 id="us11-onboarding-assistido">US1.1: Onboarding Assistido</h4>
+<p><strong>Título:</strong> Cadastro inicial com suporte presencial</p>
+<p>Como um pequeno produtor familiar com baixa familiaridade digital,<br>
+Eu quero ter suporte presencial ou telefônico durante meu cadastro inicial,<br>
+Para que eu consiga me registrar na plataforma sem frustrações e com confiança.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Suporte telefônico disponível em horário comercial</li>
+<li>Opção de agendamento de visita presencial via cooperativa</li>
+<li>Material impresso com passo a passo ilustrado</li>
+<li>Tempo máximo de onboarding de 3 dias úteis</li>
+<li>Confirmação verbal e por WhatsApp do cadastro completo</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Produtor sem smartphone próprio</li>
+<li>Área sem cobertura de internet</li>
+<li>Necessidade de auxílio dos filhos</li>
+<li>Documentação incompleta</li>
+</ul>
+<hr>
+<h4 id="us12-interface-simplificada">US1.2: Interface Simplificada</h4>
+<p><strong>Título:</strong> Visualização apenas de funcionalidades essenciais</p>
+<p>Como um produtor tradicional com perfil tecnológico básico,<br>
+Eu quero ver apenas as funcionalidades essenciais na tela inicial,<br>
+Para que eu não me sinta sobrecarregado e consiga usar o sistema com facilidade.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Máximo de 4 botões grandes na tela inicial</li>
+<li>Ícones visuais intuitivos com texto explicativo</li>
+<li>Fonte grande e legível (mínimo 16px)</li>
+<li>Cores contrastantes para facilitar visualização</li>
+<li>Modo offline para consultas básicas</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Usuário com problemas de visão</li>
+<li>Tela pequena do dispositivo</li>
+<li>Navegação sem internet</li>
+</ul>
+<hr>
+<h4 id="us13-alertas-clim%C3%A1ticos-simplificados">US1.3: Alertas Climáticos Simplificados</h4>
+<p><strong>Título:</strong> Notificações de clima via WhatsApp</p>
+<p>Como um pequeno produtor que depende das condições climáticas,<br>
+Eu quero receber alertas simples sobre mudanças climáticas importantes via WhatsApp,<br>
+Para que eu possa proteger minha produção de eventos adversos.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Alerta enviado 48h antes de evento climático</li>
+<li>Mensagem em linguagem simples e direta</li>
+<li>Incluir ações recomendadas específicas</li>
+<li>Confirmação de recebimento do alerta</li>
+<li>Histórico de alertas disponível por 30 dias</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Falha no envio do WhatsApp</li>
+<li>Múltiplos eventos climáticos simultâneos</li>
+<li>Mudança repentina de previsão</li>
+<li>Área sem sinal de celular</li>
+</ul>
+<hr>
+<h4 id="us14-controle-financeiro-b%C3%A1sico">US1.4: Controle Financeiro Básico</h4>
+<p><strong>Título:</strong> Gestão simplificada de receitas e despesas</p>
+<p>Como um pequeno produtor familiar,<br>
+Eu quero registrar minhas vendas e gastos de forma simples,<br>
+Para que eu tenha controle básico das minhas finanças sem complicação.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Entrada simples de valores (receita/despesa)</li>
+<li>Categorias pré-definidas de gastos agrícolas</li>
+<li>Resumo mensal em formato visual (gráfico de pizza)</li>
+<li>Exportação para WhatsApp ou impressão</li>
+<li>Calculadora integrada na tela</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Lançamentos retroativos</li>
+<li>Correção de valores errados</li>
+<li>Múltiplas fontes de receita</li>
+<li>Despesas compartilhadas com família</li>
+</ul>
+<hr>
+<h4 id="us15-comunica%C3%A7%C3%A3o-via-cooperativa">US1.5: Comunicação via Cooperativa</h4>
+<p><strong>Título:</strong> Canal direto com a cooperativa local</p>
+<p>Como um produtor que confia na cooperativa local,<br>
+Eu quero me comunicar com a cooperativa através da plataforma,<br>
+Para que eu receba suporte e informações relevantes de forma centralizada.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Chat simples com a cooperativa</li>
+<li>Notificações de mensagens novas</li>
+<li>Compartilhamento de fotos da produção</li>
+<li>Histórico de conversas salvo</li>
+<li>Indicador de horário de atendimento</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Cooperativa offline</li>
+<li>Múltiplos atendentes</li>
+<li>Urgências fora do horário</li>
+<li>Anexo de documentos</li>
+</ul>
+<hr>
+<h3 id="persona-2-roberto-santos---m%C3%A9dio-produtor-conectado">Persona 2: Roberto Santos - Médio Produtor Conectado</h3>
+<h4 id="us21-dashboard-personalizado">US2.1: Dashboard Personalizado</h4>
+<p><strong>Título:</strong> Painel de controle customizável com KPIs</p>
+<p>Como um médio produtor em transição tecnológica,<br>
+Eu quero personalizar meu dashboard com os indicadores mais relevantes,<br>
+Para que eu possa monitorar minha produção e tomar decisões baseadas em dados.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Seleção de até 8 KPIs para exibição</li>
+<li>Drag-and-drop para reorganizar widgets</li>
+<li>Período de análise configurável (dia/semana/mês/ano)</li>
+<li>Exportação de dados em Excel</li>
+<li>Comparação com médias regionais</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Dados incompletos ou ausentes</li>
+<li>Mudança de safra</li>
+<li>Múltiplas propriedades</li>
+<li>Sincronização entre dispositivos</li>
+</ul>
+<hr>
+<h4 id="us22-gest%C3%A3o-de-produtividade">US2.2: Gestão de Produtividade</h4>
+<p><strong>Título:</strong> Monitoramento de produtividade por hectare</p>
+<p>Como um produtor focado em eficiência,<br>
+Eu quero acompanhar minha produtividade por hectare e por safra,<br>
+Para que eu possa identificar áreas de melhoria e otimizar meu rendimento.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Registro de produção por talhão/área</li>
+<li>Cálculo automático de sacas/hectare</li>
+<li>Histórico de 5 anos para comparação</li>
+<li>Alertas de queda de produtividade</li>
+<li>Benchmarking com produtores similares</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Áreas com diferentes variedades</li>
+<li>Eventos climáticos impactando produção</li>
+<li>Mudança de área plantada</li>
+<li>Dados históricos incompletos</li>
+</ul>
+<hr>
+<h4 id="us23-acesso-a-mercados-premium">US2.3: Acesso a Mercados Premium</h4>
+<p><strong>Título:</strong> Conexão com compradores de cafés especiais</p>
+<p>Como um produtor de café de qualidade,<br>
+Eu quero acessar compradores de mercados premium diretamente,<br>
+Para que eu possa obter melhores preços pela qualidade do meu produto.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Perfil detalhado com certificações</li>
+<li>Upload de laudos de qualidade</li>
+<li>Sistema de ofertas e contrapropostas</li>
+<li>Avaliações de compradores anteriores</li>
+<li>Calculadora de prêmio de qualidade</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Disputas comerciais</li>
+<li>Cancelamento de pedidos</li>
+<li>Variação de qualidade entre lotes</li>
+<li>Requisitos específicos de compradores</li>
+</ul>
+<hr>
+<h4 id="us24-planejamento-de-safra">US2.4: Planejamento de Safra</h4>
+<p><strong>Título:</strong> Ferramentas de planejamento agrícola</p>
+<p>Como um produtor que busca profissionalizar o negócio,<br>
+Eu quero planejar minha safra com antecedência usando dados históricos e previsões,<br>
+Para que eu maximize minha produtividade e minimize riscos.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Calendário agrícola interativo</li>
+<li>Lembretes de atividades importantes</li>
+<li>Previsão de custos por atividade</li>
+<li>Integração com dados climáticos</li>
+<li>Relatório de planejamento vs. realizado</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Mudanças climáticas inesperadas</li>
+<li>Alteração de variedades plantadas</li>
+<li>Disponibilidade de insumos</li>
+<li>Mudanças de regulamentação</li>
+</ul>
+<hr>
+<h4 id="us25-integra%C3%A7%C3%A3o-com-sistemas">US2.5: Integração com Sistemas</h4>
+<p><strong>Título:</strong> Conectividade com ERPs e ferramentas existentes</p>
+<p>Como um produtor que já usa outras ferramentas digitais,<br>
+Eu quero integrar a plataforma com meus sistemas atuais,<br>
+Para que eu evite retrabalho e mantenha dados sincronizados.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>API documentada para integração</li>
+<li>Conectores prontos para ERPs populares</li>
+<li>Importação/exportação de dados em CSV</li>
+<li>Sincronização automática configurável</li>
+<li>Log de integrações e erros</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Conflito de dados entre sistemas</li>
+<li>Falha de sincronização</li>
+<li>Mudança de formato de dados</li>
+<li>Limites de API</li>
+</ul>
+<hr>
+<h3 id="persona-3-ana-carolina-lima---jovem-produtora-inovadora">Persona 3: Ana Carolina Lima - Jovem Produtora Inovadora</h3>
+<h4 id="us31-constru%C3%A7%C3%A3o-de-marca-digital">US3.1: Construção de Marca Digital</h4>
+<p><strong>Título:</strong> Ferramentas para desenvolvimento de marca própria</p>
+<p>Como uma jovem produtora focada em cafés especiais,<br>
+Eu quero construir e gerenciar minha marca digital na plataforma,<br>
+Para que eu possa me diferenciar no mercado e atrair compradores premium.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Perfil customizável com storytelling</li>
+<li>Galeria de fotos e vídeos da produção</li>
+<li>Integração com redes sociais</li>
+<li>QR Code para rastreabilidade com marca</li>
+<li>Analytics de visualizações e engajamento</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Direitos de imagem</li>
+<li>Conteúdo inadequado</li>
+<li>Múltiplas marcas/linhas</li>
+<li>Proteção de propriedade intelectual</li>
+</ul>
+<hr>
+<h4 id="us32-certifica%C3%A7%C3%B5es-e-sustentabilidade">US3.2: Certificações e Sustentabilidade</h4>
+<p><strong>Título:</strong> Gestão de certificações ESG e práticas sustentáveis</p>
+<p>Como uma produtora comprometida com sustentabilidade,<br>
+Eu quero registrar e compartilhar minhas práticas sustentáveis e certificações,<br>
+Para que eu acesse mercados que valorizam responsabilidade ambiental.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Upload de certificados digitais</li>
+<li>Checklist de práticas sustentáveis</li>
+<li>Calculadora de pegada de carbono</li>
+<li>Badges de sustentabilidade no perfil</li>
+<li>Relatórios para certificadoras</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Certificações vencidas</li>
+<li>Auditoria surpresa</li>
+<li>Mudança de critérios ESG</li>
+<li>Certificações internacionais</li>
+</ul>
+<hr>
+<h4 id="us33-analytics-avan%C3%A7ado">US3.3: Analytics Avançado</h4>
+<p><strong>Título:</strong> Análises preditivas com IA</p>
+<p>Como uma produtora nativa digital,<br>
+Eu quero acessar análises avançadas e previsões baseadas em IA,<br>
+Para que eu tome decisões estratégicas informadas por dados.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Previsões de preço com machine learning</li>
+<li>Análise de sentimento do mercado</li>
+<li>Recomendações personalizadas de ação</li>
+<li>Simulações de cenários what-if</li>
+<li>APIs para integração com ferramentas próprias</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Dados insuficientes para previsão</li>
+<li>Eventos black swan</li>
+<li>Mudanças regulatórias súbitas</li>
+<li>Viés nos algoritmos</li>
+</ul>
+<hr>
+<h4 id="us34-programa-de-inova%C3%A7%C3%A3o">US3.4: Programa de Inovação</h4>
+<p><strong>Título:</strong> Acesso a programas de inovação e networking</p>
+<p>Como uma jovem produtora inovadora,<br>
+Eu quero participar de programas de inovação e conectar com outros produtores jovens,<br>
+Para que eu aprenda, compartilhe experiências e crie parcerias estratégicas.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Feed de inovações e tendências</li>
+<li>Fóruns de discussão moderados</li>
+<li>Eventos virtuais e webinars</li>
+<li>Mentoria com produtores experientes</li>
+<li>Challenges e competições</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Moderação de conteúdo</li>
+<li>Propriedade intelectual compartilhada</li>
+<li>Conflitos de interesse</li>
+<li>Diferenças de fuso horário</li>
+</ul>
+<hr>
+<h4 id="us35-cr%C3%A9dito-para-jovens">US3.5: Crédito para Jovens</h4>
+<p><strong>Título:</strong> Acesso facilitado a linhas de crédito</p>
+<p>Como uma jovem produtora buscando modernizar a produção,<br>
+Eu quero acessar linhas de crédito específicas para jovens produtores,<br>
+Para que eu possa investir em tecnologia e melhorias na propriedade.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Simulador de crédito online</li>
+<li>Documentação digital simplificada</li>
+<li>Score baseado em histórico na plataforma</li>
+<li>Acompanhamento de propostas em tempo real</li>
+<li>Educação financeira integrada</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Falta de garantias tradicionais</li>
+<li>Primeira solicitação de crédito</li>
+<li>Mudanças nas políticas de crédito</li>
+<li>Inadimplência</li>
+</ul>
+<hr>
+<h2 id="cooperativas">Cooperativas</h2>
+<h3 id="persona-a-pequena-cooperativa-regional">Persona A: Pequena Cooperativa Regional</h3>
+<h4 id="usa1-m%C3%B3dulo-financeiro-cloud">USA.1: Módulo Financeiro Cloud</h4>
+<p><strong>Título:</strong> Sistema financeiro completo em nuvem</p>
+<p>Como uma pequena cooperativa com recursos limitados de TI,<br>
+Eu quero um sistema financeiro completo e simples na nuvem,<br>
+Para que eu gerencie as finanças sem investir em infraestrutura local.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Setup em menos de 24 horas</li>
+<li>Importação de dados legados</li>
+<li>Backup automático diário</li>
+<li>Conformidade fiscal brasileira</li>
+<li>Suporte via telefone/chat</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Migração de sistema antigo</li>
+<li>Múltiplos usuários simultâneos</li>
+<li>Auditoria fiscal</li>
+<li>Recuperação de desastres</li>
+</ul>
+<hr>
+<h4 id="usa2-rastreabilidade-simplificada">USA.2: Rastreabilidade Simplificada</h4>
+<p><strong>Título:</strong> Sistema de rastreabilidade com QR Code</p>
+<p>Como uma cooperativa que precisa garantir origem,<br>
+Eu quero implementar rastreabilidade simples com QR Code,<br>
+Para que eu mantenha certificações e agregue valor ao produto.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Geração automática de QR Codes</li>
+<li>App mobile para leitura</li>
+<li>Blockchain simplificado para garantia</li>
+<li>Relatórios de rastreabilidade</li>
+<li>Integração com certificadoras</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>QR Code danificado</li>
+<li>Lotes misturados</li>
+<li>Fraude/falsificação</li>
+<li>Requisitos de exportação</li>
+</ul>
+<hr>
+<h4 id="usa3-portal-de-comercializa%C3%A7%C3%A3o">USA.3: Portal de Comercialização</h4>
+<p><strong>Título:</strong> Marketplace para venda direta</p>
+<p>Como uma cooperativa buscando melhores preços,<br>
+Eu quero um portal para ofertar café diretamente a compradores,<br>
+Para que eu reduza intermediários e melhore margens.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Cadastro de ofertas em lote</li>
+<li>Sistema de lances e negociação</li>
+<li>Contratos digitais</li>
+<li>Gateway de pagamento integrado</li>
+<li>Avaliação de compradores/vendedores</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Disputas comerciais</li>
+<li>Variação de qualidade</li>
+<li>Logística de entrega</li>
+<li>Câmbio para exportação</li>
+</ul>
+<hr>
+<h4 id="usa4-alertas-clim%C3%A1ticos-regionais">USA.4: Alertas Climáticos Regionais</h4>
+<p><strong>Título:</strong> Sistema de alertas meteorológicos localizado</p>
+<p>Como uma cooperativa responsável pelos cooperados,<br>
+Eu quero distribuir alertas climáticos precisos para a região,<br>
+Para que os produtores protejam suas lavouras de eventos adversos.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Dados de múltiplas fontes meteorológicas</li>
+<li>Alertas segmentados por micro-região</li>
+<li>Múltiplos canais (SMS, WhatsApp, app)</li>
+<li>Histórico de eventos e acertos</li>
+<li>Recomendações de ação específicas</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Falha de comunicação</li>
+<li>Eventos não previstos</li>
+<li>Múltiplos alertas simultâneos</li>
+<li>Áreas sem cobertura</li>
+</ul>
+<hr>
+<h4 id="usa5-onboarding-de-cooperados">USA.5: Onboarding de Cooperados</h4>
+<p><strong>Título:</strong> Sistema de cadastro e treinamento de membros</p>
+<p>Como uma cooperativa com muitos pequenos produtores,<br>
+Eu quero facilitar o cadastro e treinamento dos cooperados na plataforma,<br>
+Para que todos possam usar o sistema independentemente do nível técnico.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Importação em lote via planilha</li>
+<li>Validação automática de documentos</li>
+<li>Trilhas de aprendizado por perfil</li>
+<li>Certificados de conclusão</li>
+<li>Suporte dedicado no primeiro mês</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Dados duplicados</li>
+<li>Documentação incompleta</li>
+<li>Resistência à adoção</li>
+<li>Rotatividade de cooperados</li>
+</ul>
+<hr>
+<h3 id="persona-b-grande-cooperativa-exportadora">Persona B: Grande Cooperativa Exportadora</h3>
+<h4 id="usb1-integra%C3%A7%C3%A3o-corporativa">USB.1: Integração Corporativa</h4>
+<p><strong>Título:</strong> Conectores para ERPs empresariais</p>
+<p>Como uma grande cooperativa com sistemas complexos,<br>
+Eu quero conectores prontos para nossos ERPs corporativos,<br>
+Para que a plataforma se integre perfeitamente ao nosso ecossistema.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Conectores para SAP, Oracle, Dynamics</li>
+<li>Sincronização bidirecional</li>
+<li>Mapeamento de campos customizável</li>
+<li>Monitoramento de integrações</li>
+<li>Suporte 24/7 para integrações</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Customizações do ERP</li>
+<li>Volume massivo de dados</li>
+<li>Conflitos de sincronização</li>
+<li>Mudanças de versão do ERP</li>
+</ul>
+<hr>
+<h4 id="usb2-blockchain-escal%C3%A1vel">USB.2: Blockchain Escalável</h4>
+<p><strong>Título:</strong> Infraestrutura blockchain para grande volume</p>
+<p>Como uma exportadora processando milhões de sacas,<br>
+Eu quero uma solução blockchain que escale para nosso volume,<br>
+Para que possamos rastrear toda produção sem gargalos.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Processamento de 10.000+ transações/dia</li>
+<li>Nó privado Hyperledger dedicado</li>
+<li>API de alta performance</li>
+<li>Dashboard de monitoramento blockchain</li>
+<li>Compliance com regulações internacionais</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Picos de processamento</li>
+<li>Fork da blockchain</li>
+<li>Requisitos de auditoria</li>
+<li>Integração com blockchains de clientes</li>
+</ul>
+<hr>
+<h4 id="usb3-analytics-corporativo">USB.3: Analytics Corporativo</h4>
+<p><strong>Título:</strong> Plataforma de analytics para decisões estratégicas</p>
+<p>Como uma cooperativa com operações complexas,<br>
+Eu quero analytics avançado para otimizar nossas operações,<br>
+Para que tomemos decisões baseadas em dados e tendências.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Data warehouse dedicado</li>
+<li>Dashboards executivos real-time</li>
+<li>Machine learning para previsões</li>
+<li>Benchmarking setorial</li>
+<li>Exportação para ferramentas BI</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Dados sensíveis/confidenciais</li>
+<li>Múltiplas unidades/filiais</li>
+<li>Consolidação internacional</li>
+<li>Mudanças regulatórias</li>
+</ul>
+<hr>
+<h4 id="usb4-certifica%C3%A7%C3%A3o-esg-digital">USB.4: Certificação ESG Digital</h4>
+<p><strong>Título:</strong> Gestão digital de certificações e compliance</p>
+<p>Como uma exportadora com requisitos ESG rigorosos,<br>
+Eu quero digitalizar todo processo de certificação e compliance,<br>
+Para que mantenhamos conformidade e acesso a mercados premium.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Workflow de certificação digital</li>
+<li>Auditoria em tempo real</li>
+<li>Blockchain para certificados</li>
+<li>Relatórios automatizados para certificadoras</li>
+<li>Alertas de vencimento/renovação</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Mudanças de critérios ESG</li>
+<li>Auditoria surpresa</li>
+<li>Múltiplas certificações simultâneas</li>
+<li>Requisitos país-específicos</li>
+</ul>
+<hr>
+<h4 id="usb5-marketplace-b2b-integrado">USB.5: Marketplace B2B Integrado</h4>
+<p><strong>Título:</strong> Plataforma B2B para insumos e serviços</p>
+<p>Como uma grande cooperativa com alto consumo,<br>
+Eu quero um marketplace B2B integrado para compras,<br>
+Para que obtenhamos melhores condições e eficiência em compras.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Catálogo de fornecedores verificados</li>
+<li>Cotação automática para grandes volumes</li>
+<li>Gestão de contratos e SLAs</li>
+<li>Integração com procurement</li>
+<li>Análise de spend analytics</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Fornecedor exclusivo</li>
+<li>Emergências de suprimento</li>
+<li>Flutuação de preços</li>
+<li>Qualidade não conforme</li>
+</ul>
+<hr>
+<h3 id="persona-c-cons%C3%B3rcio-digital-de-cooperativas">Persona C: Consórcio Digital de Cooperativas</h3>
+<h4 id="usc1-motor-fiscal-unificado">USC.1: Motor Fiscal Unificado</h4>
+<p><strong>Título:</strong> Sistema fiscal para operações interestaduais</p>
+<p>Como um consórcio operando em múltiplos estados,<br>
+Eu quero um motor fiscal que gerencie automaticamente ICMS e tributos,<br>
+Para que operemos em conformidade sem complexidade manual.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Tabelas fiscais atualizadas automaticamente</li>
+<li>Cálculo automático por transação</li>
+<li>Emissão de documentos fiscais</li>
+<li>Relatórios por estado/município</li>
+<li>Integração com SPED</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Mudanças tributárias</li>
+<li>Benefícios fiscais específicos</li>
+<li>Operações triangulares</li>
+<li>Substituição tributária</li>
+</ul>
+<hr>
+<h4 id="usc2-ia-para-cross-selling">USC.2: IA para Cross-Selling</h4>
+<p><strong>Título:</strong> Recomendações inteligentes baseadas em dados</p>
+<p>Como um consórcio com vasto catálogo,<br>
+Eu quero IA que sugira produtos complementares baseado em padrões,<br>
+Para que aumentemos o ticket médio e satisfação dos cooperados.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Algoritmo de recomendação personalizado</li>
+<li>A/B testing automático</li>
+<li>Análise de cesta de compras</li>
+<li>Previsão de demanda sazonal</li>
+<li>ROI tracking das recomendações</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Produtos novos sem histórico</li>
+<li>Comportamento atípico</li>
+<li>Produtos descontinuados</li>
+<li>Sazonalidade extrema</li>
+</ul>
+<hr>
+<h4 id="usc3-tokeniza%C3%A7%C3%A3o-de-receb%C3%ADveis">USC.3: Tokenização de Recebíveis</h4>
+<p><strong>Título:</strong> Sistema de tokens para café como moeda</p>
+<p>Como um consórcio inovador,<br>
+Eu quero tokenizar recebíveis de café para uso como moeda de troca,<br>
+Para que facilitemos transações e criemos liquidez para cooperados.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Emissão de coffee-tokens lastreados</li>
+<li>Wallet digital para cooperados</li>
+<li>Exchange para conversão</li>
+<li>Smart contracts para barter</li>
+<li>Compliance com BC e CVM</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Volatilidade de preços</li>
+<li>Questões regulatórias</li>
+<li>Fraude/roubo de tokens</li>
+<li>Interoperabilidade</li>
+</ul>
+<hr>
+<h4 id="usc4-cr%C3%A9dito-instant%C3%A2neo">USC.4: Crédito Instantâneo</h4>
+<p><strong>Título:</strong> Plataforma de crédito baseada em tokens</p>
+<p>Como um consórcio facilitando acesso a crédito,<br>
+Eu quero oferecer crédito instantâneo baseado em café tokenizado,<br>
+Para que cooperados tenham liquidez imediata para compras.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Análise de crédito em 30 segundos</li>
+<li>Lastro em tokens de café</li>
+<li>Taxas competitivas automáticas</li>
+<li>Integração com sistema bancário</li>
+<li>Dashboard de risco em tempo real</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Inadimplência</li>
+<li>Flutuação do lastro</li>
+<li>Limites regulatórios</li>
+<li>Fraude de identidade</li>
+</ul>
+<hr>
+<h4 id="usc5-hub-de-integra%C3%A7%C3%A3o-vtex">USC.5: Hub de Integração VTEX</h4>
+<p><strong>Título:</strong> Conector completo com ecossistema VTEX</p>
+<p>Como um consórcio usando VTEX como plataforma,<br>
+Eu quero integração nativa e completa com todo ecossistema VTEX,<br>
+Para que operemos com máxima eficiência e recursos avançados.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ol>
+<li>Sincronização de catálogo em tempo real</li>
+<li>Gestão unificada de pedidos</li>
+<li>Checkout transparente</li>
+<li>Analytics consolidado</li>
+<li>Suporte a múltiplos sellers</li>
+</ol>
+<p><strong>Edge Cases:</strong></p>
+<ul>
+<li>Conflitos de SKU</li>
+<li>Indisponibilidade da VTEX</li>
+<li>Customizações específicas</li>
+<li>Múltiplas lojas/canais</li>
+</ul>
+<hr>
+<h2 id="resumo-de-prioriza%C3%A7%C3%A3o">Resumo de Priorização</h2>
+<h3 id="alta-prioridade-mvp">Alta Prioridade (MVP)</h3>
+<ol>
+<li>Onboarding assistido para pequenos produtores</li>
+<li>Interface simplificada e mobile-first</li>
+<li>Alertas climáticos básicos</li>
+<li>Rastreabilidade com QR Code</li>
+<li>Portal de comercialização simples</li>
+<li>Módulo financeiro básico</li>
+</ol>
+<h3 id="m%C3%A9dia-prioridade-fase-2">Média Prioridade (Fase 2)</h3>
+<ol>
+<li>Dashboard personalizado</li>
+<li>Integração com ERPs</li>
+<li>Analytics básico</li>
+<li>Certificações digitais</li>
+<li>Marketplace B2B</li>
+<li>Programa de jovens produtores</li>
+</ol>
+<h3 id="baixa-prioridade-fase-3">Baixa Prioridade (Fase 3)</h3>
+<ol>
+<li>Blockchain escalável</li>
+<li>IA e Machine Learning</li>
+<li>Tokenização e crypto</li>
+<li>Motor fiscal complexo</li>
+<li>Crédito instantâneo</li>
+<li>Integrações avançadas</li>
+</ol>
+<h2 id="m%C3%A9tricas-de-sucesso">Métricas de Sucesso</h2>
+<h3 id="para-produtores">Para Produtores</h3>
+<ul>
+<li>Taxa de adoção: &gt;60% em 6 meses</li>
+<li>Frequência de uso: mínimo 3x/semana</li>
+<li>NPS: &gt;70</li>
+<li>Aumento de receita: &gt;15% ano</li>
+<li>Redução de perdas climáticas: &gt;30%</li>
+</ul>
+<h3 id="para-cooperativas">Para Cooperativas</h3>
+<ul>
+<li>Redução de custos operacionais: &gt;25%</li>
+<li>Aumento de eficiência: &gt;40%</li>
+<li>Melhoria em compliance: 100%</li>
+<li>Crescimento de associados: &gt;20% ano</li>
+<li>ROI da plataforma: &lt;18 meses</li>
+</ul>
+<h2 id="considera%C3%A7%C3%B5es-t%C3%A9cnicas">Considerações Técnicas</h2>
+<h3 id="arquitetura">Arquitetura</h3>
+<ul>
+<li>Microserviços para escalabilidade</li>
+<li>API-first design</li>
+<li>Cloud native (AWS/GCP)</li>
+<li>Mobile responsive</li>
+<li>Offline-first para áreas rurais</li>
+</ul>
+<h3 id="seguran%C3%A7a">Segurança</h3>
+<ul>
+<li>Criptografia end-to-end</li>
+<li>Autenticação multi-fator</li>
+<li>Compliance LGPD</li>
+<li>Backup redundante</li>
+<li>Disaster recovery plan</li>
+</ul>
+<h3 id="integra%C3%A7%C3%B5es-essenciais">Integrações Essenciais</h3>
+<ul>
+<li>WhatsApp Business API</li>
+<li>Sistemas bancários brasileiros</li>
+<li>APIs meteorológicas (INMET, etc.)</li>
+<li>Certificadoras internacionais</li>
+<li>ERPs principais do mercado</li>
+</ul>
+<h2 id="roadmap-sugerido">Roadmap Sugerido</h2>
+<h3 id="q1-2025---funda%C3%A7%C3%A3o">Q1 2025 - Fundação</h3>
+<ul>
+<li>Setup de infraestrutura</li>
+<li>Desenvolvimento do MVP</li>
+<li>Piloto com 50 produtores</li>
+</ul>
+<h3 id="q2-2025---expans%C3%A3o-b%C3%A1sica">Q2 2025 - Expansão Básica</h3>
+<ul>
+<li>Lançamento para pequenos produtores</li>
+<li>Módulos financeiro e climático</li>
+<li>500 usuários ativos</li>
+</ul>
+<h3 id="q3-2025---funcionalidades-intermedi%C3%A1rias">Q3 2025 - Funcionalidades Intermediárias</h3>
+<ul>
+<li>Dashboard e analytics</li>
+<li>Integrações com cooperativas</li>
+<li>2.000 usuários ativos</li>
+</ul>
+<h3 id="q4-2025---recursos-avan%C3%A7ados">Q4 2025 - Recursos Avançados</h3>
+<ul>
+<li>Blockchain e tokenização</li>
+<li>IA e machine learning</li>
+<li>5.000+ usuários ativos</li>
+</ul>
+<h3 id="2026---consolida%C3%A7%C3%A3o">2026 - Consolidação</h3>
+<ul>
+<li>Expansão nacional</li>
+<li>Parcerias estratégicas</li>
+<li>Sustentabilidade financeira</li>
+</ul>
+
+</body>
+
+</html>

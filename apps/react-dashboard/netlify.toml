@@ -1,0 +1,25 @@
+[build]
+  # Comando de build para Vite
+  command = "npm run build"
+  
+  # Diretório de publicação do Vite
+  publish = "dist"
+
+[build.environment]
+  # Versão do Node.js
+  NODE_VERSION = "18"
+
+# Configurações para SPA (Single Page Application)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers de segurança
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

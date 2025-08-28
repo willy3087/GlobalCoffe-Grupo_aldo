@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Teste API OpenWeatherMap</title>
+  </head>
+  <body>
+    <h1>Teste de API</h1>
+    <button onclick="testarAPI()">Testar API</button>
+    <pre id="resultado"></pre>
+
+    <script>
+      const API_KEY = "5fc572924bcb0e8f0e4a297a8cc03122";
+
+      async function testarAPI() {
+        const resultado = document.getElementById("resultado");
+        resultado.textContent = "Carregando...";
+
+        try {
+          // Teste 1: Weather API
+          const weatherResponse = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=-21.5523&lon=-45.4408&units=metric&lang=pt_br&appid=${API_KEY}`
+          );
+
+          if (!weatherResponse.ok) {
+            throw new Error(`Weather API Error: ${weatherResponse.status}`);
+          }
+
+          const weatherData = await weatherResponse.json();
+
+          // Teste 2: Forecast API
+          const forecastResponse = await fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?lat=-21.5523&lon=-45.4408&units=metric&lang=pt_br&appid=${API_KEY}`
+          );
+
+          const forecastData = await forecastResponse.json();
+
+          resultado.textContent = JSON.stringify(
+            {
+              weather: weatherData,
+              forecast: forecastData.list
+                ? forecastData.list.slice(0, 3)
+                : "Erro forecast",
+            },
+            null,
+            2
+          );
+        } catch (error) {
+          resultado.textContent = `Erro: ${error.message}`;
+        }
+      }
+    </script>
+  </body>
+</html>

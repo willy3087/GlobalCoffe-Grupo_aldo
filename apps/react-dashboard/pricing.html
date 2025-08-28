@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bolsa de Valores - Café</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+      }
+      h1 {
+        text-align: center;
+        margin: 20px 0;
+        padding: 0 20px;
+        font-size: 24px;
+      }
+      /* Header styles */
+      header.app-header {
+        height: 60px;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        flex-shrink: 0;
+      }
+      .app-header .header-logo img {
+        height: 48px;
+        width: auto;
+      }
+      .app-header .header-menu ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        gap: 24px;
+      }
+      .app-header .header-menu ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 8px 0;
+        transition: color 0.3s ease;
+      }
+      .app-header .header-menu ul li a:hover {
+        color: #3498db;
+      }
+      .app-header .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .app-header .notification-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #333;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease;
+      }
+      .app-header .notification-button:hover {
+        color: #3498db;
+      }
+      .app-header .user-avatar img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #3498db;
+      }
+      .main-container {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        height: 100%;
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .content-area {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 40px;
+      }
+      th,
+      td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background-color: #3498db;
+        color: white;
+        font-weight: 600;
+      }
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+      .trade-section {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      .trade-section h2 {
+        margin: 0 0 20px 0;
+        color: #2c3e50;
+        font-size: 20px;
+      }
+      .chart-container {
+        width: 100%;
+        height: 400px;
+        position: relative;
+        margin-bottom: 20px;
+      }
+      .trade-controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .trade-controls button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      #buyBtn {
+        background-color: #3498db;
+        color: white;
+      }
+      #buyBtn:hover {
+        background-color: #2980b9;
+      }
+      #sellBtn {
+        background-color: #e74c3c;
+        color: white;
+      }
+      #sellBtn:hover {
+        background-color: #c0392b;
+      }
+      #tradeStatus {
+        margin-left: 20px;
+        font-weight: bold;
+      }
+      .sidebar {
+        flex: 0 0 320px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: calc(100% - 20px);
+        overflow-y: auto;
+      }
+      .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      .sidebar-header h2 {
+        margin: 0;
+        color: #2c3e50;
+      }
+      .refresh-btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .refresh-btn:hover {
+        background: #2980b9;
+        transform: translateY(-1px);
+      }
+      .refresh-btn:active {
+        transform: translateY(0);
+      }
+      .refresh-btn.loading {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .refresh-btn.loading svg {
+        animation: spin 1s linear infinite;
+      }
+      .news-item {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e0e0e0;
+        transition: all 0.3s ease;
+      }
+      .news-item:hover {
+        background-color: #f9f9f9;
+        margin-left: -10px;
+        margin-right: -10px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .news-item:last-child {
+        border-bottom: none;
+      }
+      .news-thumb {
+        width: 100px;
+        height: 75px;
+        object-fit: cover;
+        border-radius: 6px;
+        flex-shrink: 0;
+      }
+      .news-content {
+        flex: 1;
+        min-width: 0;
+      }
+      .news-item:has(.news-thumb[style*="display: none"]) {
+        padding-left: 0;
+      }
+      .news-item:has(.news-thumb[style*="display: none"]) .news-content {
+        margin-left: 0;
+      }
+      .news-title {
+        font-weight: 600;
+        font-size: 14px;
+        margin: 0 0 8px 0;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .news-title a {
+        color: #2c3e50;
+        text-decoration: none;
+      }
+      .news-title a:hover {
+        color: #3498db;
+        text-decoration: underline;
+      }
+      .news-description {
+        font-size: 12px;
+        color: #666;
+        margin: 0 0 8px 0;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .news-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 11px;
+        color: #999;
+      }
+      .news-relevance {
+        background: #f0f0f0;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-weight: 500;
+      }
+      .news-relevance.high {
+        background: #d4edda;
+        color: #155724;
+      }
+      .news-relevance.medium {
+        background: #fff3cd;
+        color: #856404;
+      }
+      .news-relevance.low {
+        background: #f8d7da;
+        color: #721c24;
+      }
+      .news-date {
+        color: #999;
+      }
+      .loading {
+        text-align: center;
+        padding: 20px;
+        color: #999;
+      }
+      .market-info-cards {
+        display: flex;
+        gap: 12px;
+        margin: 15px 0;
+        flex-wrap: wrap;
+      }
+      .market-card {
+        background: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        flex: 1;
+        min-width: 120px;
+        border: 1px solid #e1e4e8;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .market-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+      }
+      .market-card-label {
+        font-size: 11px;
+        color: #7f8c8d;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 4px 0;
+      }
+      .market-card-value {
+        font-size: 18px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin: 0;
+        line-height: 1;
+      }
+      .market-card-change {
+        font-size: 12px;
+        margin-top: 2px;
+        font-weight: 500;
+      }
+      .market-card-change.positive {
+        color: #27ae60;
+      }
+      .market-card-change.negative {
+        color: #e74c3c;
+      }
+      .market-card.variation {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      }
+      .market-card.variation.positive {
+        border-color: #27ae60;
+      }
+      .market-card.variation.negative {
+        border-color: #e74c3c;
+      }
+      @media (max-width: 1200px) {
+        .main-container {
+          flex-direction: column;
+        }
+        .sidebar {
+          flex: 1;
+          max-width: 100%;
+          height: auto;
+          margin-top: 20px;
+        }
+      }
+      @media (max-width: 768px) {
+        .main-container {
+          padding: 10px;
+        }
+        table {
+          font-size: 14px;
+        }
+        th, td {
+          padding: 8px 10px;
+        }
+        .chart-container {
+          height: 300px;
+        }
+        .market-info-cards {
+          gap: 8px;
+        }
+        .market-card {
+          min-width: 100px;
+          padding: 10px 12px;
+        }
+        .market-card-value {
+          font-size: 16px;
+        }
+        .market-card-label {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="header-logo">
+        <span style="font-size: 24px; font-weight: bold; color: #3498db"
+          >☕ GlobalCoffee</span
+        >
+      </div>
+      <nav class="header-menu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="dashboard_kpis.html">Clima</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="notification-button" aria-label="Notificações">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 22c1.1 0 2-.9 2-2h-4a2 2 0 0 0 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 0 0-3 0v.68C7.63 5.36 6 7.92 6 11v5l-1.99 2H20l-2-2z"
+            />
+          </svg>
+        </button>
+        <div class="user-avatar">
+          <span style="font-size: 24px">👤</span>
+        </div>
+      </div>
+    </header>
+    <h1>Bolsa de Valores - Commodities de Café</h1>
+    <div class="main-container">
+      <div class="content-area">
+        <section class="trade-section">
+          <h2>Painel Interativo de Trade - Preço do Café</h2>
+          <div id="marketInfoCards" class="market-info-cards">
+            <!-- Cards serão inseridos dinamicamente aqui -->
+          </div>
+          <div class="chart-container">
+            <canvas id="tradeChart"></canvas>
+          </div>
+          <div class="trade-controls">
+            <button id="buyBtn">Comprar</button>
+            <button id="sellBtn">Vender</button>
+            <span id="tradeStatus"></span>
+          </div>
+        </section>
+
+        <table>
+      <thead>
+        <tr>
+          <th>Ativo</th>
+          <th>Preço Atual (R$)</th>
+          <th>Variação (%)</th>
+          <th>Volume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Café Arábica (KC)</td>
+          <td>R$ 1,800.00</td>
+          <td>+0.75%</td>
+          <td>12,345</td>
+        </tr>
+        <tr>
+          <td>Café Robusta (RC)</td>
+          <td>R$ 1,530.00</td>
+          <td>-0.30%</td>
+          <td>8,765</td>
+        </tr>
+        <tr>
+          <td>Futuros Café Arábica</td>
+          <td>R$ 1,836.00</td>
+          <td>+1.10%</td>
+          <td>15,230</td>
+        </tr>
+        <tr>
+          <td>Futuros Café Robusta</td>
+          <td>R$ 1,548.00</td>
+          <td>-0.50%</td>
+          <td>9,500</td>
+        </tr>
+      </tbody>
+        </table>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Notícias do Mercado</h2>
+          <button
+            id="refreshBtn"
+            class="refresh-btn"
+            onclick="refreshNews()"
+            title="Recarregar notícias"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M23 4v6h-6"></path>
+              <path d="M1 20v-6h6"></path>
+              <path
+                d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
+              ></path>
+            </svg>
+            Atualizar
+          </button>
+        </div>
+        <div id="newsFeed" class="loading">Carregando notícias...</div>
+      </aside>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script>
+      // ==================== SEÇÃO DE NOTÍCIAS ====================
+      
+      // Função para calcular relevância baseada em palavras-chave
+      function calculateRelevance(title, description) {
+        const keywords = [
+          "café",
+          "coffee",
+          "commodities",
+          "bolsa",
+          "valores",
+          "trading",
+          "mercado",
+          "market",
+          "preço",
+          "price",
+          "arabica",
+          "robusta",
+          "futuros",
+          "futures",
+          "cotação",
+          "exportação",
+          "export",
+          "safra",
+          "harvest",
+          "brasil",
+          "brazil"
+        ];
+
+        const text = (title + " " + description).toLowerCase();
+        let score = 0;
+
+        keywords.forEach((keyword) => {
+          if (text.includes(keyword)) score += 10;
+        });
+
+        return Math.min(100, Math.max(20, score));
+      }
+
+      // Função para formatar data
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 0) return "Hoje";
+        if (diffDays === 1) return "Ontem";
+        if (diffDays < 7) return `${diffDays} dias atrás`;
+
+        return date.toLocaleDateString("pt-BR", {
+          day: "2-digit",
+          month: "short",
+        });
+      }
+
+      // Mock de notícias relevantes sobre mercado de café
+      const mockNews = [
+        {
+          title: "Café futuro sobe com preocupações sobre oferta global",
+          description:
+            "Contratos futuros de café arábica avançam 2,5% na ICE após relatórios indicarem redução nas estimativas de produção.",
+          thumbnail:
+            "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=200&h=150&fit=crop",
+          pubDate: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+          link: "#",
+        },
+        {
+          title:
+            "Análise técnica: Café rompe resistência importante em US$ 2,45",
+          description:
+            "Traders acompanham movimento de alta após rompimento de nível técnico chave. Volume de negociação aumenta 30%.",
+          thumbnail:
+            "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=200&h=150&fit=crop",
+          pubDate: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
+          link: "#",
+        },
+        {
+          title: "Fundos aumentam posições compradas em café",
+          description:
+            "Relatório CFTC mostra aumento de 15% nas posições líquidas compradas de fundos especulativos na última semana.",
+          thumbnail:
+            "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&h=150&fit=crop",
+          pubDate: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+          link: "#",
+        },
+        {
+          title:
+            "Volatilidade do café atrai traders algorítmicos",
+          description:
+            "Aumento da volatilidade no mercado de café tem atraído mais operações automatizadas e de alta frequência.",
+          thumbnail:
+            "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=200&h=150&fit=crop",
+          pubDate: new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString(),
+          link: "#",
+        },
+        {
+          title: "Spread entre arábica e robusta atinge máxima do ano",
+          description:
+            "Diferença de preço entre as duas principais variedades de café alcança níveis históricos devido a fatores climáticos.",
+          thumbnail:
+            "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=200&h=150&fit=crop",
+          pubDate: new Date(Date.now() - 72 * 60 * 60 * 1000).toISOString(),
+          link: "#",
+        },
+      ];
+
+      // Função para exibir notícias
+      function displayNews(items) {
+        const newsFeed = document.getElementById("newsFeed");
+        newsFeed.innerHTML = "";
+        newsFeed.classList.remove("loading");
+
+        items.forEach((item, index) => {
+          const relevance = calculateRelevance(item.title, item.description);
+          const newsItem = document.createElement("div");
+          newsItem.className = "news-item";
+
+          const relevanceClass =
+            relevance >= 70 ? "high" : relevance >= 40 ? "medium" : "low";
+
+          newsItem.innerHTML = `
+            <img class="news-thumb" src="${item.thumbnail}" alt="${
+            item.title
+          }" onerror="this.style.display='none'">
+            <div class="news-content">
+              <h3 class="news-title">
+                <a href="${item.link}" target="_blank" rel="noopener">${
+            item.title
+          }</a>
+              </h3>
+              <p class="news-description">${item.description}</p>
+              <div class="news-meta">
+                <span class="news-date">${formatDate(item.pubDate)}</span>
+                <span class="news-relevance ${relevanceClass}">Relevância: ${relevance}%</span>
+              </div>
+            </div>
+          `;
+
+          newsFeed.appendChild(newsItem);
+        });
+      }
+
+      // Função para carregar feed RSS real (quando disponível)
+      async function loadRSSFeed(url) {
+        try {
+          const response = await fetch(
+            `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
+              url
+            )}`
+          );
+
+          if (!response.ok) throw new Error("Erro ao carregar feed");
+
+          const data = await response.json();
+
+          if (data.status === "ok" && data.items.length > 0) {
+            displayNews(data.items.slice(0, 5));
+          } else {
+            // Se falhar, usar notícias mock
+            displayNews(mockNews);
+          }
+        } catch (error) {
+          console.error("Erro ao carregar feed RSS:", error);
+          // Usar notícias mock em caso de erro
+          displayNews(mockNews);
+        }
+      }
+
+      // URLs de feeds RSS relevantes para mercado financeiro
+      const marketFeeds = [
+        "https://feeds.bloomberg.com/markets/news.rss",
+        "https://feeds.bbci.co.uk/news/business/rss.xml",
+        "https://rss.cnn.com/rss/money_latest.rss",
+      ];
+
+      // Função para atualizar notícias
+      function refreshNews() {
+        const btn = document.getElementById("refreshBtn");
+        const feed = document.getElementById("newsFeed");
+
+        // Adicionar estado de carregamento
+        btn.classList.add("loading");
+        btn.disabled = true;
+        feed.innerHTML = '<div class="loading">Carregando notícias...</div>';
+
+        // Carregar notícias
+        loadRSSFeed(marketFeeds[0]).finally(() => {
+          // Remover estado de carregamento após 1 segundo
+          setTimeout(() => {
+            btn.classList.remove("loading");
+            btn.disabled = false;
+          }, 1000);
+        });
+      }
+
+      // ==================== SEÇÃO DO GRÁFICO DE TRADING ====================
+      
+      // Configuração inicial do mercado
+      const INITIAL_PRICE = 1800; // Preço inicial do café em reais por saca
+      const VOLATILITY = 0.005; // 0.5% de volatilidade
+      const UPDATE_INTERVAL = 4000; // Atualização a cada 4 segundos
+      
+      // Estado do mercado
+      let currentPrice = INITIAL_PRICE;
+      let previousClose = INITIAL_PRICE;
+      let dayHigh = INITIAL_PRICE;
+      let dayLow = INITIAL_PRICE;
+      let volume = 0;
+      let trades = [];
+      let positions = [];
+      
+      // Dados para o gráfico
+      const priceHistory = [];
+      const volumeHistory = [];
+      const smaData = [];
+      const candleData = [];
+      let currentCandle = null;
+      const CANDLE_INTERVAL = 30000; // 30 segundos por vela
+      
+      // Contexto do gráfico
+      const ctx = document.getElementById("tradeChart").getContext("2d");
+
+      // Configuração dos datasets
+      const priceData = {
+        labels: [],
+        datasets: [
+          {
+            label: "Tendência",
+            data: [],
+            type: 'bar',
+            backgroundColor: [],
+            borderColor: [],
+            borderWidth: 1,
+            barThickness: 4,
+            yAxisID: 'y',
+          },
+          {
+            label: "Preço do Café",
+            data: [],
+            type: 'line',
+            borderColor: "rgba(52, 152, 219, 1)",
+            backgroundColor: "rgba(52, 152, 219, 0.1)",
+            borderWidth: 2,
+            fill: false,
+            tension: 0.1,
+            pointRadius: 1,
+            pointHoverRadius: 4,
+            yAxisID: 'y',
+          },
+          {
+            label: "SMA 20",
+            data: [],
+            type: 'line',
+            borderColor: "rgba(255, 159, 64, 1)",
+            backgroundColor: "transparent",
+            borderWidth: 2,
+            fill: false,
+            tension: 0.1,
+            pointRadius: 0,
+            borderDash: [5, 5],
+            yAxisID: 'y',
+          },
+          {
+            label: "Volume",
+            data: [],
+            type: 'bar',
+            backgroundColor: function(context) {
+              const index = context.dataIndex;
+              if (!priceData.datasets[0].data[index]) return 'rgba(100, 100, 100, 0.9)';
+              const trend = priceData.datasets[0].data[index];
+              return trend >= 0 ? 'rgba(46, 204, 113, 0.9)' : 'rgba(231, 76, 60, 0.9)';
+            },
+            borderColor: function(context) {
+              const index = context.dataIndex;
+              if (!priceData.datasets[0].data[index]) return 'rgba(100, 100, 100, 1)';
+              const trend = priceData.datasets[0].data[index];
+              return trend >= 0 ? 'rgba(39, 174, 96, 1)' : 'rgba(192, 57, 43, 1)';
+            },
+            borderWidth: 2,
+            barPercentage: 0.8,
+            categoryPercentage: 0.9,
+            minBarLength: 5,
+            yAxisID: 'y1',
+          }
+        ],
+      };
+
+      // Configuração do gráfico
+      const config = {
+        type: "line",
+        data: priceData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          },
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                font: {
+                  size: 11,
+                },
+                filter: function(item) {
+                  // Não mostrar legenda para volume
+                  return item.text !== 'Volume';
+                }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  if (context.dataset.label === 'Volume') {
+                    return `Volume: ${context.parsed.y.toLocaleString()} sacas`;
+                  }
+                  return `${context.dataset.label}: R$ ${context.parsed.y.toFixed(2)}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'minute',
+                displayFormats: {
+                  minute: 'HH:mm'
+                },
+              },
+              title: {
+                display: true,
+                text: "Horário",
+                font: {
+                  size: 12,
+                }
+              },
+              ticks: {
+                font: {
+                  size: 11,
+                },
+                maxRotation: 0,
+              },
+              grid: {
+                display: true,
+                drawBorder: false,
+              }
+            },
+            y: {
+              type: 'linear',
+              display: true,
+              position: 'left',
+              title: {
+                display: true,
+                text: "Preço (R$/saca)",
+                font: {
+                  size: 12,
+                }
+              },
+              min: 1700,
+              max: 1900,
+              ticks: {
+                font: {
+                  size: 11,
+                },
+                callback: function(value) {
+                  return 'R$ ' + value.toFixed(0);
+                },
+                stepSize: 20
+              },
+              grid: {
+                display: true,
+                drawBorder: false,
+              }
+            },
+            y1: {
+              type: 'linear',
+              display: true,
+              position: 'right',
+              title: {
+                display: true,
+                text: "Volume (sacas)",
+                font: {
+                  size: 12,
+                }
+              },
+              min: 0,
+              max: 15000,
+              ticks: {
+                font: {
+                  size: 11,
+                },
+                callback: function(value) {
+                  return (value/1000).toFixed(0) + 'K';
+                },
+                stepSize: 3000
+              },
+              grid: {
+                drawOnChartArea: true,
+                color: 'rgba(0, 0, 0, 0.05)',
+                lineWidth: 1
+              }
+            }
+          },
+        },
+      };
+
+      const tradeChart = new Chart(ctx, config);
+
+      // Função para calcular média móvel simples
+      function calculateSMA(data, period) {
+        if (data.length < period) return null;
+        const sum = data.slice(-period).reduce((a, b) => a + b, 0);
+        return sum / period;
+      }
+
+      // Função para gerar variação de preço realista
+      function generatePriceMovement() {
+        // Tendência do mercado (60% chance de seguir a tendência)
+        const trend = Math.random() > 0.4 ? (currentPrice > previousClose ? 1 : -1) : (Math.random() > 0.5 ? 1 : -1);
+        
+        // Movimento baseado em distribuição normal
+        const normalRandom = () => {
+          let u = 0, v = 0;
+          while(u === 0) u = Math.random();
+          while(v === 0) v = Math.random();
+          return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+        };
+        
+        const changePercent = normalRandom() * VOLATILITY * 0.3; // Reduzido de 0.1 para 0.3
+        const trendComponent = trend * VOLATILITY * 0.1; // Reduzido de 0.05 para 0.1
+        
+        return currentPrice * (1 + changePercent + trendComponent);
+      }
+
+      // Função para gerar volume realista
+      function generateVolume() {
+        const baseVolume = 4000 + Math.random() * 6000; // Aumentado para 4000-10000
+        const volatilityMultiplier = 1 + Math.abs(currentPrice - previousClose) / previousClose * 20;
+        return Math.floor(baseVolume * volatilityMultiplier);
+      }
+
+      // Função para atualizar preços na tabela
+      function updateTable() {
+        const tableRows = document.querySelectorAll('tbody tr');
+        const commodities = [
+          { name: 'Café Arábica (KC)', base: currentPrice, variation: 10.0 },
+          { name: 'Café Robusta (RC)', base: currentPrice * 0.85, variation: 12.0 },
+          { name: 'Futuros Café Arábica', base: currentPrice * 1.02, variation: 8.0 },
+          { name: 'Futuros Café Robusta', base: currentPrice * 0.86, variation: 11.0 }
+        ];
+        
+        tableRows.forEach((row, index) => {
+          if (index < commodities.length) {
+            const commodity = commodities[index];
+            const price = commodity.base + (Math.random() - 0.5) * commodity.variation;
+            const change = ((price - commodity.base) / commodity.base * 100).toFixed(2);
+            const volumeValue = generateVolume() * (index + 1);
+            
+            row.cells[1].textContent = 'R$ ' + price.toFixed(2);
+            row.cells[2].textContent = (parseFloat(change) > 0 ? '+' : '') + change + '%';
+            row.cells[2].style.color = parseFloat(change) > 0 ? '#27ae60' : '#e74c3c';
+            row.cells[3].textContent = volumeValue.toLocaleString();
+          }
+        });
+      }
+
+      // Função para adicionar novo ponto de preço
+      function updatePrice() {
+        const now = new Date();
+        
+        // Gerar novo preço
+        const newPrice = generatePriceMovement();
+        currentPrice = Math.max(1750, Math.min(1850, newPrice)); // Limitar entre R$ 1750 e R$ 1850
+        
+        // Atualizar máxima e mínima do dia
+        dayHigh = Math.max(dayHigh, currentPrice);
+        dayLow = Math.min(dayLow, currentPrice);
+        
+        // Gerar volume
+        const currentVolume = generateVolume();
+        volume += currentVolume;
+        
+        // Adicionar aos históricos
+        priceHistory.push(currentPrice);
+        volumeHistory.push(currentVolume);
+        
+        // Gerenciar candlesticks
+        if (!currentCandle || now - currentCandle.time >= CANDLE_INTERVAL) {
+          // Criar nova vela
+          if (currentCandle) {
+            // Finalizar vela anterior
+            candleData.push({
+              x: currentCandle.time,
+              o: currentCandle.open,
+              h: currentCandle.high,
+              l: currentCandle.low,
+              c: currentCandle.close
+            });
+          }
+          
+          currentCandle = {
+            time: now,
+            open: currentPrice,
+            high: currentPrice,
+            low: currentPrice,
+            close: currentPrice
+          };
+        } else {
+          // Atualizar vela atual
+          currentCandle.high = Math.max(currentCandle.high, currentPrice);
+          currentCandle.low = Math.min(currentCandle.low, currentPrice);
+          currentCandle.close = currentPrice;
+        }
+        
+        // Calcular SMA
+        const sma = calculateSMA(priceHistory, 20);
+        
+        // Atualizar dados do gráfico
+        priceData.labels.push(now);
+        
+        // Tendência (diferença entre preço atual e anterior)
+        const previousPrice = priceHistory.length > 1 ? priceHistory[priceHistory.length - 2] : currentPrice;
+        const trend = currentPrice - previousPrice;
+        priceData.datasets[0].data.push(trend);
+        priceData.datasets[0].backgroundColor.push(trend >= 0 ? 'rgba(46, 204, 113, 0.8)' : 'rgba(231, 76, 60, 0.8)');
+        priceData.datasets[0].borderColor.push(trend >= 0 ? 'rgba(46, 204, 113, 1)' : 'rgba(231, 76, 60, 1)');
+        
+        priceData.datasets[1].data.push(currentPrice);
+        priceData.datasets[2].data.push(sma);
+        priceData.datasets[3].data.push(currentVolume);
+        
+        // Manter apenas os últimos 60 pontos
+        if (priceData.labels.length > 60) {
+          priceData.labels.shift();
+          priceData.datasets.forEach((dataset, idx) => {
+            dataset.data.shift();
+            if (idx === 0) { // Dataset de tendência
+              dataset.backgroundColor.shift();
+              dataset.borderColor.shift();
+            }
+          });
+          priceHistory.shift();
+          volumeHistory.shift();
+        }
+        
+        // Atualizar gráfico
+        tradeChart.update('none');
+        
+        // Atualizar tabela
+        updateTable();
+        
+        // Atualizar informações de mercado
+        updateMarketInfo();
+      }
+
+      // Função para atualizar informações do mercado
+      function updateMarketInfo() {
+        const changeValue = currentPrice - previousClose;
+        const changePercent = (changeValue / previousClose * 100).toFixed(2);
+        const isPositive = changeValue > 0;
+        
+        const marketInfoCards = document.getElementById('marketInfoCards');
+        
+        marketInfoCards.innerHTML = `
+          <div class="market-card">
+            <p class="market-card-label">Último</p>
+            <p class="market-card-value">R$ ${currentPrice.toFixed(2)}</p>
+          </div>
+          
+          <div class="market-card variation ${isPositive ? 'positive' : 'negative'}">
+            <p class="market-card-label">Variação</p>
+            <p class="market-card-value market-card-change ${isPositive ? 'positive' : 'negative'}">
+              ${isPositive ? '+' : ''}R$ ${Math.abs(changeValue).toFixed(2)}
+            </p>
+            <p class="market-card-change ${isPositive ? 'positive' : 'negative'}">
+              (${isPositive ? '+' : ''}${changePercent}%)
+            </p>
+          </div>
+          
+          <div class="market-card">
+            <p class="market-card-label">Máxima</p>
+            <p class="market-card-value">R$ ${dayHigh.toFixed(2)}</p>
+          </div>
+          
+          <div class="market-card">
+            <p class="market-card-label">Mínima</p>
+            <p class="market-card-value">R$ ${dayLow.toFixed(2)}</p>
+          </div>
+          
+          <div class="market-card">
+            <p class="market-card-label">Volume</p>
+            <p class="market-card-value">${(volume/1000).toFixed(1)}K sacas</p>
+          </div>
+        `;
+      }
+
+      // Função para executar ordem
+      function executeOrder(type) {
+        const order = {
+          id: Date.now(),
+          type: type,
+          price: currentPrice,
+          volume: 100,
+          timestamp: new Date(),
+          status: 'executed'
+        };
+        
+        trades.push(order);
+        positions.push(order);
+        
+        const tradeStatus = document.getElementById("tradeStatus");
+        tradeStatus.textContent = `${type === 'buy' ? 'Compra' : 'Venda'} executada: 100 sacas @ R$ ${currentPrice.toFixed(2)}`;
+        tradeStatus.style.color = type === 'buy' ? '#27ae60' : '#e74c3c';
+        
+        // Adicionar ao histórico de trades
+        updateTradeHistory(order);
+        
+        // Limpar mensagem após 3 segundos
+        setTimeout(() => {
+          tradeStatus.textContent = '';
+        }, 3000);
+      }
+
+      // Função para atualizar histórico de trades
+      function updateTradeHistory(order) {
+        let historyDiv = document.getElementById('tradeHistory');
+        if (!historyDiv) {
+          historyDiv = document.createElement('div');
+          historyDiv.id = 'tradeHistory';
+          historyDiv.style.marginTop = '20px';
+          historyDiv.innerHTML = '<h3 style="font-size: 16px; margin-bottom: 10px;">Histórico de Ordens</h3>';
+          document.querySelector('.trade-section').appendChild(historyDiv);
+        }
+        
+        const tradeItem = document.createElement('div');
+        tradeItem.style.cssText = 'padding: 8px; border-bottom: 1px solid #eee; font-size: 12px;';
+        tradeItem.innerHTML = `
+          <span style="color: ${order.type === 'buy' ? '#27ae60' : '#e74c3c'}; font-weight: bold;">
+            ${order.type === 'buy' ? 'COMPRA' : 'VENDA'}
+          </span>
+          <span> - ${order.timestamp.toLocaleTimeString('pt-BR')} - </span>
+          <span>${order.volume} sacas @ R$ ${order.price.toFixed(2)}</span>
+        `;
+        
+        // Adicionar no topo do histórico
+        if (historyDiv.children.length > 1) {
+          historyDiv.insertBefore(tradeItem, historyDiv.children[1]);
+        } else {
+          historyDiv.appendChild(tradeItem);
+        }
+        
+        // Manter apenas os últimos 10 trades
+        while (historyDiv.children.length > 11) {
+          historyDiv.removeChild(historyDiv.lastChild);
+        }
+      }
+
+      // Inicializar com alguns dados históricos
+      function initializeData() {
+        const now = new Date();
+        let lastCandleTime = null;
+        let tempCandle = null;
+        
+        for (let i = 59; i >= 0; i--) {
+          const time = new Date(now.getTime() - i * 60000);
+          const price = INITIAL_PRICE + (Math.random() - 0.5) * 20; // Variação de ±10 reais
+          const vol = generateVolume();
+          
+          priceHistory.push(price);
+          volumeHistory.push(vol);
+          
+          // Criar candlesticks históricos
+          if (!lastCandleTime || time - lastCandleTime >= CANDLE_INTERVAL) {
+            if (tempCandle) {
+              candleData.push({
+                x: tempCandle.time,
+                o: tempCandle.open,
+                h: tempCandle.high,
+                l: tempCandle.low,
+                c: tempCandle.close
+              });
+            }
+            
+            tempCandle = {
+              time: time,
+              open: price,
+              high: price,
+              low: price,
+              close: price
+            };
+            lastCandleTime = time;
+          } else {
+            tempCandle.high = Math.max(tempCandle.high, price);
+            tempCandle.low = Math.min(tempCandle.low, price);
+            tempCandle.close = price;
+          }
+          
+        }
+        
+        // Adicionar última vela
+        if (tempCandle) {
+          candleData.push({
+            x: tempCandle.time,
+            o: tempCandle.open,
+            h: tempCandle.high,
+            l: tempCandle.low,
+            c: tempCandle.close
+          });
+        }
+        
+        // Configurar dados iniciais
+        for (let i = 0; i < priceHistory.length; i++) {
+          const time = new Date(now.getTime() - (priceHistory.length - i - 1) * 60000);
+          priceData.labels.push(time);
+          
+          // Tendência
+          const previousPrice = i > 0 ? priceHistory[i - 1] : priceHistory[i];
+          const trend = priceHistory[i] - previousPrice;
+          priceData.datasets[0].data.push(trend);
+          priceData.datasets[0].backgroundColor.push(trend >= 0 ? 'rgba(46, 204, 113, 0.8)' : 'rgba(231, 76, 60, 0.8)');
+          priceData.datasets[0].borderColor.push(trend >= 0 ? 'rgba(46, 204, 113, 1)' : 'rgba(231, 76, 60, 1)');
+          
+          priceData.datasets[1].data.push(priceHistory[i]);
+          priceData.datasets[2].data.push(calculateSMA(priceHistory.slice(0, i + 1), 20) || priceHistory[i]);
+          priceData.datasets[3].data.push(volumeHistory[i]);
+        }
+        
+        currentPrice = priceHistory[priceHistory.length - 1];
+        dayHigh = Math.max(...priceHistory);
+        dayLow = Math.min(...priceHistory);
+        volume = volumeHistory.reduce((a, b) => a + b, 0);
+        
+        tradeChart.update();
+        updateMarketInfo();
+        updateTable();
+      }
+
+      // Event listeners
+      document.getElementById("buyBtn").addEventListener("click", () => executeOrder('buy'));
+      document.getElementById("sellBtn").addEventListener("click", () => executeOrder('sell'));
+
+      // Inicializar dados e começar atualizações
+      initializeData();
+      setInterval(updatePrice, UPDATE_INTERVAL);
+      
+      // Carregar notícias ao iniciar
+      window.addEventListener("load", () => {
+        loadRSSFeed(marketFeeds[0]);
+        
+        // Atualizar notícias a cada 5 minutos
+        setInterval(() => {
+          refreshNews();
+        }, 5 * 60 * 1000);
+      });
+    </script>
+  </body>
+</html>

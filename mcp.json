@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "word": {
+      "command": "node",
+      "args": ["./word-mcp-server-enhanced.js"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}

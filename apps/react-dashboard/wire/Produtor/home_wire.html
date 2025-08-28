@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Wireframe</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Courier New", monospace;
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Header */
+      header {
+        background-color: #fff;
+        border-bottom: 2px solid #333;
+        padding: 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: normal;
+      }
+
+      nav {
+        display: flex;
+        gap: 30px;
+      }
+
+      nav span {
+        display: inline-block;
+        width: 60px;
+        height: 3px;
+        background-color: #333;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .icon-placeholder {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #333;
+        border-radius: 50%;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background-color: #333;
+        color: #fff;
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero-title {
+        font-size: 36px;
+        font-weight: normal;
+        margin-bottom: 20px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+
+      .hero-search {
+        display: flex;
+        max-width: 600px;
+        margin: 0 auto;
+        gap: 10px;
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 15px;
+        border: 2px solid #fff;
+        background-color: transparent;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .search-input::placeholder {
+        color: #ccc;
+      }
+
+      .search-btn {
+        padding: 15px 30px;
+        border: 2px solid #fff;
+        background-color: #fff;
+        color: #333;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      /* Quick Stats */
+      .quick-stats {
+        background-color: #fff;
+        padding: 20px;
+        border-bottom: 2px solid #ddd;
+      }
+
+      .stats-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+      }
+
+      .stat-item {
+        text-align: center;
+        flex: 1;
+      }
+
+      .stat-value {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .stat-label {
+        font-size: 12px;
+        color: #666;
+      }
+
+      .stat-change {
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      .positive {
+        color: #333;
+      }
+
+      .negative {
+        color: #666;
+      }
+
+      /* Main Container */
+      .main-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 30px;
+      }
+
+      /* News Section */
+      .news-section {
+        background-color: #fff;
+        border: 2px solid #333;
+        padding: 30px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #333;
+      }
+
+      .section-title {
+        font-size: 24px;
+        font-weight: normal;
+      }
+
+      .filter-tabs {
+        display: flex;
+        gap: 15px;
+      }
+
+      .tab {
+        padding: 8px 16px;
+        border: 1px solid #333;
+        background-color: #fff;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .tab.active {
+        background-color: #333;
+        color: #fff;
+      }
+
+      /* Featured News */
+      .featured-news {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .featured-item {
+        border: 1px solid #333;
+        overflow: hidden;
+      }
+
+      .featured-item.main {
+        grid-column: 1 / -1;
+      }
+
+      .news-image {
+        height: 200px;
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        color: #ccc;
+      }
+
+      .featured-item.main .news-image {
+        height: 300px;
+      }
+
+      .news-content {
+        padding: 20px;
+      }
+
+      .news-category {
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        color: #666;
+      }
+
+      .news-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+
+      .featured-item.main .news-title {
+        font-size: 24px;
+      }
+
+      .news-excerpt {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.4;
+      }
+
+      .news-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #999;
+      }
+
+      /* News List */
+      .news-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .news-item {
+        display: flex;
+        gap: 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .news-item:last-child {
+        border-bottom: none;
+      }
+
+      .news-thumb {
+        width: 120px;
+        height: 80px;
+        background-color: #f0f0f0;
+        border: 1px solid #333;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #ccc;
+      }
+
+      .news-info {
+        flex: 1;
+      }
+
+      .news-item .news-title {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      .news-item .news-excerpt {
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+
+      /* Load More */
+      .load-more {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .load-btn {
+        padding: 12px 40px;
+        border: 2px solid #333;
+        background-color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .load-btn:hover {
+        background-color: #f0f0f0;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* Market Overview */
+      .market-overview {
+        background-color: #fff;
+        border: 2px solid #333;
+        padding: 20px;
+      }
+
+      .widget-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .market-item {
+        padding: 12px 0;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .market-item:last-child {
+        border-bottom: none;
+      }
+
+      .market-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+
+      .market-name {
+        font-size: 14px;
+      }
+
+      .market-price {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .market-change {
+        font-size: 12px;
+        color: #666;
+      }
+
+      /* Trending Topics */
+      .trending-topics {
+        background-color: #fff;
+        border: 2px solid #333;
+        padding: 20px;
+      }
+
+      .topic-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+      }
+
+      .topic-item:last-child {
+        border-bottom: none;
+      }
+
+      .topic-number {
+        font-size: 18px;
+        font-weight: bold;
+        color: #999;
+      }
+
+      .topic-info {
+        flex: 1;
+      }
+
+      .topic-name {
+        font-size: 14px;
+        margin-bottom: 3px;
+      }
+
+      .topic-count {
+        font-size: 12px;
+        color: #666;
+      }
+
+      /* Newsletter */
+      .newsletter-widget {
+        background-color: #333;
+        color: #fff;
+        padding: 25px;
+        text-align: center;
+      }
+
+      .newsletter-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .newsletter-text {
+        font-size: 14px;
+        margin-bottom: 20px;
+        opacity: 0.9;
+      }
+
+      .newsletter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .newsletter-input {
+        padding: 10px;
+        border: 2px solid #fff;
+        background-color: transparent;
+        color: #fff;
+        font-size: 14px;
+      }
+
+      .newsletter-btn {
+        padding: 10px;
+        border: 2px solid #fff;
+        background-color: #fff;
+        color: #333;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      /* Events */
+      .events-widget {
+        background-color: #fff;
+        border: 2px solid #333;
+        padding: 20px;
+      }
+
+      .event-item {
+        display: flex;
+        gap: 15px;
+        padding: 12px 0;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .event-item:last-child {
+        border-bottom: none;
+      }
+
+      .event-date {
+        width: 50px;
+        text-align: center;
+        border: 1px solid #333;
+        padding: 5px;
+      }
+
+      .event-month {
+        font-size: 10px;
+        text-transform: uppercase;
+      }
+
+      .event-day {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .event-info {
+        flex: 1;
+      }
+
+      .event-title {
+        font-size: 14px;
+        margin-bottom: 3px;
+      }
+
+      .event-location {
+        font-size: 12px;
+        color: #666;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 40px 20px 20px;
+        margin-top: 60px;
+      }
+
+      .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-section h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+        font-weight: normal;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        padding: 5px 0;
+      }
+
+      .footer-link {
+        height: 2px;
+        background-color: #666;
+        width: 80%;
+        display: block;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #555;
+        font-size: 12px;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .main-container {
+          grid-template-columns: 1fr;
+        }
+
+        .featured-news {
+          grid-template-columns: 1fr;
+        }
+
+        .featured-item.main {
+          grid-column: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          display: none;
+        }
+
+        .hero-title {
+          font-size: 28px;
+        }
+
+        .stats-container {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .news-item {
+          flex-direction: column;
+        }
+
+        .news-thumb {
+          width: 100%;
+          height: 150px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .filter-tabs {
+          display: none;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div
+          class="logo"
+          style="cursor: pointer"
+          onclick="window.location.href='./home_wire.html'"
+        >
+          ☕ GlobalCoffee
+        </div>
+        <nav>
+          <a
+            href="./home_wire.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 5px;
+            "
+          >
+            <span
+              style="width: 60px; height: 3px; background-color: #333"
+            ></span>
+            <span style="font-size: 12px">Home</span>
+          </a>
+          <a
+            href="./clima.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 5px;
+            "
+          >
+            <span
+              style="width: 60px; height: 3px; background-color: #333"
+            ></span>
+            <span style="font-size: 12px">Clima</span>
+          </a>
+          <a
+            href="./pricing_wire.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 5px;
+            "
+          >
+            <span
+              style="width: 60px; height: 3px; background-color: #333"
+            ></span>
+            <span style="font-size: 12px">Pricing</span>
+          </a>
+          <a
+            href="./features_wire_v2.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 5px;
+            "
+          >
+            <span
+              style="width: 60px; height: 3px; background-color: #333"
+            ></span>
+            <span style="font-size: 12px">Features</span>
+          </a>
+          <a
+            href="./input_dados_wire.html"
+            style="
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 5px;
+            "
+          >
+            <span
+              style="width: 60px; height: 3px; background-color: #333"
+            ></span>
+            <span style="font-size: 12px">Dados</span>
+          </a>
+        </nav>
+        <div class="header-actions">
+          <div
+            class="icon-placeholder"
+            style="cursor: pointer"
+            onclick="window.location.href='./assinaturas_wire.html'"
+            title="Planos"
+          ></div>
+          <div
+            class="icon-placeholder"
+            style="cursor: pointer"
+            onclick="window.location.href='./login_wire.html'"
+            title="Sair"
+          ></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Conectando Produtores ao Mercado Global</h1>
+        <p class="hero-subtitle">
+          Notícias, tendências e análises do mercado de café em tempo real
+        </p>
+        <div class="hero-search">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Buscar notícias, análises, cotações..."
+          />
+          <button class="search-btn">Buscar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="quick-stats">
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-value">R$ 1.820</div>
+          <div class="stat-label">Arábica (saca)</div>
+          <div class="stat-change positive">↑ 2.3%</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">R$ 980</div>
+          <div class="stat-label">Conilon (saca)</div>
+          <div class="stat-change negative">↓ 1.1%</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">US$ 245</div>
+          <div class="stat-label">NY Coffee "C"</div>
+          <div class="stat-change positive">↑ 0.8%</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">87%</div>
+          <div class="stat-label">Safra Colhida</div>
+          <div class="stat-change">Brasil 2024</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="main-container">
+      <!-- News Section -->
+      <main class="news-section">
+        <div class="section-header">
+          <h2 class="section-title">Últimas Notícias e Tendências</h2>
+          <div class="filter-tabs">
+            <button class="tab active">Todas</button>
+            <button class="tab">Mercado</button>
+            <button class="tab">Clima</button>
+            <button class="tab">Tecnologia</button>
+          </div>
+        </div>
+
+        <!-- Featured News -->
+        <div class="featured-news">
+          <article class="featured-item main">
+            <div class="news-image">📰</div>
+            <div class="news-content">
+              <div class="news-category">MERCADO</div>
+              <h3 class="news-title">
+                Exportações de café brasileiro atingem recorde histórico em 2024
+              </h3>
+              <p class="news-excerpt">
+                Volume embarcado supera 45 milhões de sacas, impulsionado pela
+                demanda asiática e valorização do produto especial. Produtores
+                comemoram resultados.
+              </p>
+              <div class="news-meta">
+                <span>Há 2 horas</span>
+                <span>5 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="featured-item">
+            <div class="news-image">🌡️</div>
+            <div class="news-content">
+              <div class="news-category">CLIMA</div>
+              <h3 class="news-title">La Niña pode impactar próxima safra</h3>
+              <p class="news-excerpt">
+                Meteorologistas alertam para possível formação do fenômeno.
+              </p>
+              <div class="news-meta">
+                <span>Há 4 horas</span>
+                <span>3 min</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="featured-item">
+            <div class="news-image">💡</div>
+            <div class="news-content">
+              <div class="news-category">TECNOLOGIA</div>
+              <h3 class="news-title">IA revoluciona classificação de grãos</h3>
+              <p class="news-excerpt">
+                Nova tecnologia promete reduzir custos e aumentar precisão.
+              </p>
+              <div class="news-meta">
+                <span>Há 6 horas</span>
+                <span>4 min</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- News List -->
+        <div class="news-list">
+          <article class="news-item">
+            <div class="news-thumb">📊</div>
+            <div class="news-info">
+              <div class="news-category">ANÁLISE</div>
+              <h3 class="news-title">
+                Cooperativas investem R$ 2 bilhões em infraestrutura
+              </h3>
+              <p class="news-excerpt">
+                Modernização de armazéns e beneficiamento visa agregar valor à
+                produção nacional.
+              </p>
+              <div class="news-meta">
+                <span>Há 8 horas</span>
+                <span>6 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-item">
+            <div class="news-thumb">🌍</div>
+            <div class="news-info">
+              <div class="news-category">INTERNACIONAL</div>
+              <h3 class="news-title">
+                Europa aumenta demanda por cafés certificados
+              </h3>
+              <p class="news-excerpt">
+                Nova legislação ambiental impulsiona procura por produtos com
+                rastreabilidade.
+              </p>
+              <div class="news-meta">
+                <span>Há 12 horas</span>
+                <span>5 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-item">
+            <div class="news-thumb">💰</div>
+            <div class="news-info">
+              <div class="news-category">FINANCEIRO</div>
+              <h3 class="news-title">
+                Bancos ampliam crédito para cafeicultura
+              </h3>
+              <p class="news-excerpt">
+                Novas linhas de financiamento com juros reduzidos são anunciadas
+                para safra 2025.
+              </p>
+              <div class="news-meta">
+                <span>Ontem</span>
+                <span>4 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-item">
+            <div class="news-thumb">🏆</div>
+            <div class="news-info">
+              <div class="news-category">QUALIDADE</div>
+              <h3 class="news-title">
+                Brasil domina premiação mundial de cafés especiais
+              </h3>
+              <p class="news-excerpt">
+                Produtores nacionais conquistam 8 das 10 primeiras posições em
+                concurso internacional.
+              </p>
+              <div class="news-meta">
+                <span>Ontem</span>
+                <span>3 min de leitura</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="load-more">
+          <button class="load-btn">Carregar mais notícias</button>
+        </div>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <!-- Market Overview -->
+        <div class="market-overview">
+          <h3 class="widget-title">Mercado Agora</h3>
+          <div class="market-item">
+            <div class="market-header">
+              <span class="market-name">Arábica MG</span>
+              <span class="market-price">R$ 1.820</span>
+            </div>
+            <div class="market-change">↑ 2.3% hoje</div>
+          </div>
+          <div class="market-item">
+            <div class="market-header">
+              <span class="market-name">Conilon ES</span>
+              <span class="market-price">R$ 980</span>
+            </div>
+            <div class="market-change">↓ 1.1% hoje</div>
+          </div>
+          <div class="market-item">
+            <div class="market-header">
+              <span class="market-name">NY Coffee</span>
+              <span class="market-price">US$ 245</span>
+            </div>
+            <div class="market-change">↑ 0.8% hoje</div>
+          </div>
+          <div class="market-item">
+            <div class="market-header">
+              <span class="market-name">Dólar</span>
+              <span class="market-price">R$ 5.12</span>
+            </div>
+            <div class="market-change">↓ 0.3% hoje</div>
+          </div>
+        </div>
+
+        <!-- Trending Topics -->
+        <div class="trending-topics">
+          <h3 class="widget-title">Tendências do Momento</h3>
+          <div class="topic-item">
+            <span class="topic-number">1</span>
+            <div class="topic-info">
+              <div class="topic-name">#SafraBrasil2024</div>
+              <div class="topic-count">2.5k menções</div>
+            </div>
+          </div>
+          <div class="topic-item">
+            <span class="topic-number">2</span>
+            <div class="topic-info">
+              <div class="topic-name">#CaféEspecial</div>
+              <div class="topic-count">1.8k menções</div>
+            </div>
+          </div>
+          <div class="topic-item">
+            <span class="topic-number">3</span>
+            <div class="topic-info">
+              <div class="topic-name">#ExportaçãoCafé</div>
+              <div class="topic-count">1.2k menções</div>
+            </div>
+          </div>
+          <div class="topic-item">
+            <span class="topic-number">4</span>
+            <div class="topic-info">
+              <div class="topic-name">#Sustentabilidade</div>
+              <div class="topic-count">956 menções</div>
+            </div>
+          </div>
+          <div class="topic-item">
+            <span class="topic-number">5</span>
+            <div class="topic-info">
+              <div class="topic-name">#TecnologiaCafé</div>
+              <div class="topic-count">743 menções</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="newsletter-widget">
+          <h3 class="newsletter-title">Boletim Diário</h3>
+          <p class="newsletter-text">
+            Receba as principais notícias e análises do mercado
+          </p>
+          <form class="newsletter-form">
+            <input
+              type="email"
+              class="newsletter-input"
+              placeholder="Seu email"
+            />
+            <button class="newsletter-btn">Inscrever-se</button>
+          </form>
+        </div>
+
+        <!-- Events -->
+        <div class="events-widget">
+          <h3 class="widget-title">Próximos Eventos</h3>
+          <div class="event-item">
+            <div class="event-date">
+              <div class="event-month">DEZ</div>
+              <div class="event-day">15</div>
+            </div>
+            <div class="event-info">
+              <div class="event-title">Feira Internacional do Café</div>
+              <div class="event-location">São Paulo, SP</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date">
+              <div class="event-month">JAN</div>
+              <div class="event-day">08</div>
+            </div>
+            <div class="event-info">
+              <div class="event-title">Workshop Cafés Especiais</div>
+              <div class="event-location">Varginha, MG</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date">
+              <div class="event-month">JAN</div>
+              <div class="event-day">22</div>
+            </div>
+            <div class="event-info">
+              <div class="event-title">Congresso Cafeicultura 4.0</div>
+              <div class="event-location">Online</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Plataforma</h3>
+          <ul class="footer-links">
+            <li><div class="footer-link"></div></li>
+            <li><div class="footer-link"></div></li>
+            <li><div class="footer-link"></div></li>
+            <li><div class="footer-link"></div></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Recursos</h3>
+          <ul class="footer-links">
+            <li><div class="footer-link"></div></li>
+            <li><div class="footer-link"></div></li>
+            <li><div class="footer-link"></div></li>
+            <li><div class="footer-link"></div></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Suporte</h3>
+          <ul class="footer-links">
+            <li><div class="footer-link"></div></li>
+            <li><div class="footer-link"></div></li>
+            <li><div class="footer-link"></div></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Empresa</h3>
+          <ul class="footer-links">
+            <li><div class="footer-link"></div></li>
+            <li><div class="footer-link"></div></li>
+            <li><div class="footer-link"></div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 GlobalCoffee. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </body>
+</html>

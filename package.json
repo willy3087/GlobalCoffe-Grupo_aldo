@@ -1,0 +1,26 @@
+{
+  "name": "globalcoffee-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/nextjs",
+    "apps/react-dashboard"
+  ],
+  "scripts": {
+    "dev:next": "npm run dev --workspace=apps/nextjs",
+    "dev:react": "npm run dev --workspace=apps/react-dashboard",
+    "build:next": "npm run build --workspace=apps/nextjs",
+    "build:react": "npm run build --workspace=apps/react-dashboard",
+    "test:react": "npm run test --workspace=apps/react-dashboard",
+    "clean": "rm -rf node_modules apps/*/node_modules apps/*/dist apps/*/coverage",
+    "install-all": "npm install"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
